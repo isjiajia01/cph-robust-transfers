@@ -38,6 +38,7 @@ const dom = {
   resultsList: document.getElementById("results-list"),
   detailCard: document.getElementById("detail-card"),
   summaryCards: document.getElementById("summary-cards"),
+  scenarioTakeaway: document.getElementById("scenario-takeaway"),
   freshnessBadge: document.getElementById("freshness-badge"),
   toggleHubs: document.getElementById("toggle-hubs"),
   toggleVulnerable: document.getElementById("toggle-vulnerable"),
@@ -167,6 +168,35 @@ function accessibilityExplanation(item) {
     return `This stop remains reachable after applying the current reliability overlay. ${line} contributes a p95 delay of ${p95}s, lifting the robust travel time from ${scheduled} min to ${robust} min.`;
   }
   return `This stop is shown with scheduled travel time only because no stronger line-level delay signal is currently available.`;
+}
+
+function buildScenarioTakeaway(payload) {
+  const stats = payload.stats || {};
+  const summary = payload.reliability_summary || {};
+  const originName = state.selectedOrigin?.name || "the selected origin";
+  const threshold = summary.max_minutes ?? "?";
+  const scheduled = summary.scheduled_accessible_count ?? stats.total_reachable_stop_count ?? 0;
+  const robust = summary.robust_accessible_count ?? 0;
+  const loss = summary.accessibility_loss_count ?? 0;
+  const lossPct = ((Number(summary.accessibility_loss_ratio ?? 0) * 100).toFixed(1));
+  const risky = summary.at_risk_or_critical_count ?? 0;
+
+  if (state.controls.viewMode === "loss") {
+    return `
+      <p><strong>Under uncertainty, ${loss} stops drop out of the ${threshold}-minute reachable set from ${originName}.</strong></p>
+      <p>${lossPct}% of the scheduled-accessible stops are lost once the current reliability penalty is applied. The map is now isolating only those affected stops.</p>
+    `;
+  }
+  if (state.controls.viewMode === "robust") {
+    return `
+      <p><strong>Under reliability-aware travel times, ${robust} stops remain reachable within ${threshold} minutes from ${originName}.</strong></p>
+      <p>The difference from schedule is driven by tail delay exposure. ${risky} visible stops are currently tagged as at-risk or critical in the reliability layer.</p>
+    `;
+  }
+  return `
+    <p><strong>On the published schedule, ${scheduled} stops are reachable within ${threshold} minutes from ${originName}.</strong></p>
+    <p>This is the optimistic baseline. Switch to Robust or Accessibility loss to see how much of that reachability survives once observed delay risk is applied.</p>
+  `;
 }
 
 function setDefaultDeparture() {
@@ -470,11 +500,12 @@ function renderResults(payload) {
   const mapStops = filterStopsForView(payload.map_stops, viewMode);
   const pageStops = filterStopsForView(payload.reachable_stops, viewMode);
   dom.resultsStatus.textContent =
-    `${stats.total_reachable_stop_count} stops match the current filters from ${state.selectedOrigin?.name || "selected origin"} · ${viewMode} view.`;
+    `${state.selectedOrigin?.name || "Selected origin"} · ${viewMode} view · ${pageStops.length} currently visible results.`;
   dom.freshnessBadge.textContent = stats.cache_status || "live";
   dom.freshnessBadge.dataset.state = stats.cache_status || "miss";
   dom.paginationLabel.textContent = `${pageStops.length} rows on this page`;
   dom.windowNote.textContent = `${mapStops.length} in map window · cap ${stats.max_result_window}`;
+  dom.scenarioTakeaway.innerHTML = buildScenarioTakeaway(payload);
   renderSummaryCards(payload);
   const bucketCounts = viewMode === "loss"
     ? {
