@@ -153,6 +153,22 @@ function transferCopy(changes) {
   return `Requires ${changes} transfers.`;
 }
 
+function accessibilityExplanation(item) {
+  const scheduled = item.scheduled_travel_time_min ?? item.travel_time_min;
+  const robust = item.robust_travel_time_min ?? item.travel_time_min;
+  const loss = item.accessibility_loss_min ?? 0;
+  const line = item.line || "the current line context";
+  const p95 = item.risk_p95_delay_sec;
+
+  if (item.accessibility_loss_flag) {
+    return `This stop is reachable on schedule in ${scheduled} min, but falls out of the time budget once ${line} absorbs its reliability penalty. The robust travel time rises to ${robust} min, adding ${loss} min of accessibility loss.`;
+  }
+  if (typeof p95 === "number" && p95 > 0) {
+    return `This stop remains reachable after applying the current reliability overlay. ${line} contributes a p95 delay of ${p95}s, lifting the robust travel time from ${scheduled} min to ${robust} min.`;
+  }
+  return `This stop is shown with scheduled travel time only because no stronger line-level delay signal is currently available.`;
+}
+
 function setDefaultDeparture() {
   const now = new Date();
   now.setMinutes(now.getMinutes() - (now.getMinutes() % 5), 0, 0);
@@ -590,6 +606,10 @@ function renderDetail(item) {
       <p><strong>Changes:</strong> ${item.changes != null ? item.changes : "n/a"}</p>
     </div>
     <div class="detail-block">
+      <h3>Why this matters</h3>
+      <p>${accessibilityExplanation(item)}</p>
+    </div>
+    <div class="detail-block">
       <h3>Reliability overlay</h3>
       <p><strong>Band:</strong> ${item.reliability_band || "unknown"}</p>
       <p><strong>P95 delay:</strong> ${item.risk_p95_delay_sec != null ? `${item.risk_p95_delay_sec}s` : "n/a"}</p>
@@ -621,6 +641,7 @@ function renderPopup(item) {
       <div class="popup-meta"><strong>Line:</strong> ${item.line || "not provided"}</div>
       <div class="popup-meta"><strong>Mode:</strong> ${item.mode || "not provided"}</div>
       <div class="popup-meta">${qualityCopy(band)}</div>
+      <div class="popup-meta">${accessibilityExplanation(item)}</div>
       <div class="popup-meta">${item.risk_p95_delay_sec ? `P95 delay ${item.risk_p95_delay_sec}s · ${item.confidence_tag || "unknown"} confidence` : "No line-level delay summary available."}</div>
     </div>
   `;
