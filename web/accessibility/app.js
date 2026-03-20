@@ -23,6 +23,7 @@ const state = {
     reliabilityFilter: "all",
     bucketFilter: "all",
     directOnly: false,
+    viewMode: "scheduled",
   },
 };
 
@@ -49,6 +50,7 @@ const dom = {
   qualityFilter: document.getElementById("quality-filter"),
   bucketFilter: document.getElementById("bucket-filter"),
   directOnly: document.getElementById("direct-only"),
+  viewMode: document.getElementById("view-mode"),
   shareLink: document.getElementById("share-link"),
   shareStatus: document.getElementById("share-status"),
   overlayScopeNote: document.getElementById("overlay-scope-note"),
@@ -68,6 +70,17 @@ function bucketKey(minutes) {
   if (minutes <= 30) return "16-30";
   if (minutes <= 45) return "31-45";
   return "46+";
+}
+
+function displayMinutesForView(item, viewMode) {
+  if (viewMode === "robust") return item.robust_travel_time_min ?? item.travel_time_min ?? 999;
+  if (viewMode === "loss") return item.accessibility_loss_min ?? 0;
+  return item.scheduled_travel_time_min ?? item.travel_time_min ?? 999;
+}
+
+function filterStopsForView(stops, viewMode) {
+  if (viewMode !== "loss") return stops;
+  return stops.filter((stop) => Boolean(stop.accessibility_loss_flag));
 }
 
 function colorScale(minutes) {
@@ -123,6 +136,8 @@ function applyUrlState() {
   const bucketFilter = params.get("bucket_filter");
   if (bucketFilter) state.controls.bucketFilter = bucketFilter;
   state.controls.directOnly = params.get("direct_only") === "1";
+  const viewMode = params.get("view_mode");
+  if (viewMode) state.controls.viewMode = viewMode;
 
   const modeParam = params.get("modes");
   if (modeParam) {
@@ -156,6 +171,7 @@ function buildShareUrl({ includeAutorun = true } = {}) {
   params.set("sort_by", state.controls.sortBy);
   params.set("reliability_filter", state.controls.reliabilityFilter);
   params.set("bucket_filter", state.controls.bucketFilter);
+  params.set("view_mode", state.controls.viewMode);
   params.set("page", String(state.pager.page));
   params.set("per_page", String(state.pager.perPage));
   if (state.controls.directOnly) params.set("direct_only", "1");
@@ -271,6 +287,7 @@ async function loadBootstrap() {
   dom.qualityFilter.value = state.controls.reliabilityFilter;
   dom.bucketFilter.value = state.controls.bucketFilter;
   dom.directOnly.checked = state.controls.directOnly;
+  dom.viewMode.value = state.controls.viewMode;
   if (bootstrap.overlay_scope_label) {
     dom.overlayScopeNote.textContent = `${bootstrap.overlay_scope_label}: hubs and vulnerable nodes are clipped to the Greater Copenhagen window.`;
   }
@@ -390,25 +407,28 @@ function renderBucketBars(bucketCounts, total) {
 function renderResults(payload) {
   state.reachability = payload;
   const stats = payload.stats;
+  const viewMode = state.controls.viewMode;
+  const mapStops = filterStopsForView(payload.map_stops, viewMode);
+  const pageStops = filterStopsForView(payload.reachable_stops, viewMode);
   dom.resultsStatus.textContent =
-    `${stats.total_reachable_stop_count} stops match the current filters from ${state.selectedOrigin?.name || "selected origin"}.`;
+    `${stats.total_reachable_stop_count} stops match the current filters from ${state.selectedOrigin?.name || "selected origin"} · ${viewMode} view.`;
   dom.freshnessBadge.textContent = stats.cache_status || "live";
   dom.freshnessBadge.dataset.state = stats.cache_status || "miss";
-  dom.paginationLabel.textContent = `${stats.returned_stop_count} rows on this page`;
-  dom.windowNote.textContent = `${stats.clipped_reachable_stop_count} in map window · cap ${stats.max_result_window}`;
+  dom.paginationLabel.textContent = `${pageStops.length} rows on this page`;
+  dom.windowNote.textContent = `${mapStops.length} in map window · cap ${stats.max_result_window}`;
   renderSummaryCards(payload);
   renderBucketBars(stats.bucket_counts, stats.clipped_reachable_stop_count);
 
-  dom.resultsList.innerHTML = payload.reachable_stops
+  dom.resultsList.innerHTML = pageStops
     .map(
       (item) => `
         <li class="result-row ${item.id === state.activeStopId ? "is-active" : ""}" data-stop-id="${item.id}">
           <div class="result-title">
             <span>${item.name}</span>
-            <span>${item.travel_time_min} min</span>
+            <span>${displayMinutesForView(item, viewMode)} min</span>
           </div>
           <div class="result-meta">
-            ${(item.reliability_band || "unknown").replace("-", " ")}${item.risk_p95_delay_sec ? ` · p95 ${item.risk_p95_delay_sec}s` : ""}${item.changes != null ? ` · ${item.changes} chg` : ""}${item.line ? ` · ${item.line}` : ""}
+            ${viewMode === "loss" ? `loss ${item.accessibility_loss_min ?? 0} min` : `${(item.reliability_band || "unknown").replace("-", " ")}`}${item.risk_p95_delay_sec ? ` · p95 ${item.risk_p95_delay_sec}s` : ""}${item.changes != null ? ` · ${item.changes} chg` : ""}${item.line ? ` · ${item.line}` : ""}
           </div>
         </li>
       `
@@ -417,16 +437,16 @@ function renderResults(payload) {
 
   dom.prevPage.disabled = stats.page <= 1;
   dom.nextPage.disabled = stats.page >= stats.total_pages;
-  renderReachabilityLayer(payload.map_stops);
-  if (payload.reachable_stops.length) {
-    state.activeStopId = payload.reachable_stops[0].id;
-    renderDetail(payload.reachable_stops[0]);
+  renderReachabilityLayer(mapStops, viewMode);
+  if (pageStops.length) {
+    state.activeStopId = pageStops[0].id;
+    renderDetail(pageStops[0]);
     syncResultSelection();
   }
   syncUrlState();
 }
 
-function renderReachabilityLayer(stops) {
+function renderReachabilityLayer(stops, viewMode) {
   state.layers.reachableCluster.clearLayers();
   state.layers.origin.clearLayers();
   const bounds = [];
@@ -440,9 +460,9 @@ function renderReachabilityLayer(stops) {
       radius: 6,
       color: "rgba(255,255,255,0.82)",
       weight: 1.5,
-      fillColor: colorScale(stop.travel_time_min),
+      fillColor: colorScale(displayMinutesForView(stop, viewMode)),
       fillOpacity: 0.9,
-      bucketKey: bucketKey(stop.travel_time_min),
+      bucketKey: bucketKey(displayMinutesForView(stop, viewMode)),
       stopId: stop.id,
     });
     marker.on("click", () => {
@@ -514,6 +534,8 @@ function renderDetail(item) {
       <h3>${item.name || "Selected stop"}</h3>
       <p><strong>ID:</strong> ${item.id || "n/a"}</p>
       <p><strong>Travel time:</strong> ${item.travel_time_min != null ? `${item.travel_time_min} min` : "n/a"}</p>
+      <p><strong>Robust time:</strong> ${item.robust_travel_time_min != null ? `${item.robust_travel_time_min} min` : "n/a"}</p>
+      <p><strong>Access loss:</strong> ${item.accessibility_loss_min != null ? `${item.accessibility_loss_min} min` : "n/a"}</p>
       <p><strong>Changes:</strong> ${item.changes != null ? item.changes : "n/a"}</p>
     </div>
     <div class="detail-block">
@@ -542,7 +564,7 @@ function renderPopup(item) {
       <div class="popup-title">${item.name}</div>
       <span class="popup-pill ${safeBandClass}">${band.replace("-", " ")}</span>
       <div class="popup-meta">
-        <strong>${item.travel_time_min} min</strong> · ${bucketKey(item.travel_time_min ?? 999)} bucket
+        <strong>${item.scheduled_travel_time_min ?? item.travel_time_min} min</strong> scheduled · ${item.robust_travel_time_min ?? item.travel_time_min} min robust
       </div>
       <div class="popup-meta">${transferCopy(item.changes)}</div>
       <div class="popup-meta"><strong>Line:</strong> ${item.line || "not provided"}</div>
@@ -679,6 +701,12 @@ function attachEvents() {
     state.pager.page = 1;
     syncUrlState();
     if (state.selectedOrigin) fetchReachabilityPage();
+  });
+
+  dom.viewMode.addEventListener("change", () => {
+    state.controls.viewMode = dom.viewMode.value;
+    syncUrlState();
+    if (state.reachability) renderResults(state.reachability);
   });
 
   dom.prevPage.addEventListener("click", () => {

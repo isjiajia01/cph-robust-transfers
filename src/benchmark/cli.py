@@ -33,6 +33,13 @@ def build_parser() -> argparse.ArgumentParser:
     compare_parser.add_argument("--n-mode-min", type=int, default=500)
     compare_parser.add_argument("--bootstrap-iters", type=int, default=1000)
     compare_parser.add_argument("--seed", type=int, default=42)
+
+    summary_parser = subparsers.add_parser(
+        "summarize",
+        help="Summarize a benchmark comparison csv into markdown",
+    )
+    summary_parser.add_argument("--input", default="results/benchmark/latest/comparison.csv")
+    summary_parser.add_argument("--out", default="results/benchmark/latest/summary.md")
     return parser
 
 
@@ -215,6 +222,42 @@ def compare(
     return 0
 
 
+def summarize(input_path: Path, out_path: Path) -> int:
+    rows = _read_rows(input_path)
+    if not rows:
+        raise SystemExit(f"no benchmark rows found in {input_path}")
+
+    total = len(rows)
+    scheduled_access = sum(int(row["scheduled_accessible_within_threshold"]) for row in rows)
+    robust_access = sum(int(row["robust_accessible_within_threshold"]) for row in rows)
+    access_loss = sum(int(row["accessibility_loss_flag"]) for row in rows)
+    scheduled_miss = sum(float(row["scheduled_missed_transfer_rate"]) for row in rows) / total
+    snapshot_miss = sum(float(row["snapshot_missed_transfer_rate"]) for row in rows) / total
+    robust_miss = sum(float(row["robust_missed_transfer_rate"]) for row in rows) / total
+    robust_regret = sum(float(row["robust_regret_min"]) for row in rows) / total
+    snapshot_regret = sum(float(row["realtime_snapshot_regret_min"]) for row in rows) / total
+
+    lines = [
+        "# Benchmark Summary",
+        "",
+        f"- rows evaluated: `{total}`",
+        f"- scheduled accessible within threshold: `{scheduled_access}`",
+        f"- robust accessible within threshold: `{robust_access}`",
+        f"- accessibility loss flags: `{access_loss}`",
+        f"- average scheduled missed-transfer rate: `{scheduled_miss:.4f}`",
+        f"- average realtime-snapshot missed-transfer rate: `{snapshot_miss:.4f}`",
+        f"- average robust missed-transfer rate: `{robust_miss:.4f}`",
+        f"- average realtime-snapshot regret (min): `{snapshot_regret:.2f}`",
+        f"- average robust regret (min): `{robust_regret:.2f}`",
+        "",
+        "This summary is generated from `results/benchmark/latest/comparison.csv` and is intended as a lightweight public-facing benchmark snapshot.",
+    ]
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"wrote_benchmark_summary={out_path}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -231,6 +274,8 @@ def main(argv: list[str] | None = None) -> int:
             bootstrap_iters=int(args.bootstrap_iters),
             seed=int(args.seed),
         )
+    if args.command == "summarize":
+        return summarize(Path(args.input), Path(args.out))
     raise SystemExit(f"Unknown benchmark command: {args.command}")
 
 

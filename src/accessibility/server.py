@@ -317,10 +317,11 @@ class AccessibilityService:
         ttl_sec = self.cfg.cache.disk_ttl_sec
         cached = self.cache.get(cache_key, ttl_sec=ttl_sec)
         if cached is not None:
-            summary = summarize_reachability_window(stored_reachability_rows(cached.payload), max_minutes=max_minutes)
+            rows = annotate_reachability_window(stored_reachability_rows(cached.payload), max_minutes=max_minutes)
+            summary = summarize_reachability_window(rows, max_minutes=max_minutes)
             paged = paginate_reachability_results(
                 apply_result_controls(
-                    stored_reachability_rows(cached.payload),
+                    rows,
                     sort_by=sort_by,
                     reliability_filter=reliability_filter,
                     bucket_filter=bucket_filter,
@@ -355,6 +356,7 @@ class AccessibilityService:
                 enrich_reachable_stop(stop_row=item, reliability_lookup=self.line_reliability_lookup)
                 for item in upstream.normalized_items
             ]
+            reachable_stops = annotate_reachability_window(reachable_stops, max_minutes=max_minutes)
             filtered_sorted = apply_result_controls(
                 reachable_stops,
                 sort_by=sort_by,
@@ -406,10 +408,11 @@ class AccessibilityService:
             }
         except Exception:
             if stale is not None:
-                summary = summarize_reachability_window(stored_reachability_rows(stale.payload), max_minutes=max_minutes)
+                rows = annotate_reachability_window(stored_reachability_rows(stale.payload), max_minutes=max_minutes)
+                summary = summarize_reachability_window(rows, max_minutes=max_minutes)
                 paged = paginate_reachability_results(
                     apply_result_controls(
-                        stored_reachability_rows(stale.payload),
+                        rows,
                         sort_by=sort_by,
                         reliability_filter=reliability_filter,
                         bucket_filter=bucket_filter,
@@ -486,6 +489,34 @@ def summarize_reachability_window(
         "at_risk_or_critical_count": critical_or_risky,
         "max_minutes": max_minutes,
     }
+
+
+def annotate_reachability_window(
+    stops: list[dict[str, object]],
+    *,
+    max_minutes: int,
+) -> list[dict[str, object]]:
+    annotated: list[dict[str, object]] = []
+    for row in stops:
+        travel_time_min = int(row.get("travel_time_min") or 0)
+        p95_delay_sec = row.get("risk_p95_delay_sec")
+        robust_delay_min = max(0.0, int(p95_delay_sec) / 60.0) if isinstance(p95_delay_sec, int) else 0.0
+        robust_travel_time_min = round(travel_time_min + robust_delay_min, 2)
+        scheduled_accessible = travel_time_min <= max_minutes
+        robust_accessible = robust_travel_time_min <= max_minutes
+        accessibility_loss_min = round(max(0.0, robust_travel_time_min - travel_time_min), 2)
+        annotated.append(
+            {
+                **row,
+                "scheduled_travel_time_min": travel_time_min,
+                "robust_travel_time_min": robust_travel_time_min,
+                "scheduled_accessible": scheduled_accessible,
+                "robust_accessible": robust_accessible,
+                "accessibility_loss_flag": scheduled_accessible and not robust_accessible,
+                "accessibility_loss_min": accessibility_loss_min,
+            }
+        )
+    return annotated
 
 
 def stored_reachability_rows(payload: dict[str, object]) -> list[dict[str, object]]:

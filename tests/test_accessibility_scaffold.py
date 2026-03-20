@@ -13,6 +13,7 @@ from src.accessibility.rejseplanen_client import (
 )
 from src.accessibility.server import (
     apply_result_controls,
+    annotate_reachability_window,
     build_parser,
     filter_overlays_to_bounds,
     load_accessibility_config,
@@ -161,6 +162,15 @@ class AccessibilityScaffoldTest(unittest.TestCase):
         self.assertEqual(summary["accessibility_loss_count"], 1)
         self.assertEqual(summary["high_confidence_count"], 3)
         self.assertEqual(summary["at_risk_or_critical_count"], 1)
+
+    def test_annotate_reachability_window_adds_scheduled_robust_and_loss_fields(self):
+        rows = [{"id": "a", "travel_time_min": 44, "risk_p95_delay_sec": 180}]
+        annotated = annotate_reachability_window(rows, max_minutes=45)
+        self.assertEqual(annotated[0]["scheduled_travel_time_min"], 44)
+        self.assertEqual(annotated[0]["robust_travel_time_min"], 47.0)
+        self.assertTrue(annotated[0]["scheduled_accessible"])
+        self.assertFalse(annotated[0]["robust_accessible"])
+        self.assertTrue(annotated[0]["accessibility_loss_flag"])
 
     def test_apply_result_controls_sorts_and_filters_service_quality(self):
         rows = [
