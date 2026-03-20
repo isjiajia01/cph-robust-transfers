@@ -1,55 +1,92 @@
 # cph-robust-transfers
 
-Robust transfer analysis pipeline for Copenhagen transit networks.
+Robust transfer analysis and reliability pipeline for Copenhagen transit networks.
 
-This repository now also follows the documentation/control-file shape of the hybrid Codex template:
+This project combines static GTFS processing, realtime transit sampling, robustness and routing analysis, cloud data products, and a lightweight accessibility-product scaffold in one repository.
 
-- top-level project framing: `AGENTS.md`, `codex.md`, `problem.md`, `experiments.md`
-- workflow docs: `docs/workflow/`
-- research/model notes: `model/`
-- physical bridge packages: `src/app`, `src/optimization`
-- semantic data roots: `data/raw`, `data/processed`
+## What This Repository Does
 
-## Repository layout
+- Downloads and parses GTFS static data
+- Builds a stop-level transit graph and graph metrics
+- Samples realtime departures and journey details from Rejseplanen
+- Produces structured datasets for BigQuery-based analysis
+- Estimates delay risk and evaluates robust transfer candidates
+- Renders an offline research dashboard for executive review
+- Prototypes a map-first accessibility product with a lightweight Python server
+
+## Project Framing
+
+This is a hybrid research-and-engineering repository. The software side focuses on data collection, cloud jobs, and reporting pipelines. The analysis side focuses on robustness, routing, and risk-aware transfer evaluation.
+
+Primary framing files:
+
+- `problem.md`
+- `experiments.md`
+- `docs/workflow/software.md`
+- `docs/workflow/optimization.md`
+- `model/formulation.md`
+- `model/solver.md`
+
+## Architecture
+
+Core flow:
+
+1. GTFS static zip is downloaded into `data/gtfs/raw/`
+2. GTFS tables are parsed into `data/gtfs/parsed/<version>/`
+3. A stop graph and graph metrics are built under `data/graph/<version>/`
+4. Realtime collector polls `multiDepartureBoard` and `journeyDetail`
+5. Raw payloads are stored append-only in `data/realtime_raw/dt=YYYY-MM-DD/`
+6. Structured outputs are written under `data/structured/dt=YYYY-MM-DD/`
+7. Quantiles, robustness outputs, and summaries feed reports and dashboards
+
+More detail:
+
+- `docs/architecture.md`
+- `docs/runbook.md`
+- `docs/next_phase_plan.md`
+
+## Tech Stack
+
+- Python 3.11
+- Standard-library-first package layout with `setuptools`
+- BigQuery and GCS integration for structured analytics flows
+- Cloud Run Jobs and Cloud Scheduler for recurring collection
+- Static HTML dashboard output
+- Lightweight `http.server`-based accessibility service scaffold
+
+## Repository Layout
+
 - `src/gtfs_ingest/`: GTFS download and parsing
-- `src/graph/`: static stop graph build and metrics
-- `src/robustness/`: disruption simulations and summaries
-- `src/realtime/`: realtime collector, parser, throttling, quantile script
-- `configs/`: pipeline defaults, station seeds, SQL templates
-- `infra/gcp/`: bootstrap/deploy/scheduler/secret scripts
-- `infra/bigquery/`: structured load and quantile query scripts
-- `docs/`: architecture, workflow, decisions, reports
-- `model/`: formulation and solver/execution notes
-- `src/app/`: template-style application bridge layer over current pipelines
-- `src/accessibility/`: quota-aware accessibility product proxy/cache/transform scaffold
-- `src/optimization/`: template-style optimization bridge layer over current robustness/routing code
-- `data/raw/`: template-style raw-data semantic root
-- `data/processed/`: template-style processed-data semantic root
-- `docs/research_dashboard.html`: offline executive dashboard with line filtering and GTFS-derived exposure map
-- `docs/accessibility_product_plan.md`: formal implementation plan for the map-first accessibility product
-- `web/accessibility/`: frontend shell for the future reachability map app
-- `src/app/cli.py`: template-style unified application CLI
-- `src/optimization/api.py`: template-style unified optimization API
-- `src/optimization/cli.py`: template-style unified optimization CLI
-- `docs/next_phase_plan.md`: canonical A -> B -> C -> D execution plan
+- `src/graph/`: graph build and network metrics
+- `src/realtime/`: realtime collection, parsing, throttling, summaries, quantiles
+- `src/robustness/`: disruption simulation, routing, risk model, reporting
+- `src/accessibility/`: cache, upstream client, transforms, lightweight service layer
+- `src/app/`: unified application-facing CLI and pipeline entry points
+- `src/optimization/`: unified optimization-facing CLI and bridge API
+- `configs/`: runtime defaults, station seeds, SQL templates
+- `infra/gcp/`: bootstrap, deploy, scheduler, secret, and alert scripts
+- `infra/bigquery/`: load, quality-check, refresh, and quantile scripts
+- `docs/`: architecture, workflow, reports, conclusions, and dashboard outputs
+- `model/`: formulation and solver notes
+- `tests/`: regression and scaffold tests
+- `web/accessibility/`: frontend shell for the accessibility prototype
 
-## Template-oriented entry points
-- `problem.md`: project problem framing
-- `experiments.md`: reproducible milestone log
-- `docs/workflow/software.md`: software / infra changes
-- `docs/workflow/optimization.md`: analysis / modeling changes
-- `model/formulation.md`: analysis structure and metrics
-- `model/solver.md`: execution and acceptance logic
+## Main Entry Points
 
-## Physical Mapping
-- Existing runtime modules remain valid in `src/realtime`, `src/robustness`, `src/gtfs_ingest`, and `src/graph`.
-- Template-style imports can now target `src/app` and `src/optimization` without moving production code.
-- Existing data paths remain valid; `data/raw` and `data/processed` act as semantic anchors and mapping docs rather than forced migrations.
-- Template-style CLIs now exist:
-  - `python -m src.app.cli ...`
-  - `python -m src.optimization.cli ...`
+Application-side CLI:
 
-## Quickstart
+```bash
+python -m src.app.cli --help
+```
+
+Optimization-side CLI:
+
+```bash
+python -m src.optimization.cli --help
+```
+
+Common direct commands:
+
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 -m src.app.results_dashboard --out docs/research_dashboard.html
@@ -57,8 +94,29 @@ python3 -m unittest tests.test_accessibility_scaffold
 python3 -m src.accessibility.server serve --host 127.0.0.1 --port 8765
 ```
 
-Main workflow is documented in `docs/runbook.md`.
+## Current Outputs
 
-## Security
-- Never commit API keys.
-- Keep `REJSEPLANEN_API_KEY` only in env vars or Secret Manager.
+Notable generated or rendered outputs already tracked in the repo:
+
+- `docs/research_dashboard.html`
+- `docs/week1_summary.md`
+- `docs/week3_summary.md`
+- `docs/week3_conclusions.md`
+- `results/robustness/summary.md`
+
+## Data and Secrets
+
+- Runtime data under `data/` is intentionally ignored by Git
+- Keep `REJSEPLANEN_API_KEY` only in environment variables or Secret Manager
+- Never commit live API keys or raw secret material
+
+## Why This Repo Matters
+
+This repository is not just a notebook dump. It shows an end-to-end pattern:
+
+- transport data ingestion
+- realtime reliability measurement
+- robustness-oriented analysis
+- deployable cloud jobs
+- decision-facing outputs
+- early product thinking for accessibility use cases
