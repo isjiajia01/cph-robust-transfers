@@ -5,16 +5,16 @@
 [![License](https://img.shields.io/badge/License-Not%20Specified-6B7280?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers)
 [![Last Updated](https://img.shields.io/github/last-commit/isjiajia01/cph-robust-transfers?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers/commits/main)
 
-Robust transfer analysis and reliability pipeline for Copenhagen transit networks.
+Reliability-aware accessibility and robust routing system for Copenhagen transit networks.
 
-This project combines static GTFS processing, realtime transit sampling, robustness and routing analysis, cloud data products, and a lightweight accessibility-product scaffold in one repository.
+This project combines static GTFS processing, realtime transit sampling, risk-aware routing, cloud data products, and a map-first accessibility prototype in one repository.
 
 ## Key Results
 
 - Built an end-to-end pipeline from GTFS ingestion to graph construction, realtime collection, structured analytics, and decision-facing outputs
 - Added a robustness layer that evaluates transfer reliability through disruption simulation, routing, and empirical delay-risk modeling
 - Integrated cloud execution patterns for recurring collection and BigQuery-based reporting instead of keeping the work notebook-only
-- Produced an offline research dashboard and a lightweight accessibility-service scaffold to bridge analysis work toward product form
+- Produced an offline research dashboard and a lightweight accessibility-service scaffold to bridge analysis work toward reliability-adjusted accessibility products
 - Structured the repo so software workflows and optimization workflows can evolve without collapsing into one-off scripts
 
 ## What This Repository Does
@@ -29,7 +29,7 @@ This project combines static GTFS processing, realtime transit sampling, robustn
 
 ## Project Framing
 
-This is a hybrid research-and-engineering repository. The software side focuses on data collection, cloud jobs, and reporting pipelines. The analysis side focuses on robustness, routing, and risk-aware transfer evaluation.
+This is a hybrid research-and-engineering repository. The software side focuses on data collection, cloud jobs, and reporting pipelines. The analysis side focuses on reliability-aware accessibility, robustness, routing, and transfer-risk evaluation.
 
 Primary framing files:
 
@@ -105,6 +105,13 @@ More detail:
 
 ## Main Entry Points
 
+Unified root CLI:
+
+```bash
+python -m src.cli --help
+python -m src.cli benchmark init
+```
+
 Application-side CLI:
 
 ```bash
@@ -135,6 +142,7 @@ Notable generated or rendered outputs already tracked in the repo:
 - `docs/week3_summary.md`
 - `docs/week3_conclusions.md`
 - `results/robustness/summary.md`
+- `results/benchmark/README.md`
 
 ## Data and Secrets
 

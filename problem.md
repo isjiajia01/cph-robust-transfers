@@ -1,26 +1,31 @@
 # Problem Statement
 
-Build a reproducible Copenhagen public-transport robustness project that combines:
+Build a reproducible **reliability-aware accessibility and routing system** for Copenhagen public transport.
 
-- static GTFS-based network structure
-- realtime delay sampling from Rejseplanen
-- operational data pipelines on GCP
-- decision-support analytics for transfer reliability
+The project uses static GTFS structure plus realtime operating data to answer a stronger question than schedule-only routing:
 
-## Background
+> How much accessibility is overstated when transit uncertainty is ignored, and how much can risk-aware routing reduce missed-transfer exposure?
 
-The repo started as a week-by-week project:
+## Core Objective
 
-- Week 1: GTFS ingest and stop-graph baseline
-- Week 2: robustness simulations under random and targeted failures
-- Week 3: realtime delay collection, warehouse loading, and delay/risk analysis
+Turn the repository into an evidence-backed research engineering project that can:
 
-## Objective
+- estimate transfer and delay risk from observed realtime operations
+- compare scheduled accessibility against reliability-adjusted accessibility
+- surface station-, line-, and time-specific accessibility loss
+- evaluate robust routing policies against simpler baselines
+- expose results through reproducible data products, dashboards, and an interactive map-first prototype
 
-- quantify network fragility under disruptions
-- quantify realtime delay behavior over time
-- support route and transfer-risk analysis with reproducible data products
-- move the project from "runnable" to "evidence-backed, attributable, reproducible, and interview-demo ready"
+## Primary Research Question
+
+How should transit accessibility and route quality change when realtime uncertainty is modeled explicitly instead of assuming the published schedule is reliable?
+
+## Intended Outcomes
+
+- a benchmark-ready comparison between scheduled, realtime-snapshot, and risk-aware routing
+- a reliability-adjusted accessibility map for Copenhagen
+- traceable result artifacts with explicit data, model, and parameter versions
+- a strong interview/demo narrative spanning OR, data engineering, and product thinking
 
 ## Inputs
 
@@ -32,14 +37,22 @@ The repo started as a week-by-week project:
 ## Constraints
 
 - API keys must stay out of git
-- live data collection should be explicitly user-controlled
+- live data collection should remain explicitly user-controlled
 - analytical outputs must be traceable to versioned data artifacts
 - GCP automation must remain reproducible from scripts in `infra/`
-- execution priority follows A -> B -> C -> D from `docs/next_phase_plan.md`
+- first-stage work should reuse the current collector, graph, and robustness assets instead of rebuilding the platform
 
-## Expected outputs
+## Current Asset Base
 
-- graph metrics and robustness summaries
-- realtime departures / observations / error metrics in BigQuery
-- markdown reports, figures, notebooks, and router/risk artifacts
-- canonical next-phase execution plan in `docs/next_phase_plan.md`
+- static GTFS ingestion and graph construction
+- robustness experiments under random and targeted failures
+- realtime collection, warehouse loading, and delay/risk analysis
+- offline dashboard outputs and figures
+- a lightweight accessibility proxy/frontend scaffold
+
+## Success Criteria
+
+- the repository communicates a single north-star problem in under 30 seconds
+- a unified CLI and evaluation flow make the project easier to demo
+- benchmark artifacts can compare schedule-only, realtime-snapshot, and robust methods
+- the accessibility surface becomes the main demonstration output, not a side scaffold
