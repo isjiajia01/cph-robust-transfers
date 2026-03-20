@@ -1,0 +1,55 @@
+timezone = "Europe/Copenhagen"
+
+[cache]
+root_dir = "data/cache/accessibility"
+memory_ttl_sec = 900
+disk_ttl_sec = 3600
+location_search_ttl_sec = 86400
+reachability_bucket_minutes = 5
+
+[api]
+base_url = "https://www.rejseplanen.dk/api"
+request_timeout_sec = 15
+access_id_env = "REJSEPLANEN_API_KEY"
+access_id_query_param = "accessId"
+format_param = "format"
+format_value = "json"
+location_search_path = "location.name"
+location_search_query_param = "input"
+location_search_limit_param = "maxNo"
+location_search_limit = 8
+max_minutes_default = 45
+max_changes_default = 2
+reachability_path = "reachability"
+reachability_origin_id_param = "originId"
+reachability_origin_lat_param = "originCoordLat"
+reachability_origin_lon_param = "originCoordLong"
+reachability_date_param = "date"
+reachability_time_param = "time"
+reachability_duration_param = "duration"
+reachability_max_changes_param = "maxChange"
+reachability_modes_param = "products"
+mode_separator = ","
+
+[frontend]
+default_city = "Copenhagen"
+default_modes = ["train", "metro", "bus"]
+show_hubs_overlay = true
+show_vulnerable_overlay = true
+default_page_size = 80
+max_page_size = 250
+max_result_window = 1200
+default_sort_by = "quality_desc"
+default_reliability_filter = "all"
+default_bucket_filter = "all"
+overlay_min_lat = 55.55
+overlay_max_lat = 55.82
+overlay_min_lon = 12.05
+overlay_max_lon = 12.72
+overlay_scope_label = "Copenhagen only"
+
+static_dir = "web/accessibility"
+reliability_csv = "data/analysis/week3_line_reliability_rank.csv"
+week1_summary_path = "docs/week1_summary.md"
+vulnerable_nodes_path = "results/robustness/top10_vulnerable_nodes.csv"
+stops_path = "data/gtfs/parsed/20260302/stops.csv"

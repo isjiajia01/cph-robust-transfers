@@ -1,0 +1,11 @@
+rank,stop_id,degree,betweenness_score,impact_delta_lcc,planning_implication
+1,000461105500,6,44821421.816173,0.000134,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+2,000823102901,5,125887240.62475,9e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+3,000461034600,7,60099084.926765,9e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+4,000631200102,13,236651059.459703,4.5e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+5,000551922507,5,210796614.289565,4.5e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+6,000607300902,7,209091509.252632,4.5e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+7,000621400109,4,206417416.091591,4.5e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+8,000621405111,5,205637550.21853,4.5e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+9,000621403501,4,205601447.364364,4.5e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.
+10,000621403521,2,205595302.197697,4.5e-05,Likely transfer bridge; monitor cross-line dependency and disruption spillover.

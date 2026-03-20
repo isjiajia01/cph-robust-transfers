@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cph-robust-transfers"
+version = "0.1.0"
+description = "Robust transfer analysis for Copenhagen transit networks"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools]
+packages = ["src", "src.accessibility", "src.app", "src.common", "src.gtfs_ingest", "src.graph", "src.optimization", "src.robustness", "src.realtime"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

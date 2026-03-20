@@ -1,0 +1,5 @@
+od_id,depart_ts_cph,path_id,line,mode,travel_time_min,transfers,stop_type
+CPH_H_CPH_AIRPORT,2026-03-02T08:15:00+01:00,path_a,IC 818,train,24,1,hub
+CPH_H_CPH_AIRPORT,2026-03-02T08:20:00+01:00,path_b,Re 1049,train,28,0,hub
+NORREPORT_LYNGBY,2026-03-02T17:10:00+01:00,path_a,B,sbahn,22,1,interchange
+NORREPORT_LYNGBY,2026-03-02T17:15:00+01:00,path_b,C,sbahn,26,0,interchange

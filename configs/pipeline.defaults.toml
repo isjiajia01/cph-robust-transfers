@@ -1,0 +1,16 @@
+timezone = "Europe/Copenhagen"
+
+[sampling]
+interval_sec = 180
+station_batch_size = 10
+max_journey_detail_per_cycle = 6
+
+[http]
+timeout_sec = 15
+max_retries = 5
+backoff_base_sec = 1.5
+backoff_max_sec = 60.0
+
+[storage]
+raw_dir = "data/realtime_raw"
+structured_dir = "data/structured"

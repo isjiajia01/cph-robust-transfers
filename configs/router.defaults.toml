@@ -1,0 +1,5 @@
+[router]
+slack_min = 6.0
+minimum_transfer_time_min = 3.0
+walk_time_assumption_min = 2.0
+missed_transfer_rule = "p90_delay_vs_effective_slack"
