@@ -60,11 +60,18 @@ const dom = {
 
 let searchTimer = null;
 
-const bucketConfig = [
+const travelBucketConfig = [
   { key: "0-15", label: "0-15", color: "#2dd4bf" },
   { key: "16-30", label: "16-30", color: "#38bdf8" },
   { key: "31-45", label: "31-45", color: "#f59e0b" },
   { key: "46+", label: "46+", color: "#ef4444" },
+];
+
+const lossBucketConfig = [
+  { key: "0-5", label: "0-5", color: "#94a3b8" },
+  { key: "6-10", label: "6-10", color: "#38bdf8" },
+  { key: "11-15", label: "11-15", color: "#f59e0b" },
+  { key: "16+", label: "16+", color: "#ef4444" },
 ];
 
 function bucketKey(minutes) {
@@ -72,6 +79,17 @@ function bucketKey(minutes) {
   if (minutes <= 30) return "16-30";
   if (minutes <= 45) return "31-45";
   return "46+";
+}
+
+function lossBucketKey(minutes) {
+  if (minutes <= 5) return "0-5";
+  if (minutes <= 10) return "6-10";
+  if (minutes <= 15) return "11-15";
+  return "16+";
+}
+
+function activeBucketConfig(viewMode) {
+  return viewMode === "loss" ? lossBucketConfig : travelBucketConfig;
 }
 
 function displayMinutesForView(item, viewMode) {
@@ -88,20 +106,27 @@ function filterStopsForView(stops, viewMode) {
 function updateViewModeCopy(viewMode) {
   if (viewMode === "robust") {
     dom.viewModeCopy.textContent = "Robust shows scheduled travel time plus the current p95 delay-risk overlay.";
-    dom.legendCopy.textContent = "Robust view colors stops by risk-adjusted travel time.";
+    dom.legendCopy.textContent = "Robust view colors stops by risk-adjusted travel time buckets.";
     return;
   }
   if (viewMode === "loss") {
     dom.viewModeCopy.textContent = "Accessibility loss isolates stops that were reachable on schedule but fall outside the time budget once delay risk is applied.";
-    dom.legendCopy.textContent = "Accessibility loss view colors stops by added minutes caused by uncertainty.";
+    dom.legendCopy.textContent = "Accessibility loss view colors stops by added minutes caused by uncertainty, and only keeps affected stops on the map.";
     return;
   }
   dom.viewModeCopy.textContent = "Scheduled shows base travel time, robust adds delay risk, and accessibility loss isolates stops pushed beyond the time budget by uncertainty.";
-  dom.legendCopy.textContent = "Scheduled view colors stops by scheduled travel time.";
+  dom.legendCopy.textContent = "Scheduled view colors stops by scheduled travel time buckets.";
 }
 
 function colorScale(minutes) {
-  return bucketConfig.find((bucket) => bucket.key === bucketKey(minutes))?.color || "#94a3b8";
+  return travelBucketConfig.find((bucket) => bucket.key === bucketKey(minutes))?.color || "#94a3b8";
+}
+
+function colorScaleForView(minutes, viewMode) {
+  if (viewMode === "loss") {
+    return lossBucketConfig.find((bucket) => bucket.key === lossBucketKey(minutes))?.color || "#94a3b8";
+  }
+  return colorScale(minutes);
 }
 
 function qualityCopy(band) {
@@ -404,8 +429,8 @@ function renderSummaryCards(payload) {
     .join("");
 }
 
-function renderBucketBars(bucketCounts, total) {
-  dom.bucketBars.innerHTML = bucketConfig
+function renderBucketBars(bucketCounts, total, viewMode) {
+  dom.bucketBars.innerHTML = activeBucketConfig(viewMode)
     .map((bucket) => {
       const count = bucketCounts?.[bucket.key] || 0;
       const pct = total > 0 ? (count / total) * 100 : 0;
@@ -435,7 +460,15 @@ function renderResults(payload) {
   dom.paginationLabel.textContent = `${pageStops.length} rows on this page`;
   dom.windowNote.textContent = `${mapStops.length} in map window · cap ${stats.max_result_window}`;
   renderSummaryCards(payload);
-  renderBucketBars(stats.bucket_counts, stats.clipped_reachable_stop_count);
+  const bucketCounts = viewMode === "loss"
+    ? {
+        "0-5": mapStops.filter((stop) => lossBucketKey(displayMinutesForView(stop, viewMode)) === "0-5").length,
+        "6-10": mapStops.filter((stop) => lossBucketKey(displayMinutesForView(stop, viewMode)) === "6-10").length,
+        "11-15": mapStops.filter((stop) => lossBucketKey(displayMinutesForView(stop, viewMode)) === "11-15").length,
+        "16+": mapStops.filter((stop) => lossBucketKey(displayMinutesForView(stop, viewMode)) === "16+").length,
+      }
+    : stats.bucket_counts;
+  renderBucketBars(bucketCounts, mapStops.length, viewMode);
 
   dom.resultsList.innerHTML = pageStops
     .map(
@@ -478,9 +511,9 @@ function renderReachabilityLayer(stops, viewMode) {
       radius: 6,
       color: "rgba(255,255,255,0.82)",
       weight: 1.5,
-      fillColor: colorScale(displayMinutesForView(stop, viewMode)),
+      fillColor: colorScaleForView(displayMinutesForView(stop, viewMode), viewMode),
       fillOpacity: 0.9,
-      bucketKey: bucketKey(displayMinutesForView(stop, viewMode)),
+      bucketKey: viewMode === "loss" ? lossBucketKey(displayMinutesForView(stop, viewMode)) : bucketKey(displayMinutesForView(stop, viewMode)),
       stopId: stop.id,
     });
     marker.on("click", () => {
