@@ -17,6 +17,34 @@ This project combines static GTFS processing, realtime transit sampling, risk-aw
 - Produced an offline research dashboard and a lightweight accessibility-service scaffold to bridge analysis work toward reliability-adjusted accessibility products
 - Structured the repo so software workflows and optimization workflows can evolve without collapsing into one-off scripts
 
+## Benchmark Snapshot
+
+The repository now includes a minimal benchmark layer comparing:
+
+- scheduled-only
+- realtime snapshot
+- robust / risk-aware
+
+Current preliminary snapshot from the checked-in sample benchmark:
+
+| Metric | Value |
+| --- | --- |
+| Rows evaluated | 4 |
+| Scheduled accessible within threshold | 4 |
+| Robust accessible within threshold | 4 |
+| Accessibility loss flags | 0 |
+| Avg realtime-snapshot missed-transfer rate | 0.0417 |
+| Avg robust missed-transfer rate | 0.0833 |
+| Avg realtime-snapshot regret | 1.00 min |
+| Avg robust regret | 1.00 min |
+
+Reference artifacts:
+
+- `results/benchmark/latest/comparison.csv`
+- `results/benchmark/latest/summary.md`
+
+This is a scaffolded benchmark slice, not yet the full held-out evaluation pass. The next step is to replace the sample comparison with a larger backtest window and publish schedule vs robust accessibility-loss results.
+
 ## What This Repository Does
 
 - Downloads and parses GTFS static data
