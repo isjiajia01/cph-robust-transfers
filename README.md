@@ -40,6 +40,7 @@ Current preliminary snapshot from the checked-in sample benchmark:
 
 Reference artifacts:
 
+- `docs/benchmark_dashboard.html`
 - `results/benchmark/latest/comparison.csv`
 - `results/benchmark/latest/summary.md`
 - `results/benchmark/latest/candidates.csv`
@@ -166,6 +167,7 @@ python3 -m src.accessibility.server serve --host 127.0.0.1 --port 8765
 
 Notable generated or rendered outputs already tracked in the repo:
 
+- `docs/benchmark_dashboard.html`
 - `docs/research_dashboard.html`
 - `docs/week1_summary.md`
 - `docs/week3_summary.md`
