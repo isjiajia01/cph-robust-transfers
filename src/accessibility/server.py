@@ -317,6 +317,7 @@ class AccessibilityService:
         ttl_sec = self.cfg.cache.disk_ttl_sec
         cached = self.cache.get(cache_key, ttl_sec=ttl_sec)
         if cached is not None:
+            summary = summarize_reachability_window(stored_reachability_rows(cached.payload), max_minutes=max_minutes)
             paged = paginate_reachability_results(
                 apply_result_controls(
                     stored_reachability_rows(cached.payload),
@@ -342,6 +343,7 @@ class AccessibilityService:
                     "bucket_filter": bucket_filter,
                     "direct_only": direct_only,
                 },
+                "reliability_summary": summary,
                 "map_stops": paged["map_stops"],
                 "reachable_stops": paged["reachable_stops"],
             }
@@ -366,6 +368,7 @@ class AccessibilityService:
                 per_page=per_page,
                 max_result_window=self.cfg.frontend.max_result_window,
             )
+            summary = summarize_reachability_window(reachable_stops, max_minutes=max_minutes)
             payload = {
                 "query": {
                     "origin_id": origin.id,
@@ -380,6 +383,7 @@ class AccessibilityService:
                     "request_url": upstream.request_url,
                     "upstream_reachable_stop_count": len(reachable_stops),
                 },
+                "reliability_summary": summary,
                 "all_reachable_stops": reachable_stops,
             }
             self.cache.set(cache_key, payload)
@@ -396,11 +400,13 @@ class AccessibilityService:
                     "bucket_filter": bucket_filter,
                     "direct_only": direct_only,
                 },
+                "reliability_summary": summary,
                 "map_stops": paged["map_stops"],
                 "reachable_stops": paged["reachable_stops"],
             }
         except Exception:
             if stale is not None:
+                summary = summarize_reachability_window(stored_reachability_rows(stale.payload), max_minutes=max_minutes)
                 paged = paginate_reachability_results(
                     apply_result_controls(
                         stored_reachability_rows(stale.payload),
@@ -426,6 +432,7 @@ class AccessibilityService:
                         "bucket_filter": bucket_filter,
                         "direct_only": direct_only,
                     },
+                    "reliability_summary": summary,
                     "map_stops": paged["map_stops"],
                     "reachable_stops": paged["reachable_stops"],
                 }
@@ -440,6 +447,45 @@ def bucket_label(minutes: int) -> str:
     if minutes <= 45:
         return "31-45"
     return "46+"
+
+
+def summarize_reachability_window(
+    stops: list[dict[str, object]],
+    *,
+    max_minutes: int,
+) -> dict[str, object]:
+    scheduled_count = 0
+    robust_count = 0
+    high_confidence_count = 0
+    total_loss = 0
+    critical_or_risky = 0
+
+    for row in stops:
+        travel_time_min = int(row.get("travel_time_min") or 0)
+        p95_delay_sec = row.get("risk_p95_delay_sec")
+        robust_travel_time = travel_time_min + (
+            max(0, int(p95_delay_sec)) / 60.0 if isinstance(p95_delay_sec, int) else 0.0
+        )
+        if travel_time_min <= max_minutes:
+            scheduled_count += 1
+        if robust_travel_time <= max_minutes:
+            robust_count += 1
+        if str(row.get("evidence_level", "")) in {"medium", "high", "summary"}:
+            high_confidence_count += 1
+        if travel_time_min <= max_minutes and robust_travel_time > max_minutes:
+            total_loss += 1
+        if str(row.get("reliability_band", "unknown")) in {"at-risk", "critical"}:
+            critical_or_risky += 1
+
+    return {
+        "scheduled_accessible_count": scheduled_count,
+        "robust_accessible_count": robust_count,
+        "accessibility_loss_count": total_loss,
+        "accessibility_loss_ratio": round((total_loss / scheduled_count), 4) if scheduled_count else 0.0,
+        "high_confidence_count": high_confidence_count,
+        "at_risk_or_critical_count": critical_or_risky,
+        "max_minutes": max_minutes,
+    }
 
 
 def stored_reachability_rows(payload: dict[str, object]) -> list[dict[str, object]]:

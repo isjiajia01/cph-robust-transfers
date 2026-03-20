@@ -333,26 +333,27 @@ function selectOrigin(item) {
 
 function renderSummaryCards(payload) {
   const stats = payload.stats;
+  const reliability = payload.reliability_summary || {};
   const cards = [
     {
-      label: "Total reachable",
-      value: String(stats.total_reachable_stop_count),
+      label: "Scheduled access",
+      value: String(reliability.scheduled_accessible_count ?? stats.total_reachable_stop_count),
       meta: `${stats.clipped_reachable_stop_count} survive filters/window`,
     },
     {
-      label: "Page size",
-      value: String(stats.returned_stop_count),
-      meta: `page ${stats.page} of ${stats.total_pages}`,
+      label: "Robust access",
+      value: String(reliability.robust_accessible_count ?? "n/a"),
+      meta: `within ${reliability.max_minutes ?? "?"} min`,
+    },
+    {
+      label: "Access loss",
+      value: String(reliability.accessibility_loss_count ?? 0),
+      meta: `${((Number(reliability.accessibility_loss_ratio ?? 0) * 100).toFixed(1))}% of scheduled`,
     },
     {
       label: "Cache",
       value: String(stats.cache_status || "live"),
       meta: `${stats.cache_source || "upstream"} · ${stats.cache_age_sec || 0}s`,
-    },
-    {
-      label: "Generated",
-      value: (stats.generated_at_utc || "").slice(11, 16) || "n/a",
-      meta: "UTC timestamp",
     },
   ];
   dom.summaryCards.innerHTML = cards

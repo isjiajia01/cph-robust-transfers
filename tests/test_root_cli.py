@@ -30,3 +30,10 @@ class RootCliTest(unittest.TestCase):
             self.assertTrue(out_path.exists())
         finally:
             shutil.rmtree(tmp_dir)
+
+    def test_root_cli_accessibility_dispatches_serve_subcommand(self):
+        with mock.patch("src.accessibility.server.main", return_value=0) as server_main:
+            rc = root_cli.main(["accessibility", "--host", "127.0.0.1", "--port", "8765"])
+
+        self.assertEqual(rc, 0)
+        server_main.assert_called_once_with(["serve", "--host", "127.0.0.1", "--port", "8765"])

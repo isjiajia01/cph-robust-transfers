@@ -17,6 +17,7 @@ from src.accessibility.server import (
     filter_overlays_to_bounds,
     load_accessibility_config,
     paginate_reachability_results,
+    summarize_reachability_window,
 )
 from src.accessibility.transform import load_line_reliability_lookup
 
@@ -147,6 +148,19 @@ class AccessibilityScaffoldTest(unittest.TestCase):
         self.assertEqual(paged["stats"]["total_pages"], 3)
         self.assertEqual(paged["reachable_stops"][0]["id"], "s6")
         self.assertEqual(sum(paged["stats"]["bucket_counts"].values()), 12)
+
+    def test_reliability_summary_compares_scheduled_and_robust_accessibility(self):
+        rows = [
+            {"id": "a", "travel_time_min": 20, "risk_p95_delay_sec": 60, "evidence_level": "high", "reliability_band": "stable"},
+            {"id": "b", "travel_time_min": 44, "risk_p95_delay_sec": 180, "evidence_level": "medium", "reliability_band": "at-risk"},
+            {"id": "c", "travel_time_min": 48, "risk_p95_delay_sec": 0, "evidence_level": "summary", "reliability_band": "leading"},
+        ]
+        summary = summarize_reachability_window(rows, max_minutes=45)
+        self.assertEqual(summary["scheduled_accessible_count"], 2)
+        self.assertEqual(summary["robust_accessible_count"], 1)
+        self.assertEqual(summary["accessibility_loss_count"], 1)
+        self.assertEqual(summary["high_confidence_count"], 3)
+        self.assertEqual(summary["at_risk_or_critical_count"], 1)
 
     def test_apply_result_controls_sorts_and_filters_service_quality(self):
         rows = [
