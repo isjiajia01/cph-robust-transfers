@@ -9,6 +9,12 @@ Reliability-aware accessibility and robust routing system for Copenhagen transit
 
 This project combines static GTFS processing, realtime transit sampling, risk-aware routing, cloud data products, and a map-first accessibility prototype in one repository.
 
+## Explore the Project
+
+- Benchmark page: `docs/benchmark_dashboard.html`
+- Research dashboard: `docs/research_dashboard.html`
+- Accessibility prototype: `web/accessibility/index.html`
+
 ## Key Results
 
 - Built an end-to-end pipeline from GTFS ingestion to graph construction, realtime collection, structured analytics, and decision-facing outputs
