@@ -1,8 +1,21 @@
 # cph-robust-transfers
 
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/Status-Active%20Research%20%26%20Engineering-0A7B83?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers)
+[![License](https://img.shields.io/badge/License-Not%20Specified-6B7280?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers)
+[![Last Updated](https://img.shields.io/github/last-commit/isjiajia01/cph-robust-transfers?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers/commits/main)
+
 Robust transfer analysis and reliability pipeline for Copenhagen transit networks.
 
 This project combines static GTFS processing, realtime transit sampling, robustness and routing analysis, cloud data products, and a lightweight accessibility-product scaffold in one repository.
+
+## Key Results
+
+- Built an end-to-end pipeline from GTFS ingestion to graph construction, realtime collection, structured analytics, and decision-facing outputs
+- Added a robustness layer that evaluates transfer reliability through disruption simulation, routing, and empirical delay-risk modeling
+- Integrated cloud execution patterns for recurring collection and BigQuery-based reporting instead of keeping the work notebook-only
+- Produced an offline research dashboard and a lightweight accessibility-service scaffold to bridge analysis work toward product form
+- Structured the repo so software workflows and optimization workflows can evolve without collapsing into one-off scripts
 
 ## What This Repository Does
 
