@@ -1,8 +1,8 @@
 # Benchmark Summary
 
-- rows evaluated: `4`
-- scheduled accessible within threshold: `4`
-- robust accessible within threshold: `4`
+- rows evaluated: `20`
+- scheduled accessible within threshold: `20`
+- robust accessible within threshold: `20`
 - accessibility loss flags: `0`
 - average scheduled missed-transfer rate: `0.0000`
 - average realtime-snapshot missed-transfer rate: `0.0417`

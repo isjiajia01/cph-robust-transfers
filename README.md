@@ -29,9 +29,9 @@ Current preliminary snapshot from the checked-in sample benchmark:
 
 | Metric | Value |
 | --- | --- |
-| Rows evaluated | 4 |
-| Scheduled accessible within threshold | 4 |
-| Robust accessible within threshold | 4 |
+| Rows evaluated | 20 |
+| Scheduled accessible within threshold | 20 |
+| Robust accessible within threshold | 20 |
 | Accessibility loss flags | 0 |
 | Avg realtime-snapshot missed-transfer rate | 0.0417 |
 | Avg robust missed-transfer rate | 0.0833 |
@@ -42,8 +42,9 @@ Reference artifacts:
 
 - `results/benchmark/latest/comparison.csv`
 - `results/benchmark/latest/summary.md`
+- `results/benchmark/latest/candidates.csv`
 
-This is a scaffolded benchmark slice, not yet the full held-out evaluation pass. The next step is to replace the sample comparison with a larger backtest window and publish schedule vs robust accessibility-loss results.
+This is still a scaffolded benchmark slice, but it now uses a larger deterministic candidate set derived from observed departures instead of the original 4-row hand-written sample. The next step is to replace this benchmark slice with a larger held-out backtest window and publish schedule vs robust accessibility-loss results.
 
 ## What This Repository Does
 

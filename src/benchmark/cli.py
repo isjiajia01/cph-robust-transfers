@@ -34,6 +34,13 @@ def build_parser() -> argparse.ArgumentParser:
     compare_parser.add_argument("--bootstrap-iters", type=int, default=1000)
     compare_parser.add_argument("--seed", type=int, default=42)
 
+    generate_parser = subparsers.add_parser(
+        "generate-candidates",
+        help="Generate a deterministic benchmark candidate set from observed departures",
+    )
+    generate_parser.add_argument("--departures", default="data/analysis/departures_recent_7d.csv")
+    generate_parser.add_argument("--out", default="results/benchmark/latest/candidates.csv")
+
     summary_parser = subparsers.add_parser(
         "summarize",
         help="Summarize a benchmark comparison csv into markdown",
@@ -89,6 +96,64 @@ def init_manifest(out_path: Path) -> int:
         encoding="utf-8",
     )
     print(f"wrote_benchmark_manifest={out_path}")
+    return 0
+
+
+def generate_candidates(departures_path: Path, out_path: Path) -> int:
+    departures = _read_rows(departures_path)
+    unique_keys: list[tuple[str, str, str]] = []
+    seen: set[tuple[str, str, str]] = set()
+    for row in departures:
+        planned_dep_ts = str(row.get("planned_dep_ts", "")).strip()
+        if not planned_dep_ts:
+            continue
+        hour_key = planned_dep_ts[:13]
+        key = (
+            str(row.get("line", "")).strip() or "UNKNOWN",
+            str(row.get("mode", "")).strip() or "UNKNOWN",
+            hour_key,
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_keys.append(key)
+
+    rows: list[dict[str, object]] = []
+    for idx, (line, mode, hour_key) in enumerate(unique_keys, start=1):
+        dep_a = f"{hour_key}:05:00+01:00"
+        dep_b = f"{hour_key}:15:00+01:00"
+        base_minutes = 18 + (idx % 4) * 3
+        rows.append(
+            {
+                "od_id": f"{line}_{hour_key.replace(':', '').replace('-', '')}_direct",
+                "depart_ts_cph": dep_a,
+                "path_id": "path_direct",
+                "line": line,
+                "mode": mode,
+                "travel_time_min": float(base_minutes),
+                "transfers": 0,
+                "stop_type": "interchange",
+            }
+        )
+        rows.append(
+            {
+                "od_id": f"{line}_{hour_key.replace(':', '').replace('-', '')}_transfer",
+                "depart_ts_cph": dep_b,
+                "path_id": "path_transfer",
+                "line": line,
+                "mode": mode,
+                "travel_time_min": float(base_minutes + 4),
+                "transfers": 1,
+                "stop_type": "hub",
+            }
+        )
+
+    _write_rows(
+        out_path,
+        rows,
+        ["od_id", "depart_ts_cph", "path_id", "line", "mode", "travel_time_min", "transfers", "stop_type"],
+    )
+    print(f"wrote_benchmark_candidates={out_path}")
     return 0
 
 
@@ -274,6 +339,8 @@ def main(argv: list[str] | None = None) -> int:
             bootstrap_iters=int(args.bootstrap_iters),
             seed=int(args.seed),
         )
+    if args.command == "generate-candidates":
+        return generate_candidates(Path(args.departures), Path(args.out))
     if args.command == "summarize":
         return summarize(Path(args.input), Path(args.out))
     raise SystemExit(f"Unknown benchmark command: {args.command}")
