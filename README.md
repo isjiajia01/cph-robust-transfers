@@ -29,6 +29,25 @@ Primary framing files:
 
 ## Architecture
 
+```mermaid
+flowchart LR
+    A[GTFS Static] --> B[GTFS Parse]
+    B --> C[Stop Graph and Metrics]
+    C --> D[Robustness Simulation]
+    C --> E[Routing and Risk Model]
+    F[Realtime Sampling] --> G[Raw NDJSON]
+    G --> H[Structured Tables]
+    H --> I[BigQuery and Quantiles]
+    I --> J[Week 3 Conclusions]
+    D --> K[Robustness Reports]
+    E --> L[Pareto Transfer Outputs]
+    J --> M[Research Dashboard]
+    K --> M
+    L --> M
+    H --> N[Accessibility Cache and Service]
+    N --> O[Map-first Accessibility Prototype]
+```
+
 Core flow:
 
 1. GTFS static zip is downloaded into `data/gtfs/raw/`
