@@ -482,6 +482,11 @@ body {
   background: rgba(8, 16, 23, 0.82);
 }
 
+#view-mode-copy,
+#legend-copy {
+  margin: 10px 0 0;
+}
+
 .legend-row {
   display: flex;
   align-items: center;

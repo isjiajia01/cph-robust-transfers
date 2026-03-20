@@ -54,6 +54,8 @@ const dom = {
   shareLink: document.getElementById("share-link"),
   shareStatus: document.getElementById("share-status"),
   overlayScopeNote: document.getElementById("overlay-scope-note"),
+  viewModeCopy: document.getElementById("view-mode-copy"),
+  legendCopy: document.getElementById("legend-copy"),
 };
 
 let searchTimer = null;
@@ -81,6 +83,21 @@ function displayMinutesForView(item, viewMode) {
 function filterStopsForView(stops, viewMode) {
   if (viewMode !== "loss") return stops;
   return stops.filter((stop) => Boolean(stop.accessibility_loss_flag));
+}
+
+function updateViewModeCopy(viewMode) {
+  if (viewMode === "robust") {
+    dom.viewModeCopy.textContent = "Robust shows scheduled travel time plus the current p95 delay-risk overlay.";
+    dom.legendCopy.textContent = "Robust view colors stops by risk-adjusted travel time.";
+    return;
+  }
+  if (viewMode === "loss") {
+    dom.viewModeCopy.textContent = "Accessibility loss isolates stops that were reachable on schedule but fall outside the time budget once delay risk is applied.";
+    dom.legendCopy.textContent = "Accessibility loss view colors stops by added minutes caused by uncertainty.";
+    return;
+  }
+  dom.viewModeCopy.textContent = "Scheduled shows base travel time, robust adds delay risk, and accessibility loss isolates stops pushed beyond the time budget by uncertainty.";
+  dom.legendCopy.textContent = "Scheduled view colors stops by scheduled travel time.";
 }
 
 function colorScale(minutes) {
@@ -288,6 +305,7 @@ async function loadBootstrap() {
   dom.bucketFilter.value = state.controls.bucketFilter;
   dom.directOnly.checked = state.controls.directOnly;
   dom.viewMode.value = state.controls.viewMode;
+  updateViewModeCopy(state.controls.viewMode);
   if (bootstrap.overlay_scope_label) {
     dom.overlayScopeNote.textContent = `${bootstrap.overlay_scope_label}: hubs and vulnerable nodes are clipped to the Greater Copenhagen window.`;
   }
@@ -705,6 +723,7 @@ function attachEvents() {
 
   dom.viewMode.addEventListener("change", () => {
     state.controls.viewMode = dom.viewMode.value;
+    updateViewModeCopy(state.controls.viewMode);
     syncUrlState();
     if (state.reachability) renderResults(state.reachability);
   });
