@@ -1,5 +1,7 @@
 # Copenhagen Mobility Resilience Atlas
 
+![Repository homepage preview](docs/figures/repo_homepage.png)
+
 This repository is the closed-down public product for a Greater Copenhagen transit resilience atlas.
 
 The core question is simple: under realistic transfer caps, fixed departure windows, and non-trivial destination weights, which neighborhoods still keep useful access to campuses, hospitals, and job hubs?
