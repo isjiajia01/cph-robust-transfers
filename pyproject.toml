@@ -3,15 +3,15 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cph-robust-transfers"
+name = "cph-mobility-resilience"
 version = "0.1.0"
-description = "Robust transfer analysis for Copenhagen transit networks"
+description = "Mobility resilience and accessibility atlas for Greater Copenhagen"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
 
 [tool.setuptools]
-packages = ["src", "src.accessibility", "src.app", "src.benchmark", "src.common", "src.gtfs_ingest", "src.graph", "src.optimization", "src.robustness", "src.realtime"]
+packages = ["src", "src.accessibility", "src.app", "src.common"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

@@ -41,6 +41,10 @@ class RejseplanenAPIConfig:
     reachability_time_param: str
     reachability_duration_param: str
     reachability_max_changes_param: str
+    reachability_forward_param: str
+    reachability_forward_default: int
+    reachability_filter_end_walks_param: str
+    reachability_filter_end_walks_default: int
     reachability_modes_param: str
     mode_separator: str
 
@@ -81,6 +85,10 @@ def build_reachability_params(
         api_cfg.reachability_duration_param: str(int(query.max_minutes)),
         api_cfg.reachability_max_changes_param: str(int(query.max_changes)),
     }
+    if api_cfg.reachability_forward_param:
+        params[api_cfg.reachability_forward_param] = str(int(api_cfg.reachability_forward_default))
+    if api_cfg.reachability_filter_end_walks_param:
+        params[api_cfg.reachability_filter_end_walks_param] = str(int(api_cfg.reachability_filter_end_walks_default))
     if origin.id:
         params[api_cfg.reachability_origin_id_param] = origin.id
     if origin.lat is not None and origin.lon is not None:

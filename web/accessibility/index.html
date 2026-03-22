@@ -3,225 +3,77 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CPH Accessibility Map</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  >
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
-  >
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
-  >
-  <link rel="stylesheet" href="./styles.css">
+  <title>Copenhagen Mobility Resilience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./landing.css">
 </head>
 <body>
-  <div class="viewport-shell">
-    <div id="map" class="map-canvas"></div>
-
-    <header class="top-toolbar">
-      <div class="toolbar-brand">
-        <p class="eyebrow">Ranger-style Accessibility</p>
-        <h1>CPH reachability map</h1>
-      </div>
-      <div class="toolbar-links">
-        <a href="../../README.md">README</a>
-        <a href="../../docs/benchmark_dashboard.html">Benchmark</a>
-        <a href="../../docs/research_dashboard.html">Research Dashboard</a>
-      </div>
-      <form id="query-form" class="toolbar-form" autocomplete="off">
-        <div class="input-group origin-group">
-          <label for="origin-input">Origin</label>
-          <input id="origin-input" name="origin" type="search" placeholder="Nørreport, København H, Airport">
-          <div id="origin-suggestions" class="suggestions" hidden></div>
-        </div>
-        <div class="input-group">
-          <label for="depart-at">Depart</label>
-          <input id="depart-at" name="depart_at" type="datetime-local">
-        </div>
-        <div class="input-group compact">
-          <label for="max-minutes">Max min</label>
-          <select id="max-minutes" name="max_minutes">
-            <option value="15">15</option>
-            <option value="30">30</option>
-            <option value="45" selected>45</option>
-            <option value="60">60</option>
-          </select>
-        </div>
-        <div class="input-group compact">
-          <label for="max-changes">Changes</label>
-          <select id="max-changes" name="max_changes">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
-        <div class="input-group modes-group">
-          <label>Modes</label>
-          <div class="chip-row">
-            <label class="chip"><input type="checkbox" name="mode" value="train" checked>Train</label>
-            <label class="chip"><input type="checkbox" name="mode" value="metro" checked>Metro</label>
-            <label class="chip"><input type="checkbox" name="mode" value="bus" checked>Bus</label>
+  <div class="site-shell">
+    <div class="site-backdrop"></div>
+    <main class="content">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Copenhagen mobility resilience</p>
+          <h1>One public surface for atlas, benchmark, and research review.</h1>
+          <p class="lede">This site packages the project as a coherent product rather than a pile of research artifacts. Use the atlas to inspect spatial resilience, the benchmark to compare routing assumptions, and the research review to understand structural fragility and reliability evidence.</p>
+          <div class="hero-tags">
+            <span>Static-first delivery</span>
+            <span>Transit-first scoring</span>
+            <span>Benchmarkable assumptions</span>
+            <span>Research-backed interpretation</span>
           </div>
         </div>
-        <div class="action-group">
-          <button id="share-link" class="secondary-button" type="button">Share</button>
-          <button class="run-button" type="submit">Update map</button>
+        <div class="hero-panel">
+          <div class="panel-label">How to read the site</div>
+          <ol class="hero-list">
+            <li>Start with the atlas if you want to see where the network remains useful under constrained transfer budgets.</li>
+            <li>Use the benchmark page when you need schedule, snapshot, and robust assumptions on the same candidate slice.</li>
+            <li>Open the research review when you need the structural and operational evidence behind the public-facing story.</li>
+          </ol>
         </div>
-      </form>
-      <div id="share-status" class="share-status" aria-live="polite"></div>
-    </header>
+      </section>
 
-    <aside class="overlay-panel results-panel">
-      <div class="panel-header">
-        <div>
-          <p class="panel-kicker">Results</p>
-          <h2>Reachability slice</h2>
-        </div>
-        <span id="freshness-badge" class="badge">idle</span>
-      </div>
-      <p id="results-status" class="panel-copy">Choose an origin and run a reachability query.</p>
-      <div id="summary-cards" class="summary-grid"></div>
-      <div class="panel-section">
-        <div class="section-title-row">
-          <h3>Scenario</h3>
-        </div>
-        <div id="scenario-takeaway" class="detail-block">
-          <p class="panel-copy">Run a reachability query to generate a reliability-aware takeaway for the current origin and time window.</p>
-        </div>
-      </div>
-      <div class="panel-section">
-        <div class="section-title-row">
-          <h3>View mode</h3>
-        </div>
-        <div class="mini-field">
-          <label for="view-mode">Surface</label>
-          <select id="view-mode">
-            <option value="scheduled">Scheduled</option>
-            <option value="robust">Robust</option>
-            <option value="loss">Accessibility loss</option>
-          </select>
-        </div>
-        <p id="view-mode-copy" class="muted-small">
-          Scheduled shows base travel time, robust adds delay risk, and accessibility loss isolates stops pushed beyond the time budget by uncertainty.
-        </p>
-      </div>
-      <div class="panel-section">
-        <div class="section-title-row">
-          <h3>Travel-time buckets</h3>
-          <span id="window-note" class="muted-small"></span>
-        </div>
-        <div id="bucket-bars" class="bucket-bars"></div>
-      </div>
-      <div class="panel-section">
-        <div class="section-title-row">
-          <h3>Map overlays</h3>
-        </div>
-        <p id="overlay-scope-note" class="muted-small">Copenhagen only: hubs and vulnerable nodes are clipped to the Greater Copenhagen window.</p>
-        <div class="toggle-row">
-          <label class="toggle"><input id="toggle-hubs" type="checkbox" checked>Hubs</label>
-          <label class="toggle"><input id="toggle-vulnerable" type="checkbox" checked>Vulnerable</label>
-        </div>
-      </div>
-      <div class="panel-section">
-        <div class="section-title-row">
-          <h3>List controls</h3>
-        </div>
-        <div class="list-controls">
-          <div class="mini-field">
-            <label for="sort-by">Sort</label>
-            <select id="sort-by">
-              <option value="quality_desc">Best quality</option>
-              <option value="travel_time_asc">Fastest</option>
-              <option value="changes_asc">Fewest changes</option>
-              <option value="quality_asc">Worst quality</option>
-            </select>
-          </div>
-          <div class="mini-field">
-            <label for="quality-filter">Quality</label>
-            <select id="quality-filter">
-              <option value="all">All</option>
-              <option value="leading">Leading</option>
-              <option value="stable">Stable</option>
-              <option value="watchlist">Watchlist</option>
-              <option value="at-risk">At risk</option>
-              <option value="critical">Critical</option>
-              <option value="unknown">Unknown</option>
-            </select>
-          </div>
-          <div class="mini-field">
-            <label for="bucket-filter">Travel bucket</label>
-            <select id="bucket-filter">
-              <option value="all">All</option>
-              <option value="0-15">0-15</option>
-              <option value="16-30">16-30</option>
-              <option value="31-45">31-45</option>
-              <option value="46+">46+</option>
-            </select>
-          </div>
-          <label class="toggle toggle-block"><input id="direct-only" type="checkbox">Direct only</label>
-        </div>
-      </div>
-      <div class="panel-section grow">
-        <div class="section-title-row">
-          <h3>Stops on current page</h3>
-          <span id="pagination-label" class="muted-small"></span>
-        </div>
-        <ol id="results-list" class="results-list"></ol>
-      </div>
-      <div class="pagination-row">
-        <button id="prev-page" type="button" class="pager-button">Previous</button>
-        <button id="next-page" type="button" class="pager-button">Next</button>
-      </div>
-    </aside>
+      <section class="card-grid">
+        <a class="entry-card entry-card-atlas" href="./atlas.html">
+          <span class="card-eyebrow">Interactive atlas</span>
+          <h2>Mobility resilience atlas</h2>
+          <p>Inspect catchments, municipality ranking, and reachable campuses, hospitals, and job hubs under fixed departure slices.</p>
+          <span class="card-cta">Open atlas</span>
+        </a>
+        <a class="entry-card entry-card-benchmark" href="./benchmark.html">
+          <span class="card-eyebrow">Operational comparison</span>
+          <h2>Benchmark dashboard</h2>
+          <p>Compare schedule-only, realtime-snapshot, and robust assumptions on a single decision-facing benchmark slice.</p>
+          <span class="card-cta">Open benchmark</span>
+        </a>
+        <a class="entry-card entry-card-results" href="./results.html">
+          <span class="card-eyebrow">Research review</span>
+          <h2>Results dashboard</h2>
+          <p>Trace the line from graph structure and failure sensitivity to line reliability, risk modeling, and route trade-offs.</p>
+          <span class="card-cta">Open research review</span>
+        </a>
+      </section>
 
-    <aside class="overlay-panel detail-panel">
-      <div class="panel-header">
-        <div>
-          <p class="panel-kicker">Detail</p>
-          <h2>Selected stop</h2>
-        </div>
-      </div>
-      <div id="detail-card" class="detail-card">
-        <p class="panel-copy">Select a result row or a map marker to inspect travel time, overlay flags, and reliability labels.</p>
-      </div>
-    </aside>
-
-    <div class="legend-panel">
-      <div class="legend-card">
-        <p class="panel-kicker">Legend</p>
-        <p id="legend-copy" class="muted-small">Scheduled view colors stops by scheduled travel time.</p>
-        <div class="legend-row">
-          <span class="legend-dot dot-15"></span><span>0-15 min</span>
-        </div>
-        <div class="legend-row">
-          <span class="legend-dot dot-30"></span><span>16-30 min</span>
-        </div>
-        <div class="legend-row">
-          <span class="legend-dot dot-45"></span><span>31-45 min</span>
-        </div>
-        <div class="legend-row">
-          <span class="legend-dot dot-plus"></span><span>46+ min</span>
-        </div>
-        <div class="legend-row">
-          <span class="legend-dot dot-origin"></span><span>Origin</span>
-        </div>
-      </div>
-    </div>
+      <section class="principles">
+        <article class="principle">
+          <span class="card-eyebrow">Constraint</span>
+          <h3>No planner-style optimism</h3>
+          <p>The public pages keep departures fixed, transfers capped, and uncertainty visible. The point is comparability, not exhaustive trip search.</p>
+        </article>
+        <article class="principle">
+          <span class="card-eyebrow">Architecture</span>
+          <h3>Cheap to publish, easy to audit</h3>
+          <p>Static pages and precomputed bundles keep the product reproducible and easy to inspect without turning it into a heavy application stack.</p>
+        </article>
+        <article class="principle">
+          <span class="card-eyebrow">Audience</span>
+          <h3>Useful for both demos and scrutiny</h3>
+          <p>The visual layer is intentionally polished, but every page is still anchored to explicit assumptions, generated artifacts, and inspectable inputs.</p>
+        </article>
+      </section>
+    </main>
   </div>
-
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-  <script type="module" src="./app.js"></script>
 </body>
 </html>

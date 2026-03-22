@@ -1,0 +1,9 @@
+origin_id,name,lat,lon,origin_stop_id,municipality,neighborhood,population_weight,cell_size_m,is_active
+frederiksberg,Frederiksberg,55.6797,12.5339,8600736,Frederiksberg,Frederiksberg Center,1.25,520,true
+norrebro,Norrebro,55.6997,12.5484,8600646,Copenhagen,Norrebro,1.35,500,true
+osterbro,Osterbro,55.7047,12.5876,8600650,Copenhagen,Osterbro,1.10,500,true
+hvidovre,Hvidovre,55.6577,12.4736,8600600,Hvidovre,Hvidovre Center,0.90,560,true
+lyngby,Lyngby,55.7704,12.5038,8600675,Lyngby-Taarbaek,Lyngby,0.95,620,true
+ballerup,Ballerup,55.7317,12.3636,8600708,Ballerup,Ballerup Center,0.88,650,true
+glostrup,Glostrup,55.6666,12.4031,8600622,Glostrup,Glostrup Center,0.86,600,true
+roskilde,Roskilde,55.6415,12.0803,8600617,Roskilde,Roskilde Center,0.82,760,true

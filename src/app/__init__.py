@@ -1,1 +1,1 @@
-"""Application-layer bridge modules for template-aligned entry points."""
+"""Application-layer commands for the public resilience site."""

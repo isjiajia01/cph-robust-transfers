@@ -1,0 +1,1950 @@
+{
+  "generated_at_utc": "2026-03-21T18:29:28.924093Z",
+  "title": "Copenhagen Mobility Resilience Atlas",
+  "subtitle": "A fixed-scenario public-transit atlas for seeing which neighborhoods keep access to campuses, hospitals, and job hubs when time budgets and transfer caps get real",
+  "operational_boundary_label": "Greater Copenhagen operational boundary, Denmark side only",
+  "source_mode": "api",
+  "defaults": {
+    "category": "job_hub",
+    "scenario_id": "weekday_am",
+    "duration": 45,
+    "max_changes": 2
+  },
+  "durations": [
+    30,
+    45,
+    60
+  ],
+  "max_changes_options": [
+    1,
+    2
+  ],
+  "categories": [
+    {
+      "category": "campus",
+      "label": "Campuses",
+      "unit": "campuses"
+    },
+    {
+      "category": "hospital",
+      "label": "Hospitals",
+      "unit": "hospitals"
+    },
+    {
+      "category": "job_hub",
+      "label": "Job Hubs",
+      "unit": "job hubs"
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "weekday_am",
+      "label": "Weekday AM Peak",
+      "short_label": "AM Peak",
+      "description": "Tuesday morning commuter peak using a fixed weekday departure time.",
+      "depart_at_local": "2026-03-24T08:00"
+    },
+    {
+      "scenario_id": "weekday_midday",
+      "label": "Weekday Midday",
+      "short_label": "Midday",
+      "description": "Tuesday off-peak baseline for comparing service spread against rush hour.",
+      "depart_at_local": "2026-03-24T11:00"
+    },
+    {
+      "scenario_id": "weekday_pm",
+      "label": "Weekday PM Peak",
+      "short_label": "PM Peak",
+      "description": "Tuesday evening commute window with stronger crowding and transfer pressure.",
+      "depart_at_local": "2026-03-24T17:00"
+    },
+    {
+      "scenario_id": "saturday_noon",
+      "label": "Saturday Noon",
+      "short_label": "Saturday",
+      "description": "Weekend reference slice for non-workday accessibility comparison.",
+      "depart_at_local": "2026-03-28T12:00"
+    }
+  ],
+  "map": {
+    "center": [
+      55.6761,
+      12.5683
+    ],
+    "zoom": 10
+  },
+  "origins": [
+    {
+      "origin_id": "kobenhavn_h_core",
+      "name": "K\u00f8benhavn H core catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_core.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_north",
+      "name": "K\u00f8benhavn H north catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_north.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_northeast",
+      "name": "K\u00f8benhavn H northeast catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_northeast.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_east",
+      "name": "K\u00f8benhavn H east catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_east.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_southeast",
+      "name": "K\u00f8benhavn H southeast catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_southeast.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_south",
+      "name": "K\u00f8benhavn H south catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_south.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_southwest",
+      "name": "K\u00f8benhavn H southwest catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_southwest.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_west",
+      "name": "K\u00f8benhavn H west catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_west.json"
+    },
+    {
+      "origin_id": "kobenhavn_h_northwest",
+      "name": "K\u00f8benhavn H northwest catchment",
+      "origin_stop_id": "8600626",
+      "origin_stop_name": "K\u00f8benhavn H",
+      "municipality": "Copenhagen",
+      "neighborhood": "Inner City",
+      "detail_path": "./data/origins/kobenhavn_h_northwest.json"
+    },
+    {
+      "origin_id": "norreport_st_core",
+      "name": "N\u00f8rreport St. core catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_core.json"
+    },
+    {
+      "origin_id": "norreport_st_north",
+      "name": "N\u00f8rreport St. north catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_north.json"
+    },
+    {
+      "origin_id": "norreport_st_northeast",
+      "name": "N\u00f8rreport St. northeast catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_northeast.json"
+    },
+    {
+      "origin_id": "norreport_st_east",
+      "name": "N\u00f8rreport St. east catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_east.json"
+    },
+    {
+      "origin_id": "norreport_st_southeast",
+      "name": "N\u00f8rreport St. southeast catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_southeast.json"
+    },
+    {
+      "origin_id": "norreport_st_south",
+      "name": "N\u00f8rreport St. south catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_south.json"
+    },
+    {
+      "origin_id": "norreport_st_southwest",
+      "name": "N\u00f8rreport St. southwest catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_southwest.json"
+    },
+    {
+      "origin_id": "norreport_st_west",
+      "name": "N\u00f8rreport St. west catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_west.json"
+    },
+    {
+      "origin_id": "norreport_st_northwest",
+      "name": "N\u00f8rreport St. northwest catchment",
+      "origin_stop_id": "8600646",
+      "origin_stop_name": "N\u00f8rreport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Norrebro",
+      "detail_path": "./data/origins/norreport_st_northwest.json"
+    },
+    {
+      "origin_id": "osterport_st_core",
+      "name": "\u00d8sterport St. core catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_core.json"
+    },
+    {
+      "origin_id": "osterport_st_north",
+      "name": "\u00d8sterport St. north catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_north.json"
+    },
+    {
+      "origin_id": "osterport_st_northeast",
+      "name": "\u00d8sterport St. northeast catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_northeast.json"
+    },
+    {
+      "origin_id": "osterport_st_east",
+      "name": "\u00d8sterport St. east catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_east.json"
+    },
+    {
+      "origin_id": "osterport_st_southeast",
+      "name": "\u00d8sterport St. southeast catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_southeast.json"
+    },
+    {
+      "origin_id": "osterport_st_south",
+      "name": "\u00d8sterport St. south catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_south.json"
+    },
+    {
+      "origin_id": "osterport_st_southwest",
+      "name": "\u00d8sterport St. southwest catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_southwest.json"
+    },
+    {
+      "origin_id": "osterport_st_west",
+      "name": "\u00d8sterport St. west catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_west.json"
+    },
+    {
+      "origin_id": "osterport_st_northwest",
+      "name": "\u00d8sterport St. northwest catchment",
+      "origin_stop_id": "8600650",
+      "origin_stop_name": "\u00d8sterport St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Osterbro",
+      "detail_path": "./data/origins/osterport_st_northwest.json"
+    },
+    {
+      "origin_id": "valby_st_core",
+      "name": "Valby St. core catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_core.json"
+    },
+    {
+      "origin_id": "valby_st_north",
+      "name": "Valby St. north catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_north.json"
+    },
+    {
+      "origin_id": "valby_st_northeast",
+      "name": "Valby St. northeast catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_northeast.json"
+    },
+    {
+      "origin_id": "valby_st_east",
+      "name": "Valby St. east catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_east.json"
+    },
+    {
+      "origin_id": "valby_st_southeast",
+      "name": "Valby St. southeast catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_southeast.json"
+    },
+    {
+      "origin_id": "valby_st_south",
+      "name": "Valby St. south catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_south.json"
+    },
+    {
+      "origin_id": "valby_st_southwest",
+      "name": "Valby St. southwest catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_southwest.json"
+    },
+    {
+      "origin_id": "valby_st_west",
+      "name": "Valby St. west catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_west.json"
+    },
+    {
+      "origin_id": "valby_st_northwest",
+      "name": "Valby St. northwest catchment",
+      "origin_stop_id": "8600624",
+      "origin_stop_name": "Valby St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Valby",
+      "detail_path": "./data/origins/valby_st_northwest.json"
+    },
+    {
+      "origin_id": "flintholm_st_core",
+      "name": "Flintholm St. core catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_core.json"
+    },
+    {
+      "origin_id": "flintholm_st_north",
+      "name": "Flintholm St. north catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_north.json"
+    },
+    {
+      "origin_id": "flintholm_st_northeast",
+      "name": "Flintholm St. northeast catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_northeast.json"
+    },
+    {
+      "origin_id": "flintholm_st_east",
+      "name": "Flintholm St. east catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_east.json"
+    },
+    {
+      "origin_id": "flintholm_st_southeast",
+      "name": "Flintholm St. southeast catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_southeast.json"
+    },
+    {
+      "origin_id": "flintholm_st_south",
+      "name": "Flintholm St. south catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_south.json"
+    },
+    {
+      "origin_id": "flintholm_st_southwest",
+      "name": "Flintholm St. southwest catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_southwest.json"
+    },
+    {
+      "origin_id": "flintholm_st_west",
+      "name": "Flintholm St. west catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_west.json"
+    },
+    {
+      "origin_id": "flintholm_st_northwest",
+      "name": "Flintholm St. northwest catchment",
+      "origin_stop_id": "8600736",
+      "origin_stop_name": "Flintholm St.",
+      "municipality": "Frederiksberg",
+      "neighborhood": "Frederiksberg-West",
+      "detail_path": "./data/origins/flintholm_st_northwest.json"
+    },
+    {
+      "origin_id": "hellerup_st_core",
+      "name": "Hellerup St. core catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_core.json"
+    },
+    {
+      "origin_id": "hellerup_st_north",
+      "name": "Hellerup St. north catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_north.json"
+    },
+    {
+      "origin_id": "hellerup_st_northeast",
+      "name": "Hellerup St. northeast catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_northeast.json"
+    },
+    {
+      "origin_id": "hellerup_st_east",
+      "name": "Hellerup St. east catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_east.json"
+    },
+    {
+      "origin_id": "hellerup_st_southeast",
+      "name": "Hellerup St. southeast catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_southeast.json"
+    },
+    {
+      "origin_id": "hellerup_st_south",
+      "name": "Hellerup St. south catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_south.json"
+    },
+    {
+      "origin_id": "hellerup_st_southwest",
+      "name": "Hellerup St. southwest catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_southwest.json"
+    },
+    {
+      "origin_id": "hellerup_st_west",
+      "name": "Hellerup St. west catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_west.json"
+    },
+    {
+      "origin_id": "hellerup_st_northwest",
+      "name": "Hellerup St. northwest catchment",
+      "origin_stop_id": "8600655",
+      "origin_stop_name": "Hellerup St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Hellerup",
+      "detail_path": "./data/origins/hellerup_st_northwest.json"
+    },
+    {
+      "origin_id": "lyngby_st_core",
+      "name": "Lyngby St. core catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_core.json"
+    },
+    {
+      "origin_id": "lyngby_st_north",
+      "name": "Lyngby St. north catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_north.json"
+    },
+    {
+      "origin_id": "lyngby_st_northeast",
+      "name": "Lyngby St. northeast catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_northeast.json"
+    },
+    {
+      "origin_id": "lyngby_st_east",
+      "name": "Lyngby St. east catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_east.json"
+    },
+    {
+      "origin_id": "lyngby_st_southeast",
+      "name": "Lyngby St. southeast catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_southeast.json"
+    },
+    {
+      "origin_id": "lyngby_st_south",
+      "name": "Lyngby St. south catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_south.json"
+    },
+    {
+      "origin_id": "lyngby_st_southwest",
+      "name": "Lyngby St. southwest catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_southwest.json"
+    },
+    {
+      "origin_id": "lyngby_st_west",
+      "name": "Lyngby St. west catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_west.json"
+    },
+    {
+      "origin_id": "lyngby_st_northwest",
+      "name": "Lyngby St. northwest catchment",
+      "origin_stop_id": "8600675",
+      "origin_stop_name": "Lyngby St.",
+      "municipality": "Lyngby-Taarbaek",
+      "neighborhood": "Lyngby",
+      "detail_path": "./data/origins/lyngby_st_northwest.json"
+    },
+    {
+      "origin_id": "hvidovre_st_core",
+      "name": "Hvidovre St. core catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_core.json"
+    },
+    {
+      "origin_id": "hvidovre_st_north",
+      "name": "Hvidovre St. north catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_north.json"
+    },
+    {
+      "origin_id": "hvidovre_st_northeast",
+      "name": "Hvidovre St. northeast catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_northeast.json"
+    },
+    {
+      "origin_id": "hvidovre_st_east",
+      "name": "Hvidovre St. east catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_east.json"
+    },
+    {
+      "origin_id": "hvidovre_st_southeast",
+      "name": "Hvidovre St. southeast catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_southeast.json"
+    },
+    {
+      "origin_id": "hvidovre_st_south",
+      "name": "Hvidovre St. south catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_south.json"
+    },
+    {
+      "origin_id": "hvidovre_st_southwest",
+      "name": "Hvidovre St. southwest catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_southwest.json"
+    },
+    {
+      "origin_id": "hvidovre_st_west",
+      "name": "Hvidovre St. west catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_west.json"
+    },
+    {
+      "origin_id": "hvidovre_st_northwest",
+      "name": "Hvidovre St. northwest catchment",
+      "origin_stop_id": "8600600",
+      "origin_stop_name": "Hvidovre St.",
+      "municipality": "Hvidovre",
+      "neighborhood": "Hvidovre",
+      "detail_path": "./data/origins/hvidovre_st_northwest.json"
+    },
+    {
+      "origin_id": "ballerup_st_core",
+      "name": "Ballerup St. core catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_core.json"
+    },
+    {
+      "origin_id": "ballerup_st_north",
+      "name": "Ballerup St. north catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_north.json"
+    },
+    {
+      "origin_id": "ballerup_st_northeast",
+      "name": "Ballerup St. northeast catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_northeast.json"
+    },
+    {
+      "origin_id": "ballerup_st_east",
+      "name": "Ballerup St. east catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_east.json"
+    },
+    {
+      "origin_id": "ballerup_st_southeast",
+      "name": "Ballerup St. southeast catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_southeast.json"
+    },
+    {
+      "origin_id": "ballerup_st_south",
+      "name": "Ballerup St. south catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_south.json"
+    },
+    {
+      "origin_id": "ballerup_st_southwest",
+      "name": "Ballerup St. southwest catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_southwest.json"
+    },
+    {
+      "origin_id": "ballerup_st_west",
+      "name": "Ballerup St. west catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_west.json"
+    },
+    {
+      "origin_id": "ballerup_st_northwest",
+      "name": "Ballerup St. northwest catchment",
+      "origin_stop_id": "8600708",
+      "origin_stop_name": "Ballerup St.",
+      "municipality": "Ballerup",
+      "neighborhood": "Ballerup",
+      "detail_path": "./data/origins/ballerup_st_northwest.json"
+    },
+    {
+      "origin_id": "roskilde_st_core",
+      "name": "Roskilde St. core catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_core.json"
+    },
+    {
+      "origin_id": "roskilde_st_north",
+      "name": "Roskilde St. north catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_north.json"
+    },
+    {
+      "origin_id": "roskilde_st_northeast",
+      "name": "Roskilde St. northeast catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_northeast.json"
+    },
+    {
+      "origin_id": "roskilde_st_east",
+      "name": "Roskilde St. east catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_east.json"
+    },
+    {
+      "origin_id": "roskilde_st_southeast",
+      "name": "Roskilde St. southeast catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_southeast.json"
+    },
+    {
+      "origin_id": "roskilde_st_south",
+      "name": "Roskilde St. south catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_south.json"
+    },
+    {
+      "origin_id": "roskilde_st_southwest",
+      "name": "Roskilde St. southwest catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_southwest.json"
+    },
+    {
+      "origin_id": "roskilde_st_west",
+      "name": "Roskilde St. west catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_west.json"
+    },
+    {
+      "origin_id": "roskilde_st_northwest",
+      "name": "Roskilde St. northwest catchment",
+      "origin_stop_id": "8600617",
+      "origin_stop_name": "Roskilde St.",
+      "municipality": "Roskilde",
+      "neighborhood": "Roskilde",
+      "detail_path": "./data/origins/roskilde_st_northwest.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_core",
+      "name": "Kastrup St. (Metro) core catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_core.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_north",
+      "name": "Kastrup St. (Metro) north catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_north.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_northeast",
+      "name": "Kastrup St. (Metro) northeast catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_northeast.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_east",
+      "name": "Kastrup St. (Metro) east catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_east.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_southeast",
+      "name": "Kastrup St. (Metro) southeast catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_southeast.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_south",
+      "name": "Kastrup St. (Metro) south catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_south.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_southwest",
+      "name": "Kastrup St. (Metro) southwest catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_southwest.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_west",
+      "name": "Kastrup St. (Metro) west catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_west.json"
+    },
+    {
+      "origin_id": "kastrup_st_metro_northwest",
+      "name": "Kastrup St. (Metro) northwest catchment",
+      "origin_stop_id": "8603327",
+      "origin_stop_name": "Kastrup St. (Metro)",
+      "municipality": "Tarnby",
+      "neighborhood": "Airport",
+      "detail_path": "./data/origins/kastrup_st_metro_northwest.json"
+    },
+    {
+      "origin_id": "orestad_st_core",
+      "name": "\u00d8restad St. core catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_core.json"
+    },
+    {
+      "origin_id": "orestad_st_north",
+      "name": "\u00d8restad St. north catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_north.json"
+    },
+    {
+      "origin_id": "orestad_st_northeast",
+      "name": "\u00d8restad St. northeast catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_northeast.json"
+    },
+    {
+      "origin_id": "orestad_st_east",
+      "name": "\u00d8restad St. east catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_east.json"
+    },
+    {
+      "origin_id": "orestad_st_southeast",
+      "name": "\u00d8restad St. southeast catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_southeast.json"
+    },
+    {
+      "origin_id": "orestad_st_south",
+      "name": "\u00d8restad St. south catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_south.json"
+    },
+    {
+      "origin_id": "orestad_st_southwest",
+      "name": "\u00d8restad St. southwest catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_southwest.json"
+    },
+    {
+      "origin_id": "orestad_st_west",
+      "name": "\u00d8restad St. west catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_west.json"
+    },
+    {
+      "origin_id": "orestad_st_northwest",
+      "name": "\u00d8restad St. northwest catchment",
+      "origin_stop_id": "8600856",
+      "origin_stop_name": "\u00d8restad St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Orestad",
+      "detail_path": "./data/origins/orestad_st_northwest.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_core",
+      "name": "K\u00f8benhavn Syd St. core catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_core.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_north",
+      "name": "K\u00f8benhavn Syd St. north catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_north.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_northeast",
+      "name": "K\u00f8benhavn Syd St. northeast catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_northeast.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_east",
+      "name": "K\u00f8benhavn Syd St. east catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_east.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_southeast",
+      "name": "K\u00f8benhavn Syd St. southeast catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_southeast.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_south",
+      "name": "K\u00f8benhavn Syd St. south catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_south.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_southwest",
+      "name": "K\u00f8benhavn Syd St. southwest catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_southwest.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_west",
+      "name": "K\u00f8benhavn Syd St. west catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_west.json"
+    },
+    {
+      "origin_id": "kobenhavn_syd_st_northwest",
+      "name": "K\u00f8benhavn Syd St. northwest catchment",
+      "origin_stop_id": "8600783",
+      "origin_stop_name": "K\u00f8benhavn Syd St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Kobenhavn Syd",
+      "detail_path": "./data/origins/kobenhavn_syd_st_northwest.json"
+    },
+    {
+      "origin_id": "gentofte_st_core",
+      "name": "Gentofte St. core catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_core.json"
+    },
+    {
+      "origin_id": "gentofte_st_north",
+      "name": "Gentofte St. north catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_north.json"
+    },
+    {
+      "origin_id": "gentofte_st_northeast",
+      "name": "Gentofte St. northeast catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_northeast.json"
+    },
+    {
+      "origin_id": "gentofte_st_east",
+      "name": "Gentofte St. east catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_east.json"
+    },
+    {
+      "origin_id": "gentofte_st_southeast",
+      "name": "Gentofte St. southeast catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_southeast.json"
+    },
+    {
+      "origin_id": "gentofte_st_south",
+      "name": "Gentofte St. south catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_south.json"
+    },
+    {
+      "origin_id": "gentofte_st_southwest",
+      "name": "Gentofte St. southwest catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_southwest.json"
+    },
+    {
+      "origin_id": "gentofte_st_west",
+      "name": "Gentofte St. west catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_west.json"
+    },
+    {
+      "origin_id": "gentofte_st_northwest",
+      "name": "Gentofte St. northwest catchment",
+      "origin_stop_id": "8600673",
+      "origin_stop_name": "Gentofte St.",
+      "municipality": "Gentofte",
+      "neighborhood": "Gentofte",
+      "detail_path": "./data/origins/gentofte_st_northwest.json"
+    },
+    {
+      "origin_id": "svanemollen_st_core",
+      "name": "Svanem\u00f8llen St. core catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_core.json"
+    },
+    {
+      "origin_id": "svanemollen_st_north",
+      "name": "Svanem\u00f8llen St. north catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_north.json"
+    },
+    {
+      "origin_id": "svanemollen_st_northeast",
+      "name": "Svanem\u00f8llen St. northeast catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_northeast.json"
+    },
+    {
+      "origin_id": "svanemollen_st_east",
+      "name": "Svanem\u00f8llen St. east catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_east.json"
+    },
+    {
+      "origin_id": "svanemollen_st_southeast",
+      "name": "Svanem\u00f8llen St. southeast catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_southeast.json"
+    },
+    {
+      "origin_id": "svanemollen_st_south",
+      "name": "Svanem\u00f8llen St. south catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_south.json"
+    },
+    {
+      "origin_id": "svanemollen_st_southwest",
+      "name": "Svanem\u00f8llen St. southwest catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_southwest.json"
+    },
+    {
+      "origin_id": "svanemollen_st_west",
+      "name": "Svanem\u00f8llen St. west catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_west.json"
+    },
+    {
+      "origin_id": "svanemollen_st_northwest",
+      "name": "Svanem\u00f8llen St. northwest catchment",
+      "origin_stop_id": "8600654",
+      "origin_stop_name": "Svanem\u00f8llen St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Svanemollen",
+      "detail_path": "./data/origins/svanemollen_st_northwest.json"
+    },
+    {
+      "origin_id": "nordhavn_st_core",
+      "name": "Nordhavn St. core catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_core.json"
+    },
+    {
+      "origin_id": "nordhavn_st_north",
+      "name": "Nordhavn St. north catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_north.json"
+    },
+    {
+      "origin_id": "nordhavn_st_northeast",
+      "name": "Nordhavn St. northeast catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_northeast.json"
+    },
+    {
+      "origin_id": "nordhavn_st_east",
+      "name": "Nordhavn St. east catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_east.json"
+    },
+    {
+      "origin_id": "nordhavn_st_southeast",
+      "name": "Nordhavn St. southeast catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_southeast.json"
+    },
+    {
+      "origin_id": "nordhavn_st_south",
+      "name": "Nordhavn St. south catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_south.json"
+    },
+    {
+      "origin_id": "nordhavn_st_southwest",
+      "name": "Nordhavn St. southwest catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_southwest.json"
+    },
+    {
+      "origin_id": "nordhavn_st_west",
+      "name": "Nordhavn St. west catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_west.json"
+    },
+    {
+      "origin_id": "nordhavn_st_northwest",
+      "name": "Nordhavn St. northwest catchment",
+      "origin_stop_id": "8600653",
+      "origin_stop_name": "Nordhavn St.",
+      "municipality": "Copenhagen",
+      "neighborhood": "Nordhavn",
+      "detail_path": "./data/origins/nordhavn_st_northwest.json"
+    },
+    {
+      "origin_id": "holte_st_core",
+      "name": "Holte St. core catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_core.json"
+    },
+    {
+      "origin_id": "holte_st_north",
+      "name": "Holte St. north catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_north.json"
+    },
+    {
+      "origin_id": "holte_st_northeast",
+      "name": "Holte St. northeast catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_northeast.json"
+    },
+    {
+      "origin_id": "holte_st_east",
+      "name": "Holte St. east catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_east.json"
+    },
+    {
+      "origin_id": "holte_st_southeast",
+      "name": "Holte St. southeast catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_southeast.json"
+    },
+    {
+      "origin_id": "holte_st_south",
+      "name": "Holte St. south catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_south.json"
+    },
+    {
+      "origin_id": "holte_st_southwest",
+      "name": "Holte St. southwest catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_southwest.json"
+    },
+    {
+      "origin_id": "holte_st_west",
+      "name": "Holte St. west catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_west.json"
+    },
+    {
+      "origin_id": "holte_st_northwest",
+      "name": "Holte St. northwest catchment",
+      "origin_stop_id": "8600677",
+      "origin_stop_name": "Holte St.",
+      "municipality": "Rudersdal",
+      "neighborhood": "Holte",
+      "detail_path": "./data/origins/holte_st_northwest.json"
+    },
+    {
+      "origin_id": "hillerod_st_core",
+      "name": "Hiller\u00f8d St. core catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_core.json"
+    },
+    {
+      "origin_id": "hillerod_st_north",
+      "name": "Hiller\u00f8d St. north catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_north.json"
+    },
+    {
+      "origin_id": "hillerod_st_northeast",
+      "name": "Hiller\u00f8d St. northeast catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_northeast.json"
+    },
+    {
+      "origin_id": "hillerod_st_east",
+      "name": "Hiller\u00f8d St. east catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_east.json"
+    },
+    {
+      "origin_id": "hillerod_st_southeast",
+      "name": "Hiller\u00f8d St. southeast catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_southeast.json"
+    },
+    {
+      "origin_id": "hillerod_st_south",
+      "name": "Hiller\u00f8d St. south catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_south.json"
+    },
+    {
+      "origin_id": "hillerod_st_southwest",
+      "name": "Hiller\u00f8d St. southwest catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_southwest.json"
+    },
+    {
+      "origin_id": "hillerod_st_west",
+      "name": "Hiller\u00f8d St. west catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_west.json"
+    },
+    {
+      "origin_id": "hillerod_st_northwest",
+      "name": "Hiller\u00f8d St. northwest catchment",
+      "origin_stop_id": "8600683",
+      "origin_stop_name": "Hiller\u00f8d St.",
+      "municipality": "Hillerod",
+      "neighborhood": "Hillerod",
+      "detail_path": "./data/origins/hillerod_st_northwest.json"
+    },
+    {
+      "origin_id": "taastrup_st_core",
+      "name": "Taastrup St. core catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_core.json"
+    },
+    {
+      "origin_id": "taastrup_st_north",
+      "name": "Taastrup St. north catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_north.json"
+    },
+    {
+      "origin_id": "taastrup_st_northeast",
+      "name": "Taastrup St. northeast catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_northeast.json"
+    },
+    {
+      "origin_id": "taastrup_st_east",
+      "name": "Taastrup St. east catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_east.json"
+    },
+    {
+      "origin_id": "taastrup_st_southeast",
+      "name": "Taastrup St. southeast catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_southeast.json"
+    },
+    {
+      "origin_id": "taastrup_st_south",
+      "name": "Taastrup St. south catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_south.json"
+    },
+    {
+      "origin_id": "taastrup_st_southwest",
+      "name": "Taastrup St. southwest catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_southwest.json"
+    },
+    {
+      "origin_id": "taastrup_st_west",
+      "name": "Taastrup St. west catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_west.json"
+    },
+    {
+      "origin_id": "taastrup_st_northwest",
+      "name": "Taastrup St. northwest catchment",
+      "origin_stop_id": "8600620",
+      "origin_stop_name": "Taastrup St.",
+      "municipality": "Hoje-Taastrup",
+      "neighborhood": "Taastrup",
+      "detail_path": "./data/origins/taastrup_st_northwest.json"
+    },
+    {
+      "origin_id": "glostrup_st_core",
+      "name": "Glostrup St. core catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_core.json"
+    },
+    {
+      "origin_id": "glostrup_st_north",
+      "name": "Glostrup St. north catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_north.json"
+    },
+    {
+      "origin_id": "glostrup_st_northeast",
+      "name": "Glostrup St. northeast catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_northeast.json"
+    },
+    {
+      "origin_id": "glostrup_st_east",
+      "name": "Glostrup St. east catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_east.json"
+    },
+    {
+      "origin_id": "glostrup_st_southeast",
+      "name": "Glostrup St. southeast catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_southeast.json"
+    },
+    {
+      "origin_id": "glostrup_st_south",
+      "name": "Glostrup St. south catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_south.json"
+    },
+    {
+      "origin_id": "glostrup_st_southwest",
+      "name": "Glostrup St. southwest catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_southwest.json"
+    },
+    {
+      "origin_id": "glostrup_st_west",
+      "name": "Glostrup St. west catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_west.json"
+    },
+    {
+      "origin_id": "glostrup_st_northwest",
+      "name": "Glostrup St. northwest catchment",
+      "origin_stop_id": "8600622",
+      "origin_stop_name": "Glostrup St.",
+      "municipality": "Glostrup",
+      "neighborhood": "Glostrup",
+      "detail_path": "./data/origins/glostrup_st_northwest.json"
+    }
+  ],
+  "pois": [
+    {
+      "poi_id": "ku_north",
+      "name": "University of Copenhagen North Campus",
+      "category": "campus",
+      "weight": 1.9,
+      "lat": 55.6977,
+      "lon": 12.5587
+    },
+    {
+      "poi_id": "cbs_solbjerg",
+      "name": "CBS Solbjerg Plads",
+      "category": "campus",
+      "weight": 1.7,
+      "lat": 55.6817,
+      "lon": 12.5353
+    },
+    {
+      "poi_id": "dtu_lyngby",
+      "name": "DTU Lyngby Campus",
+      "category": "campus",
+      "weight": 2.4,
+      "lat": 55.7858,
+      "lon": 12.5184
+    },
+    {
+      "poi_id": "ruc_roskilde",
+      "name": "Roskilde University",
+      "category": "campus",
+      "weight": 1.6,
+      "lat": 55.662,
+      "lon": 12.138
+    },
+    {
+      "poi_id": "rigshospitalet",
+      "name": "Rigshospitalet",
+      "category": "hospital",
+      "weight": 2.6,
+      "lat": 55.6953,
+      "lon": 12.5666
+    },
+    {
+      "poi_id": "hvidovre_hospital",
+      "name": "Hvidovre Hospital",
+      "category": "hospital",
+      "weight": 2.2,
+      "lat": 55.6488,
+      "lon": 12.473
+    },
+    {
+      "poi_id": "herlev_hospital",
+      "name": "Herlev Hospital",
+      "category": "hospital",
+      "weight": 2.3,
+      "lat": 55.7214,
+      "lon": 12.4436
+    },
+    {
+      "poi_id": "roskilde_hospital",
+      "name": "Roskilde Hospital",
+      "category": "hospital",
+      "weight": 1.9,
+      "lat": 55.6463,
+      "lon": 12.0797
+    },
+    {
+      "poi_id": "cph_cbd",
+      "name": "Copenhagen CBD",
+      "category": "job_hub",
+      "weight": 2.7,
+      "lat": 55.6761,
+      "lon": 12.5683
+    },
+    {
+      "poi_id": "orestad_hub",
+      "name": "Orestad Business District",
+      "category": "job_hub",
+      "weight": 2.1,
+      "lat": 55.628,
+      "lon": 12.5795
+    },
+    {
+      "poi_id": "lyngby_hub",
+      "name": "Lyngby Knowledge Hub",
+      "category": "job_hub",
+      "weight": 1.8,
+      "lat": 55.7692,
+      "lon": 12.5035
+    },
+    {
+      "poi_id": "ballerup_hub",
+      "name": "Ballerup Business Park",
+      "category": "job_hub",
+      "weight": 1.7,
+      "lat": 55.7308,
+      "lon": 12.3587
+    }
+  ],
+  "files": {
+    "layers": [
+      {
+        "scenario_id": "weekday_am",
+        "duration": 30,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_am__30__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_am",
+        "duration": 30,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_am__30__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_am",
+        "duration": 45,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_am__45__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_am",
+        "duration": 45,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_am__45__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_am",
+        "duration": 60,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_am__60__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_am",
+        "duration": 60,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_am__60__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_midday",
+        "duration": 30,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_midday__30__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_midday",
+        "duration": 30,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_midday__30__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_midday",
+        "duration": 45,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_midday__45__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_midday",
+        "duration": 45,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_midday__45__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_midday",
+        "duration": 60,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_midday__60__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_midday",
+        "duration": 60,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_midday__60__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_pm",
+        "duration": 30,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_pm__30__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_pm",
+        "duration": 30,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_pm__30__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_pm",
+        "duration": 45,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_pm__45__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_pm",
+        "duration": 45,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_pm__45__mc2.geojson"
+      },
+      {
+        "scenario_id": "weekday_pm",
+        "duration": 60,
+        "max_changes": 1,
+        "path": "./data/layers/weekday_pm__60__mc1.geojson"
+      },
+      {
+        "scenario_id": "weekday_pm",
+        "duration": 60,
+        "max_changes": 2,
+        "path": "./data/layers/weekday_pm__60__mc2.geojson"
+      },
+      {
+        "scenario_id": "saturday_noon",
+        "duration": 30,
+        "max_changes": 1,
+        "path": "./data/layers/saturday_noon__30__mc1.geojson"
+      },
+      {
+        "scenario_id": "saturday_noon",
+        "duration": 30,
+        "max_changes": 2,
+        "path": "./data/layers/saturday_noon__30__mc2.geojson"
+      },
+      {
+        "scenario_id": "saturday_noon",
+        "duration": 45,
+        "max_changes": 1,
+        "path": "./data/layers/saturday_noon__45__mc1.geojson"
+      },
+      {
+        "scenario_id": "saturday_noon",
+        "duration": 45,
+        "max_changes": 2,
+        "path": "./data/layers/saturday_noon__45__mc2.geojson"
+      },
+      {
+        "scenario_id": "saturday_noon",
+        "duration": 60,
+        "max_changes": 1,
+        "path": "./data/layers/saturday_noon__60__mc1.geojson"
+      },
+      {
+        "scenario_id": "saturday_noon",
+        "duration": 60,
+        "max_changes": 2,
+        "path": "./data/layers/saturday_noon__60__mc2.geojson"
+      }
+    ],
+    "detail_template": "./data/origins/{origin_id}.json"
+  },
+  "query_stats": {
+    "queries": 0,
+    "cache_hits": 1440,
+    "logical_slices": 1440
+  }
+}

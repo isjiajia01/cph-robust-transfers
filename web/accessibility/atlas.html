@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copenhagen Mobility Resilience Atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="backdrop"></div>
+    <header class="hero-card">
+      <div class="hero-copy-block">
+        <p class="eyebrow">Transit resilience atlas</p>
+        <h1 id="atlas-title">Copenhagen Mobility Resilience Atlas</h1>
+        <p id="atlas-subtitle" class="hero-copy">A fixed-scenario public-transit atlas for seeing which neighborhoods keep access to campuses, hospitals, and job hubs when time budgets and transfer caps get real.</p>
+        <div class="hero-nav" aria-label="Site navigation">
+          <a class="hero-nav-link" href="./index.html">Overview</a>
+          <a class="hero-nav-link active" href="./atlas.html">Atlas</a>
+          <a class="hero-nav-link" href="./benchmark.html">Benchmark</a>
+          <a class="hero-nav-link" href="./results.html">Research Review</a>
+        </div>
+        <div class="hero-tags" aria-label="Atlas framing">
+          <span class="hero-tag">Static scenario slices</span>
+          <span class="hero-tag">Transfer-capped</span>
+          <span class="hero-tag">Transit-first scoring</span>
+          <span class="hero-tag">Research-grade detail</span>
+        </div>
+        <p class="hero-note">Read this as a resilience instrument, not a trip planner. Every layer holds departure time fixed and surfaces how access degrades once unlimited-search optimism is removed.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <span class="stat-label">Boundary</span>
+          <strong id="boundary-label">Loading</strong>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Bundle</span>
+          <strong id="bundle-status">Loading</strong>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Scenario slices</span>
+          <strong id="scenario-count">0</strong>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Opportunity families</span>
+          <strong id="category-count">0</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="control-card">
+      <div class="scope-grid">
+        <article class="scope-card">
+          <span class="scope-label">Model</span>
+          <strong>Fixed departures, capped transfers</strong>
+          <p>No free-text search, no unlimited hops, no realtime replanning theater.</p>
+        </article>
+        <article class="scope-card">
+          <span class="scope-label">Signal</span>
+          <strong>Weighted destination access</strong>
+          <p>Scores combine breadth, speed, and destination importance instead of raw polygon reach.</p>
+        </article>
+        <article class="scope-card">
+          <span class="scope-label">Use</span>
+          <strong>Compare where the network stays useful</strong>
+          <p>Inspect catchments, municipality ranking, and reachable institutions under the same scenario.</p>
+        </article>
+      </div>
+      <div class="control-row">
+        <div class="control-group">
+          <label for="scenario-select">Scenario</label>
+          <select id="scenario-select"></select>
+        </div>
+        <div class="control-group">
+          <label for="duration-select">Threshold</label>
+          <select id="duration-select"></select>
+        </div>
+        <div class="control-group">
+          <label for="max-changes-select">Transfers</label>
+          <select id="max-changes-select"></select>
+        </div>
+      </div>
+      <div class="category-strip">
+        <span class="strip-label">Opportunity layer</span>
+        <div id="category-buttons" class="pill-row"></div>
+      </div>
+      <p id="scenario-description" class="scenario-description"></p>
+      <p class="method-note">Scores are precomputed from fixed scenario bundles. This page is intentionally opinionated: it favors comparability, reproducibility, and interpretable degradation over planner-style flexibility.</p>
+    </section>
+
+    <main class="workspace">
+      <section class="map-panel">
+        <div class="map-headline">
+          <div>
+            <p class="eyebrow">Atlas layer</p>
+            <h2 id="layer-title">Resilience score</h2>
+            <p id="map-caption" class="map-caption"></p>
+          </div>
+          <div class="map-meta">
+            <div class="kpi-strip">
+              <div class="kpi-chip">
+                <span class="kpi-label">Origins</span>
+                <strong id="origin-count-chip">0</strong>
+              </div>
+              <div class="kpi-chip">
+                <span class="kpi-label">Median</span>
+                <strong id="layer-median-chip">0.0</strong>
+              </div>
+              <div class="kpi-chip">
+                <span class="kpi-label">Top decile</span>
+                <strong id="layer-top-chip">0.0</strong>
+              </div>
+            </div>
+            <div class="legend-card">
+              <p class="legend-title">Weighted resilience score</p>
+              <div id="legend-scale" class="legend-scale"></div>
+            </div>
+          </div>
+        </div>
+        <div id="map" class="map-canvas"></div>
+      </section>
+
+      <aside class="inspector">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Selected catchment</p>
+              <h2 id="origin-title">Choose a catchment cell</h2>
+            </div>
+            <span id="origin-badge" class="origin-badge">Idle</span>
+          </div>
+          <p id="origin-context" class="panel-copy">Click a grid cell to inspect weighted access, nearest destinations, and how that area performs against the metro-area baseline.</p>
+          <div id="origin-anchor-card" class="anchor-card"></div>
+          <div id="summary-grid" class="summary-grid"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Interpretation</p>
+              <h3 id="delta-title">Current layer takeaway</h3>
+            </div>
+          </div>
+          <p id="delta-copy" class="panel-copy"></p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Municipality league table</p>
+              <h3 id="municipality-title">Regional benchmark</h3>
+            </div>
+            <span id="municipality-badge" class="mini-badge">-</span>
+          </div>
+          <p id="municipality-copy" class="panel-copy"></p>
+          <ol id="municipality-list" class="municipality-list"></ol>
+        </section>
+
+        <section class="panel grow">
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Reachable destinations</p>
+              <h3 id="poi-title">Filtered POIs</h3>
+            </div>
+            <span id="poi-count" class="mini-badge">0</span>
+          </div>
+          <ol id="poi-list" class="poi-list"></ol>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="./app.js" defer></script>
+</body>
+</html>

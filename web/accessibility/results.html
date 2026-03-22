@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copenhagen Mobility Resilience Research Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4ede2;
+      --ink: #102433;
+      --muted: #5c6b73;
+      --panel: rgba(252, 248, 240, 0.94);
+      --panel-strong: rgba(255, 252, 247, 0.98);
+      --line: rgba(16, 36, 51, 0.11);
+      --teal: #0f4c5c;
+      --blue: #2d7b8a;
+      --amber: #bf6d3a;
+      --red: #b91c1c;
+      --cream: #fbf5ea;
+      --shadow: 0 24px 60px rgba(16, 36, 51, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(191, 109, 58, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(15, 76, 92, 0.14), transparent 28%),
+        linear-gradient(180deg, #fbf5ea 0%, #eef1eb 100%);
+    }
+    h1, h2 {
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1320px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+    .hero,
+    .section {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      animation: rise 720ms ease;
+    }
+    .hero {
+      padding: 34px;
+      background:
+        radial-gradient(circle at top right, rgba(191, 109, 58, 0.12), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(250,244,235,0.86));
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 24px;
+      align-items: end;
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 12ch;
+      font-size: clamp(2.9rem, 6vw, 5.4rem);
+      line-height: 0.92;
+    }
+    .hero-copy {
+      max-width: 68ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+    .nav-links,
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .nav-links {
+      margin-top: 18px;
+    }
+    .hero-tags {
+      margin-top: 16px;
+    }
+    .nav-links a,
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 76, 92, 0.12);
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .nav-links a.active {
+      background: rgba(15, 76, 92, 0.08);
+      border-color: rgba(15, 76, 92, 0.3);
+      color: var(--teal);
+    }
+    .hero-panel {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      background: rgba(15, 76, 92, 0.05);
+    }
+    .hero-panel h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+    .hero-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .hero-signals {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .signal-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      background: rgba(255,255,255,0.88);
+    }
+    .signal-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+    .signal-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+    .section {
+      margin-top: 24px;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,250,244,0.84));
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 70ch;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .metric-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      background: rgba(255,255,255,0.9);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 118, 110, 0.20);
+    }
+    .metric-card--positive { background: linear-gradient(180deg, rgba(232, 243, 243, 0.92), rgba(255,255,255,0.92)); }
+    .metric-card--warning { background: linear-gradient(180deg, rgba(251, 237, 231, 0.92), rgba(255,255,255,0.92)); }
+    .metric-card--critical { background: linear-gradient(180deg, rgba(254, 242, 242, 0.92), rgba(255,255,255,0.92)); }
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+    }
+    .metric-value {
+      margin-top: 10px;
+      font-size: clamp(1.5rem, 2.3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .metric-detail {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.93rem;
+    }
+    .insight-grid,
+    .portfolio-grid,
+    .geo-grid,
+    .decision-grid,
+    .figure-grid,
+    .source-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .insight-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+    .insight-card,
+    .panel {
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      background: var(--panel-strong);
+    }
+    .insight-card h3,
+    .panel h3,
+    .panel h4 {
+      margin: 0 0 10px;
+    }
+    .insight-card p,
+    .panel-copy,
+    .small-note {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .control {
+      min-width: 180px;
+      flex: 1 1 180px;
+    }
+    .control label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .control input,
+    .control select {
+      width: 100%;
+      border: 1px solid rgba(16, 34, 44, 0.14);
+      border-radius: 14px;
+      background: #fff;
+      color: var(--ink);
+      padding: 12px 14px;
+      font: inherit;
+    }
+    .portfolio-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: start;
+    }
+    .geo-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: start;
+    }
+    .decision-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: start;
+    }
+    .figure-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+    .source-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+    .data-cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .data-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(16, 34, 44, 0.04);
+      border: 1px solid rgba(16, 34, 44, 0.08);
+    }
+    .data-card .label {
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+    }
+    .data-card .value {
+      margin-top: 8px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .data-card .meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .tone-pill,
+    .legend-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .tone-pill::before,
+    .legend-pill::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .tone-leading { color: #0f766e; background: rgba(15, 118, 110, 0.10); }
+    .tone-stable { color: #0e7490; background: rgba(14, 116, 144, 0.10); }
+    .tone-watchlist { color: #b45309; background: rgba(180, 83, 9, 0.11); }
+    .tone-at-risk { color: #c2410c; background: rgba(194, 65, 12, 0.11); }
+    .tone-critical { color: #b91c1c; background: rgba(185, 28, 28, 0.10); }
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .legend-vulnerable { color: #b91c1c; background: rgba(185, 28, 28, 0.10); }
+    .legend-hub { color: #164e63; background: rgba(22, 78, 99, 0.10); }
+    .ranking-chart,
+    .line-bars {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 132px 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+    .bar-track {
+      position: relative;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(16, 34, 44, 0.08);
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+    }
+    .bar-fill--teal { background: linear-gradient(90deg, #0f766e, #14b8a6); }
+    .bar-fill--amber { background: linear-gradient(90deg, #d97706, #f59e0b); }
+    .bar-fill--red { background: linear-gradient(90deg, #b91c1c, #ef4444); }
+    .selected-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .selected-banner h3 {
+      margin: 0;
+      font-size: 1.45rem;
+    }
+    .selected-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .line-table-wrap {
+      overflow-x: auto;
+      margin-top: 18px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(16, 34, 44, 0.08);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+    th {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+    .line-row {
+      cursor: pointer;
+      transition: background 160ms ease;
+    }
+    .line-row:hover {
+      background: rgba(16, 34, 44, 0.04);
+    }
+    .line-row.is-selected {
+      background: rgba(15, 118, 110, 0.08);
+    }
+    .line-button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      padding: 0;
+      cursor: pointer;
+    }
+    .table-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .geo-map {
+      min-height: 520px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at center, rgba(15, 118, 110, 0.08), transparent 45%),
+        linear-gradient(180deg, rgba(22, 78, 99, 0.04), rgba(255,255,255,0.88));
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      padding: 12px;
+    }
+    .geo-map svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .map-tooltip {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(16, 34, 44, 0.04);
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      margin-top: 16px;
+    }
+    .map-tooltip h4 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+    .map-tooltip p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .map-grid-line {
+      stroke: rgba(16, 34, 44, 0.10);
+      stroke-dasharray: 6 6;
+    }
+    .map-axis-label,
+    .map-label,
+    .axis-label,
+    .legend-item {
+      fill: var(--ink);
+      font-size: 12px;
+      font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+    }
+    .map-dot {
+      cursor: pointer;
+      stroke: rgba(255,255,255,0.92);
+      stroke-width: 2;
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+    .map-dot:hover {
+      transform: scale(1.08);
+    }
+    .map-dot--hub { fill: #164e63; }
+    .map-dot--vulnerable { fill: #b91c1c; }
+    .map-dot.is-selected {
+      stroke: #f59e0b;
+      stroke-width: 3;
+    }
+    .chart-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-top: 10px;
+    }
+    .grid-line {
+      stroke: rgba(16, 34, 44, 0.12);
+      stroke-width: 1;
+    }
+    .figure-card {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      background: rgba(255,255,255,0.90);
+    }
+    .figure-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: rgba(16, 34, 44, 0.05);
+    }
+    .figure-card h4 {
+      margin: 14px 16px 8px;
+    }
+    .figure-card p {
+      margin: 0 16px 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.93rem;
+    }
+    .source-item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(16, 34, 44, 0.08);
+      background: rgba(16, 34, 44, 0.04);
+    }
+    .source-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .source-item code {
+      font-family: "SFMono-Regular", "Menlo", "Consolas", monospace;
+      word-break: break-word;
+      font-size: 0.88rem;
+    }
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .portfolio-grid,
+      .geo-grid,
+      .decision-grid,
+      .insight-grid,
+      .figure-grid,
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero-signals,
+      .data-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100vw - 16px, 100%);
+        padding-top: 16px;
+      }
+      .hero,
+      .section {
+        padding: 18px;
+        border-radius: 22px;
+      }
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        max-width: none;
+      }
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+      .geo-map {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Research review</p>
+          <h1>Copenhagen mobility resilience, turned into a decision-facing review.</h1>
+          <p class="hero-copy">
+            This page packages the repository's committed structure, robustness, and reliability outputs into one narrative:
+            network shape, failure sensitivity, line-level delay exposure, and early transfer-risk decisions.
+            It is meant to sit beside the atlas and benchmark as the evidence layer for people who need both presentation quality and methodological traceability.
+          </p>
+          <div class="nav-links">
+            <a href="./index.html">Overview</a>
+            <a href="./atlas.html">Atlas</a>
+            <a href="./benchmark.html">Benchmark</a>
+            <a class="active" href="./results.html">Research Review</a>
+          </div>
+          <div class="hero-tags">
+            <span class="hero-tag">Static network evidence</span>
+            <span class="hero-tag">Observed reliability</span>
+            <span class="hero-tag">Risk-model context</span>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <h3>How to read this page</h3>
+          <p>
+            Start with the executive cards, then use the line portfolio explorer to isolate reliability outliers.
+            The geographic panel highlights where structural exposure concentrates in the static network. The final
+            section keeps routing and risk outputs visible so the polished narrative remains audit-friendly.
+          </p>
+        </aside>
+      </div>
+      <div class="hero-signals">
+        <article class="signal-card">
+          <h3>Reliability benchmark</h3>
+          <p>E currently anchors the reliable end of the portfolio with a 60s P95 tail.</p>
+        </article>
+        <article class="signal-card">
+          <h3>Intervention priority</h3>
+          <p>Re 4516 should be the first candidate for targeted intervention, with a 780s P95 tail.</p>
+        </article>
+        <article class="signal-card">
+          <h3>Coverage caveat</h3>
+          <p>The committed 24h Task A summary shows 7.3% coverage, so operational completeness should still be read alongside the seven-day conclusions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Executive View</h2>
+          <p>High-level performance and exposure signals for management review.</p>
+        </div>
+      </div>
+      <div class="metric-grid"><article class="metric-card metric-card--neutral"><div class="metric-label">Static network size</div><div class="metric-value">36,871</div><div class="metric-detail">50,141 directed edges in the GTFS graph</div></article><article class="metric-card metric-card--positive"><div class="metric-label">Lines tracked</div><div class="metric-value">44</div><div class="metric-detail">10 in the leadership band</div></article><article class="metric-card metric-card--critical"><div class="metric-label">Worst line tail</div><div class="metric-value">780s</div><div class="metric-detail">Re 4516 is the current upper-tail outlier</div></article><article class="metric-card metric-card--neutral"><div class="metric-label">Median P95</div><div class="metric-value">120s</div><div class="metric-detail">Portfolio midpoint across ranked lines</div></article><article class="metric-card metric-card--warning"><div class="metric-label">Watchlist exposure</div><div class="metric-value">20</div><div class="metric-detail">Lines above a 240s P95 or approaching it</div></article><article class="metric-card metric-card--neutral"><div class="metric-label">Coverage caveat</div><div class="metric-value">7.3%</div><div class="metric-detail">24h Task A snapshot, use as operational evidence not service truth</div></article><article class="metric-card metric-card--warning"><div class="metric-label">Targeted attack penalty</div><div class="metric-value">42.1x</div><div class="metric-detail">Random vs targeted LCC ratio at 15% removal</div></article></div>
+      <div class="insight-grid"><article class="insight-card"><h3>Leadership story</h3><p><strong>E</strong> leads the portfolio with a 60s P95. The company-facing message is that the network already has visibly dependable services worth using as operational benchmarks.</p></article><article class="insight-card"><h3>Immediate risk</h3><p><strong>Re 4516</strong> reaches a 780s P95 tail. That is where delay communication, schedule padding, and intervention planning should start.</p></article><article class="insight-card"><h3>Structural fragility</h3><p>At 15% node removal, targeted failures shrink the largest connected component from 0.600 to 0.014. The network is bridge-sensitive, not evenly resilient.</p></article></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Interactive Line Portfolio</h2>
+          <p>Filter the reliability ranking, focus a single line, and compare its tail delay against the broader portfolio.</p>
+        </div>
+      </div>
+      <div class="control-row">
+        <div class="control">
+          <label for="line-search">Search line</label>
+          <input id="line-search" type="search" placeholder="E, Re 4516, IC 141">
+        </div>
+        <div class="control">
+          <label for="band-filter">Performance band</label>
+          <select id="band-filter">
+            <option value="all">All bands</option>
+            <option value="Leading">Leading</option>
+            <option value="Stable">Stable</option>
+            <option value="Watchlist">Watchlist</option>
+            <option value="At Risk">At Risk</option>
+            <option value="Critical">Critical</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="sort-filter">Sort by</label>
+          <select id="sort-filter">
+            <option value="p95_desc">Highest P95 first</option>
+            <option value="p95_asc">Lowest P95 first</option>
+            <option value="avg_desc">Highest average delay</option>
+            <option value="n_desc">Largest sample size</option>
+            <option value="rank_asc">Published rank</option>
+          </select>
+        </div>
+      </div>
+      <div class="portfolio-grid">
+        <article class="panel">
+          <div id="selected-line-summary"></div>
+          <div id="selected-line-bars" class="line-bars"></div>
+        </article>
+        <article class="panel">
+          <h3>Portfolio context</h3>
+          <p class="panel-copy">The ranking chart responds to the active filter. Click a row to pin a line.</p>
+          <div id="band-summary" class="data-cards"></div>
+          <div id="ranking-chart" class="ranking-chart"></div>
+        </article>
+      </div>
+      <div class="line-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Line</th>
+              <th>Band</th>
+              <th>Rank</th>
+              <th>P50</th>
+              <th>P90</th>
+              <th>P95</th>
+              <th>Average</th>
+              <th>Samples</th>
+            </tr>
+          </thead>
+          <tbody id="line-table-body"></tbody>
+        </table>
+      </div>
+      <p id="line-table-note" class="table-note"></p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Geographic Exposure</h2>
+          <p>The map is a schematic coordinate view built from GTFS stop locations. It highlights where connectivity concentration and vulnerability overlap.</p>
+        </div>
+      </div>
+      <div class="control-row">
+        <label class="legend-pill legend-vulnerable"><input id="map-layer-vulnerable" type="checkbox" checked>Critical bridges</label>
+        <label class="legend-pill legend-hub"><input id="map-layer-hub" type="checkbox" checked>Top connectivity hubs</label>
+      </div>
+      <div class="geo-grid">
+        <article class="panel">
+          <h3>Static network map</h3>
+          <div id="geo-map" class="geo-map"></div>
+          <p class="small-note">No external basemap is used. This view intentionally stays offline and reproducible inside the repo.</p>
+        </article>
+        <article class="panel">
+          <h3>Selected node</h3>
+          <div id="map-detail" class="map-tooltip"></div>
+          <div class="legend-row">
+            <span class="legend-pill legend-vulnerable">Critical bridges</span>
+            <span class="legend-pill legend-hub">Top hubs</span>
+          </div>
+          <div class="line-table-wrap"><table><thead><tr><th>stop</th><th>type</th><th>metric</th><th>value</th></tr></thead><tbody><tr><td>Skive Trafikterminal</td><td>hub</td><td>Degree</td><td>42</td></tr><tr><td>Odder Busterminal</td><td>hub</td><td>Degree</td><td>35</td></tr><tr><td>Randers Busterminal</td><td>hub</td><td>Degree</td><td>35</td></tr><tr><td>Hadsten St./Østergade</td><td>hub</td><td>Degree</td><td>27</td></tr><tr><td>Middelfart Station (Middelfart Kommune)</td><td>hub</td><td>Degree</td><td>22</td></tr><tr><td>Haderslev Busstation</td><td>hub</td><td>Degree</td><td>22</td></tr><tr><td>Hobro Busterminal (H.I. Biesgade)</td><td>hub</td><td>Degree</td><td>20</td></tr><tr><td>Rosen Allé (Ribe)</td><td>hub</td><td>Degree</td><td>17</td></tr></tbody></table></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Decision Support Layer</h2>
+          <p>Static fragility, observed delay patterns, risk-model confidence, and route trade-offs are shown together so the research can support operational decisions.</p>
+        </div>
+      </div>
+      <div class="decision-grid">
+        <article class="panel">
+          <h3>Failure sensitivity</h3>
+          <p class="panel-copy">Largest connected component retention under random and targeted removals.</p>
+          <svg class="chart-svg" viewBox="0 0 680 280" role="img" aria-label="Random versus targeted failure"><line x1="62" y1="234.0" x2="664" y2="234.0" class="grid-line"></line><text x="54" y="238.0" text-anchor="end" class="axis-label">0.0</text><line x1="62" y1="191.2" x2="664" y2="191.2" class="grid-line"></line><text x="54" y="195.2" text-anchor="end" class="axis-label">0.2</text><line x1="62" y1="148.39999999999998" x2="664" y2="148.39999999999998" class="grid-line"></line><text x="54" y="152.39999999999998" text-anchor="end" class="axis-label">0.4</text><line x1="62" y1="105.6" x2="664" y2="105.6" class="grid-line"></line><text x="54" y="109.6" text-anchor="end" class="axis-label">0.6</text><line x1="62" y1="62.79999999999998" x2="664" y2="62.79999999999998" class="grid-line"></line><text x="54" y="66.79999999999998" text-anchor="end" class="axis-label">0.8</text><line x1="62" y1="20.0" x2="664" y2="20.0" class="grid-line"></line><text x="54" y="24.0" text-anchor="end" class="axis-label">1.0</text><rect x="123.33333333333333" y="59.566674000000006" width="34" height="174.433326" rx="10" fill="#0f766e"></rect><rect x="167.33333333333331" y="191.462364" width="34" height="42.537636" rx="10" fill="#d97706"></rect><text x="157.33333333333331" y="266" text-anchor="middle" class="axis-label">9%</text><rect x="323.99999999999994" y="105.507124" width="34" height="128.492876" rx="10" fill="#0f766e"></rect><rect x="367.99999999999994" y="230.944508" width="34" height="3.055492" rx="10" fill="#d97706"></rect><text x="357.99999999999994" y="266" text-anchor="middle" class="axis-label">15%</text><rect x="524.6666666666666" y="213.940924" width="34" height="20.059076" rx="10" fill="#0f766e"></rect><rect x="568.6666666666666" y="232.831346" width="34" height="1.1686539999999999" rx="10" fill="#d97706"></rect><text x="558.6666666666666" y="266" text-anchor="middle" class="axis-label">30%</text><text x="62" y="278" class="legend-item"><tspan fill="#0f766e">random</tspan> vs <tspan fill="#d97706">targeted</tspan></text></svg>
+          <h3 style="margin-top:18px;">Observed delay tail by hour</h3>
+          <p class="panel-copy">P95 delay profile in Copenhagen local hour.</p>
+          <svg class="chart-svg" viewBox="0 0 680 280" role="img" aria-label="Delay tail by hour"><line x1="56" y1="240.0" x2="662" y2="240.0" class="grid-line"></line><text x="48" y="244.0" text-anchor="end" class="axis-label">0s</text><line x1="56" y1="186.0" x2="662" y2="186.0" class="grid-line"></line><text x="48" y="190.0" text-anchor="end" class="axis-label">105s</text><line x1="56" y1="132.0" x2="662" y2="132.0" class="grid-line"></line><text x="48" y="136.0" text-anchor="end" class="axis-label">210s</text><line x1="56" y1="78.0" x2="662" y2="78.0" class="grid-line"></line><text x="48" y="82.0" text-anchor="end" class="axis-label">315s</text><line x1="56" y1="24.0" x2="662" y2="24.0" class="grid-line"></line><text x="48" y="28.0" text-anchor="end" class="axis-label">420s</text><polyline fill="none" stroke="#0f766e" stroke-width="4" points="56.0,85.71428571428572 207.5,24.0 359.0,85.71428571428572 510.5,147.42857142857144 662.0,116.57142857142858"></polyline><circle cx="56.0" cy="85.71428571428572" r="5.5" fill="#0f766e"></circle><text x="56.0" y="266" text-anchor="middle" class="axis-label">9</text><circle cx="207.5" cy="24.0" r="5.5" fill="#0f766e"></circle><text x="207.5" y="266" text-anchor="middle" class="axis-label">10</text><circle cx="359.0" cy="85.71428571428572" r="5.5" fill="#0f766e"></circle><text x="359.0" y="266" text-anchor="middle" class="axis-label">11</text><circle cx="510.5" cy="147.42857142857144" r="5.5" fill="#0f766e"></circle><text x="510.5" y="266" text-anchor="middle" class="axis-label">12</text><circle cx="662.0" cy="116.57142857142858" r="5.5" fill="#0f766e"></circle><text x="662.0" y="266" text-anchor="middle" class="axis-label">13</text></svg>
+        </article>
+        <article class="panel">
+          <h3>Mode-level risk model</h3>
+          <p class="panel-copy">Current model remains mode-level with explicit fallback logic when sample sizes thin out.</p>
+          <table><thead><tr><th>line</th><th>mode</th><th>p95</th><th>CI low</th><th>CI high</th><th>evidence</th><th>source</th></tr></thead><tbody><tr><td>C</td><td>ST</td><td>120s</td><td>0s</td><td>0s</td><td>low</td><td>global</td></tr><tr><td>F</td><td>ST</td><td>120s</td><td>0s</td><td>0s</td><td>low</td><td>global</td></tr><tr><td>H</td><td>ST</td><td>120s</td><td>0s</td><td>0s</td><td>low</td><td>global</td></tr></tbody></table>
+          <h3 style="margin-top:18px;">Router trade-off table</h3>
+          <p class="panel-copy">Sample candidate paths show the travel time versus robustness trade-off.</p>
+          <table><thead><tr><th>od</th><th>path</th><th>travel time</th><th>transfers</th><th>miss prob</th><th>CVaR95</th><th>confidence</th></tr></thead><tbody><tr><td>CPH_H_CPH_AIRPORT</td><td>path_a</td><td>24.0 min</td><td>1</td><td>0.083</td><td>4.0 min</td><td>medium</td></tr><tr><td>CPH_H_CPH_AIRPORT</td><td>path_b</td><td>28.0 min</td><td>0</td><td>0.083</td><td>4.0 min</td><td>medium</td></tr><tr><td>NORREPORT_LYNGBY</td><td>path_a</td><td>22.0 min</td><td>1</td><td>0.083</td><td>4.0 min</td><td>medium</td></tr><tr><td>NORREPORT_LYNGBY</td><td>path_b</td><td>26.0 min</td><td>0</td><td>0.083</td><td>4.0 min</td><td>medium</td></tr></tbody></table>
+        </article>
+      </div>
+      <div class="figure-grid"><article class="figure-card"><img src="../../docs/figures/week1_component_sizes.png" alt="Week 1 connectivity profile" loading="lazy"><h4>Week 1 connectivity profile</h4><p>Static connectivity footprint of the national GTFS graph used as the baseline.</p></article><article class="figure-card"><img src="../../results/robustness/random_vs_targeted_curve.png" alt="Week 2 targeted vs random" loading="lazy"><h4>Week 2 targeted vs random</h4><p>Published robustness curve comparing random failures to betweenness-targeted attacks.</p></article><article class="figure-card"><img src="../../docs/figures/week3_line_reliability_rank.png" alt="Week 3 line reliability" loading="lazy"><h4>Week 3 line reliability</h4><p>Committed seven-day line ranking by P95 delay.</p></article><article class="figure-card"><img src="../../docs/figures/week3_p95_by_hour_cph.png" alt="Week 3 daypart pattern" loading="lazy"><h4>Week 3 daypart pattern</h4><p>Delay tail by Copenhagen local hour from the committed BQ-derived analysis.</p></article></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Provenance</h2>
+          <p>The dashboard is generated from committed markdown, CSV, JSON, and PNG artifacts so it remains auditable and safe to open locally.</p>
+        </div>
+      </div>
+      <div class="source-grid"><div class="source-item"><strong>week1_summary</strong><code>../../docs/week1_summary.md</code></div><div class="source-item"><strong>robustness_summary</strong><code>../../results/robustness/summary.md</code></div><div class="source-item"><strong>robustness_nodes</strong><code>../../results/robustness/top10_vulnerable_nodes.csv</code></div><div class="source-item"><strong>week3_summary_json</strong><code>../../data/analysis/reports/week3/dt=2026-03-02/summary.json</code></div><div class="source-item"><strong>week3_reliability</strong><code>../../data/analysis/week3_line_reliability_rank.csv</code></div><div class="source-item"><strong>hour_quantiles</strong><code>../../data/analysis/week3_hour_dow_quantiles.csv</code></div><div class="source-item"><strong>router_table</strong><code>../../data/analysis/router_pareto_table.csv</code></div><div class="source-item"><strong>risk_model</strong><code>../../data/analysis/risk_model_mode_level.csv</code></div></div>
+      <p class="footer-note">
+        Generated at 2026-03-22T07:22:16.255022Z. Build command:
+        <code>python3 -m src.app.results_dashboard --out web/accessibility/results.html</code>.
+      </p>
+    </section>
+  </main>
+
+  <script id="dashboard-data" type="application/json">{"portfolio": {"reliability": [{"line": "E", "rank": 1, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 131, "band": "Leading", "tone": "positive"}, {"line": "H", "rank": 2, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 17, "band": "Leading", "tone": "positive"}, {"line": "Lokalbane 960R", "rank": 3, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 14, "band": "Leading", "tone": "positive"}, {"line": "Re 1055", "rank": 4, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 12, "band": "Leading", "tone": "positive"}, {"line": "Re 1069", "rank": 5, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 6, "band": "Leading", "tone": "positive"}, {"line": "Re 1065", "rank": 6, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 4, "band": "Leading", "tone": "positive"}, {"line": "Re 1058", "rank": 7, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 3, "band": "Leading", "tone": "positive"}, {"line": "Re 1541", "rank": 8, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 3, "band": "Leading", "tone": "positive"}, {"line": "Re 226", "rank": 9, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 3, "band": "Leading", "tone": "positive"}, {"line": "Re 2522", "rank": 10, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 60, "avg_delay_sec": 60.0, "n": 3, "band": "Leading", "tone": "positive"}, {"line": "A", "rank": 11, "p50_delay_sec": 60, "p90_delay_sec": 60, "p95_delay_sec": 120, "avg_delay_sec": 65.24, "n": 126, "band": "Stable", "tone": "positive"}, {"line": "Re 1057", "rank": 12, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 69.23, "n": 13, "band": "Stable", "tone": "positive"}, {"line": "F", "rank": 13, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 69.73, "n": 37, "band": "Stable", "tone": "positive"}, {"line": "IC 145", "rank": 14, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 75.0, "n": 4, "band": "Stable", "tone": "positive"}, {"line": "Re 4222", "rank": 15, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 75.0, "n": 4, "band": "Stable", "tone": "positive"}, {"line": "Re 4243", "rank": 16, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 75.0, "n": 4, "band": "Stable", "tone": "positive"}, {"line": "Re 1067", "rank": 17, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 80.0, "n": 6, "band": "Stable", "tone": "positive"}, {"line": "Re 4449", "rank": 18, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 80.0, "n": 3, "band": "Stable", "tone": "positive"}, {"line": "Re 1063", "rank": 19, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 84.0, "n": 10, "band": "Stable", "tone": "positive"}, {"line": "Re 1068", "rank": 20, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 90.0, "n": 4, "band": "Stable", "tone": "positive"}, {"line": "Re 4549", "rank": 21, "p50_delay_sec": 60, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 90.0, "n": 4, "band": "Stable", "tone": "positive"}, {"line": "Re 2424", "rank": 22, "p50_delay_sec": 120, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 102.86, "n": 7, "band": "Stable", "tone": "positive"}, {"line": "Re 1056", "rank": 23, "p50_delay_sec": 120, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 120.0, "n": 3, "band": "Stable", "tone": "positive"}, {"line": "Re 4226", "rank": 24, "p50_delay_sec": 120, "p90_delay_sec": 120, "p95_delay_sec": 120, "avg_delay_sec": 120.0, "n": 3, "band": "Stable", "tone": "positive"}, {"line": "C", "rank": 25, "p50_delay_sec": 60, "p90_delay_sec": 180, "p95_delay_sec": 180, "avg_delay_sec": 80.3, "n": 266, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 1047", "rank": 26, "p50_delay_sec": 60, "p90_delay_sec": 180, "p95_delay_sec": 180, "avg_delay_sec": 94.29, "n": 7, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 2241", "rank": 27, "p50_delay_sec": 120, "p90_delay_sec": 180, "p95_delay_sec": 180, "avg_delay_sec": 114.55, "n": 11, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 1054", "rank": 28, "p50_delay_sec": 120, "p90_delay_sec": 180, "p95_delay_sec": 180, "avg_delay_sec": 140.0, "n": 3, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 2249", "rank": 29, "p50_delay_sec": 180, "p90_delay_sec": 180, "p95_delay_sec": 180, "avg_delay_sec": 140.0, "n": 3, "band": "Watchlist", "tone": "neutral"}, {"line": "B", "rank": 30, "p50_delay_sec": 60, "p90_delay_sec": 180, "p95_delay_sec": 240, "avg_delay_sec": 102.0, "n": 330, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 1528", "rank": 31, "p50_delay_sec": 60, "p90_delay_sec": 240, "p95_delay_sec": 240, "avg_delay_sec": 120.0, "n": 4, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 2220", "rank": 32, "p50_delay_sec": 120, "p90_delay_sec": 240, "p95_delay_sec": 240, "avg_delay_sec": 150.0, "n": 6, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 4524", "rank": 33, "p50_delay_sec": 120, "p90_delay_sec": 240, "p95_delay_sec": 240, "avg_delay_sec": 165.0, "n": 4, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 4218", "rank": 34, "p50_delay_sec": 180, "p90_delay_sec": 240, "p95_delay_sec": 240, "avg_delay_sec": 180.0, "n": 6, "band": "Watchlist", "tone": "neutral"}, {"line": "Re 4422", "rank": 35, "p50_delay_sec": 60, "p90_delay_sec": 240, "p95_delay_sec": 300, "avg_delay_sec": 114.55, "n": 11, "band": "At Risk", "tone": "warning"}, {"line": "Re 4426", "rank": 36, "p50_delay_sec": 60, "p90_delay_sec": 300, "p95_delay_sec": 300, "avg_delay_sec": 130.0, "n": 6, "band": "At Risk", "tone": "warning"}, {"line": "Re 2518", "rank": 37, "p50_delay_sec": 240, "p90_delay_sec": 300, "p95_delay_sec": 300, "avg_delay_sec": 210.0, "n": 6, "band": "At Risk", "tone": "warning"}, {"line": "Re 1061", "rank": 38, "p50_delay_sec": 240, "p90_delay_sec": 300, "p95_delay_sec": 300, "avg_delay_sec": 252.0, "n": 10, "band": "At Risk", "tone": "warning"}, {"line": "Re 1049", "rank": 39, "p50_delay_sec": 300, "p90_delay_sec": 300, "p95_delay_sec": 300, "avg_delay_sec": 274.29, "n": 7, "band": "At Risk", "tone": "warning"}, {"line": "Re 1045", "rank": 40, "p50_delay_sec": 300, "p90_delay_sec": 300, "p95_delay_sec": 300, "avg_delay_sec": 300.0, "n": 3, "band": "At Risk", "tone": "warning"}, {"line": "IC 141", "rank": 41, "p50_delay_sec": 240, "p90_delay_sec": 360, "p95_delay_sec": 360, "avg_delay_sec": 265.71, "n": 7, "band": "At Risk", "tone": "warning"}, {"line": "Re 1059", "rank": 42, "p50_delay_sec": 480, "p90_delay_sec": 480, "p95_delay_sec": 480, "avg_delay_sec": 480.0, "n": 4, "band": "Critical", "tone": "critical"}, {"line": "Re 4541", "rank": 43, "p50_delay_sec": 540, "p90_delay_sec": 660, "p95_delay_sec": 660, "avg_delay_sec": 437.14, "n": 21, "band": "Critical", "tone": "critical"}, {"line": "Re 4516", "rank": 44, "p50_delay_sec": 600, "p90_delay_sec": 780, "p95_delay_sec": 780, "avg_delay_sec": 588.0, "n": 5, "band": "Critical", "tone": "critical"}], "network_median_p95": 120, "worst_p95": 780, "best_p95": 60, "default_selected_line": "Re 4516", "band_order": ["Leading", "Stable", "Watchlist", "At Risk", "Critical"]}, "map": {"default_selected_point_id": "vuln-000461105500", "points": [{"id": "hub-000779079101", "layer": "hub", "label": "Skive Trafikterminal", "stop_id": "000779079101", "lat": 56.561884, "lon": 9.026212, "primary_metric_label": "Degree", "primary_metric_value": 42, "secondary_metric_label": "In/Out", "secondary_metric_value": "19 / 23", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "hub-000727000701", "layer": "hub", "label": "Odder Busterminal", "stop_id": "000727000701", "lat": 55.971459, "lon": 10.149951, "primary_metric_label": "Degree", "primary_metric_value": 35, "secondary_metric_label": "In/Out", "secondary_metric_value": "18 / 17", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "hub-000731601003", "layer": "hub", "label": "Randers Busterminal", "stop_id": "000731601003", "lat": 56.45851, "lon": 10.039624, "primary_metric_label": "Degree", "primary_metric_value": 35, "secondary_metric_label": "In/Out", "secondary_metric_value": "17 / 18", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "hub-000709000701", "layer": "hub", "label": "Hadsten St./\u00d8stergade", "stop_id": "000709000701", "lat": 56.327403, "lon": 10.048025, "primary_metric_label": "Degree", "primary_metric_value": 27, "secondary_metric_label": "In/Out", "secondary_metric_value": "15 / 12", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "hub-000410187400", "layer": "hub", "label": "Middelfart Station (Middelfart Kommune)", "stop_id": "000410187400", "lat": 55.502297, "lon": 9.734552, "primary_metric_label": "Degree", "primary_metric_value": 22, "secondary_metric_label": "In/Out", "secondary_metric_value": "9 / 13", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "hub-000515000101", "layer": "hub", "label": "Haderslev Busstation", "stop_id": "000515000101", "lat": 55.252388, "lon": 9.489946, "primary_metric_label": "Degree", "primary_metric_value": 22, "secondary_metric_label": "In/Out", "secondary_metric_value": "10 / 12", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "hub-000823000102", "layer": "hub", "label": "Hobro Busterminal (H.I. Biesgade)", "stop_id": "000823000102", "lat": 56.639313, "lon": 9.796871, "primary_metric_label": "Degree", "primary_metric_value": 20, "secondary_metric_label": "In/Out", "secondary_metric_value": "11 / 9", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "hub-000571507301", "layer": "hub", "label": "Rosen All\u00e9 (Ribe)", "stop_id": "000571507301", "lat": 55.331515, "lon": 8.770885, "primary_metric_label": "Degree", "primary_metric_value": 17, "secondary_metric_label": "In/Out", "secondary_metric_value": "8 / 9", "narrative": "Most connected static transfer hubs by degree.", "tone": "hub"}, {"id": "vuln-000461105500", "layer": "vulnerable", "label": "Landbrugsvej (Odense Kommune)", "stop_id": "000461105500", "lat": 55.369784, "lon": 10.393746, "primary_metric_label": "Betweenness", "primary_metric_value": 44821421.82, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "0.000134", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000823102901", "layer": "vulnerable", "label": "Viborg Landevej (R\u00e6vebakken/Mariagerfjord Kommune)", "stop_id": "000823102901", "lat": 56.5994, "lon": 9.793262, "primary_metric_label": "Betweenness", "primary_metric_value": 125887240.62, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "9e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000461034600", "layer": "vulnerable", "label": "Stenl\u00f8sevej (Odense Kommune)", "stop_id": "000461034600", "lat": 55.364989, "lon": 10.39181, "primary_metric_label": "Betweenness", "primary_metric_value": 60099084.93, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "9e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000631200102", "layer": "vulnerable", "label": "Vejle Trafikcenter", "stop_id": "000631200102", "lat": 55.705934, "lon": 9.536312, "primary_metric_label": "Betweenness", "primary_metric_value": 236651059.46, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "4.5e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000551922507", "layer": "vulnerable", "label": "Billund Lufthavn / Billund Airport ", "stop_id": "000551922507", "lat": 55.746578, "lon": 9.148243, "primary_metric_label": "Betweenness", "primary_metric_value": 210796614.29, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "4.5e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000607300902", "layer": "vulnerable", "label": "Errits\u00f8, Snogh\u00f8j Landevej v Snaremosevej", "stop_id": "000607300902", "lat": 55.538668, "lon": 9.717055, "primary_metric_label": "Betweenness", "primary_metric_value": 209091509.25, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "4.5e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000621400109", "layer": "vulnerable", "label": "Kolding Busterminal", "stop_id": "000621400109", "lat": 55.492126, "lon": 9.483073, "primary_metric_label": "Betweenness", "primary_metric_value": 206417416.09, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "4.5e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000621405111", "layer": "vulnerable", "label": "Fynsvej v Gammel Kongevej (Kolding)", "stop_id": "000621405111", "lat": 55.497165, "lon": 9.494801, "primary_metric_label": "Betweenness", "primary_metric_value": 205637550.22, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "4.5e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000621403501", "layer": "vulnerable", "label": "Fynsvej v Marielundskolen (Kolding)", "stop_id": "000621403501", "lat": 55.494138, "lon": 9.487735, "primary_metric_label": "Betweenness", "primary_metric_value": 205601447.36, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "4.5e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}, {"id": "vuln-000621403521", "layer": "vulnerable", "label": "Fynsvej v Castenskjoldsvej (Kolding)", "stop_id": "000621403521", "lat": 55.495823, "lon": 9.491175, "primary_metric_label": "Betweenness", "primary_metric_value": 205595302.2, "secondary_metric_label": "Impact delta LCC", "secondary_metric_value": "4.5e-05", "narrative": "Likely transfer bridge; monitor cross-line dependency and disruption spillover.", "tone": "vulnerable"}]}}</script>
+  <script>
+    const dashboardData = JSON.parse(document.getElementById("dashboard-data").textContent);
+    const lineState = {
+      query: "",
+      band: "all",
+      sort: "p95_desc",
+      selectedLine: dashboardData.portfolio.default_selected_line
+    };
+    const mapState = {
+      selectedPointId: dashboardData.map.default_selected_point_id,
+      layers: { vulnerable: true, hub: true }
+    };
+
+    const lineSearchEl = document.getElementById("line-search");
+    const bandFilterEl = document.getElementById("band-filter");
+    const sortFilterEl = document.getElementById("sort-filter");
+    const selectedLineSummaryEl = document.getElementById("selected-line-summary");
+    const selectedLineBarsEl = document.getElementById("selected-line-bars");
+    const bandSummaryEl = document.getElementById("band-summary");
+    const rankingChartEl = document.getElementById("ranking-chart");
+    const lineTableBodyEl = document.getElementById("line-table-body");
+    const lineTableNoteEl = document.getElementById("line-table-note");
+    const geoMapEl = document.getElementById("geo-map");
+    const mapDetailEl = document.getElementById("map-detail");
+    const mapLayerVulnerableEl = document.getElementById("map-layer-vulnerable");
+    const mapLayerHubEl = document.getElementById("map-layer-hub");
+
+    function fmtInt(value) {
+      return new Intl.NumberFormat("en-US").format(value);
+    }
+
+    function fmtSeconds(value) {
+      return `${Math.round(value)}s`;
+    }
+
+    function fmtPct(value, decimals = 1) {
+      return `${value.toFixed(decimals)}%`;
+    }
+
+    function bandClass(band) {
+      return `tone-${band.toLowerCase().replace(/[^a-z]+/g, "-")}`;
+    }
+
+    function getFilteredLines() {
+      const query = lineState.query.trim().toLowerCase();
+      let rows = dashboardData.portfolio.reliability.filter((row) => {
+        const queryMatch = !query || row.line.toLowerCase().includes(query);
+        const bandMatch = lineState.band === "all" || row.band === lineState.band;
+        return queryMatch && bandMatch;
+      });
+
+      const sorters = {
+        p95_desc: (a, b) => b.p95_delay_sec - a.p95_delay_sec || b.avg_delay_sec - a.avg_delay_sec,
+        p95_asc: (a, b) => a.p95_delay_sec - b.p95_delay_sec || a.avg_delay_sec - b.avg_delay_sec,
+        avg_desc: (a, b) => b.avg_delay_sec - a.avg_delay_sec || b.p95_delay_sec - a.p95_delay_sec,
+        n_desc: (a, b) => b.n - a.n || a.rank - b.rank,
+        rank_asc: (a, b) => a.rank - b.rank
+      };
+      rows = rows.slice().sort(sorters[lineState.sort]);
+      return rows;
+    }
+
+    function ensureSelectedLine(rows) {
+      if (!rows.length) {
+        return null;
+      }
+      const selected = rows.find((row) => row.line === lineState.selectedLine);
+      if (selected) {
+        return selected;
+      }
+      lineState.selectedLine = rows[0].line;
+      return rows[0];
+    }
+
+    function renderSelectedLine(rows) {
+      const selected = ensureSelectedLine(rows);
+      if (!selected) {
+        selectedLineSummaryEl.innerHTML = "<p class='small-note'>No lines match the current filter.</p>";
+        selectedLineBarsEl.innerHTML = "";
+        return;
+      }
+
+      const percentileOfWorst = Math.max(0, Math.min(100, (selected.p95_delay_sec / dashboardData.portfolio.worst_p95) * 100));
+      const medianGap = selected.p95_delay_sec - dashboardData.portfolio.network_median_p95;
+      selectedLineSummaryEl.innerHTML = `
+        <div class="selected-banner">
+          <div>
+            <h3>${selected.line}</h3>
+            <div class="selected-meta">Published rank #${selected.rank} of ${dashboardData.portfolio.reliability.length} tracked lines</div>
+          </div>
+          <span class="tone-pill ${bandClass(selected.band)}">${selected.band}</span>
+        </div>
+        <p class="panel-copy">Use this line view to compare one service against the rest of the portfolio. Positive numbers below indicate where delay tail or sample volume makes the line stand out.</p>
+        <div class="data-cards">
+          <div class="data-card">
+            <div class="label">P95 delay</div>
+            <div class="value">${fmtSeconds(selected.p95_delay_sec)}</div>
+            <div class="meta">${medianGap >= 0 ? "+" : ""}${fmtSeconds(medianGap)} vs network median</div>
+          </div>
+          <div class="data-card">
+            <div class="label">Average delay</div>
+            <div class="value">${fmtSeconds(selected.avg_delay_sec)}</div>
+            <div class="meta">Mean observed departure drift</div>
+          </div>
+          <div class="data-card">
+            <div class="label">Sample size</div>
+            <div class="value">${fmtInt(selected.n)}</div>
+            <div class="meta">Underlying observations in the ranking table</div>
+          </div>
+          <div class="data-card">
+            <div class="label">Relative to worst</div>
+            <div class="value">${fmtPct(percentileOfWorst, 0)}</div>
+            <div class="meta">P95 as a share of the current worst line tail</div>
+          </div>
+        </div>
+      `;
+
+      const percentiles = [
+        { label: "P50", value: selected.p50_delay_sec, cls: "teal" },
+        { label: "P90", value: selected.p90_delay_sec, cls: "amber" },
+        { label: "P95", value: selected.p95_delay_sec, cls: "red" }
+      ];
+      selectedLineBarsEl.innerHTML = percentiles.map((item) => `
+        <div class="bar-row">
+          <div>${item.label}</div>
+          <div class="bar-track">
+            <div class="bar-fill bar-fill--${item.cls}" style="width:${Math.max(4, item.value / dashboardData.portfolio.worst_p95 * 100)}%"></div>
+          </div>
+          <div>${fmtSeconds(item.value)}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderBandSummary(rows) {
+      const counts = new Map(dashboardData.portfolio.band_order.map((band) => [band, 0]));
+      rows.forEach((row) => counts.set(row.band, (counts.get(row.band) || 0) + 1));
+      const totalSamples = rows.reduce((acc, row) => acc + row.n, 0);
+      const maxP95 = rows.length ? Math.max(...rows.map((row) => row.p95_delay_sec)) : 0;
+      bandSummaryEl.innerHTML = `
+        <div class="data-card">
+          <div class="label">Lines in view</div>
+          <div class="value">${fmtInt(rows.length)}</div>
+          <div class="meta">${fmtInt(totalSamples)} observations represented</div>
+        </div>
+        <div class="data-card">
+          <div class="label">Critical</div>
+          <div class="value">${fmtInt(counts.get("Critical") || 0)}</div>
+          <div class="meta">Highest-priority outliers in current filter</div>
+        </div>
+        <div class="data-card">
+          <div class="label">Leading</div>
+          <div class="value">${fmtInt(counts.get("Leading") || 0)}</div>
+          <div class="meta">Benchmark services in the active slice</div>
+        </div>
+        <div class="data-card">
+          <div class="label">Max P95</div>
+          <div class="value">${fmtSeconds(maxP95)}</div>
+          <div class="meta">Upper tail currently visible</div>
+        </div>
+      `;
+    }
+
+    function renderRankingChart(rows) {
+      const focusRows = rows.slice(0, 8);
+      if (!focusRows.length) {
+        rankingChartEl.innerHTML = "<p class='small-note'>No ranking rows to display.</p>";
+        return;
+      }
+      rankingChartEl.innerHTML = focusRows.map((row) => `
+        <div class="bar-row">
+          <div><button class="line-button" data-line-select="${row.line}">${row.line}</button></div>
+          <div class="bar-track">
+            <div class="bar-fill bar-fill--red" style="width:${Math.max(4, row.p95_delay_sec / dashboardData.portfolio.worst_p95 * 100)}%"></div>
+          </div>
+          <div>${fmtSeconds(row.p95_delay_sec)}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderLineTable(rows) {
+      if (!rows.length) {
+        lineTableBodyEl.innerHTML = "<tr><td colspan='8'>No lines match the current filter.</td></tr>";
+        lineTableNoteEl.textContent = "Try broadening the band or clearing the search query.";
+        return;
+      }
+      lineTableBodyEl.innerHTML = rows.map((row) => `
+        <tr class="line-row ${row.line === lineState.selectedLine ? "is-selected" : ""}" data-line-select="${row.line}">
+          <td><button class="line-button" data-line-select="${row.line}">${row.line}</button></td>
+          <td><span class="tone-pill ${bandClass(row.band)}">${row.band}</span></td>
+          <td>#${row.rank}</td>
+          <td>${fmtSeconds(row.p50_delay_sec)}</td>
+          <td>${fmtSeconds(row.p90_delay_sec)}</td>
+          <td>${fmtSeconds(row.p95_delay_sec)}</td>
+          <td>${fmtSeconds(row.avg_delay_sec)}</td>
+          <td>${fmtInt(row.n)}</td>
+        </tr>
+      `).join("");
+      lineTableNoteEl.textContent = `${rows.length} line(s) shown. Click a row to pin a line in the detail card.`;
+    }
+
+    function renderPortfolio() {
+      const rows = getFilteredLines();
+      renderSelectedLine(rows);
+      renderBandSummary(rows);
+      renderRankingChart(rows);
+      renderLineTable(rows);
+    }
+
+    function getVisibleMapPoints() {
+      return dashboardData.map.points.filter((point) => mapState.layers[point.layer]);
+    }
+
+    function ensureSelectedPoint(points) {
+      if (!points.length) {
+        return null;
+      }
+      const selected = points.find((point) => point.id === mapState.selectedPointId);
+      if (selected) {
+        return selected;
+      }
+      mapState.selectedPointId = points[0].id;
+      return points[0];
+    }
+
+    function renderMap() {
+      const points = getVisibleMapPoints();
+      if (!points.length) {
+        geoMapEl.innerHTML = "<p class='small-note'>No map layers selected.</p>";
+        mapDetailEl.innerHTML = "<p>Select a layer to restore the spatial view.</p>";
+        return;
+      }
+
+      const selected = ensureSelectedPoint(points);
+      const width = 780;
+      const height = 520;
+      const pad = 42;
+      const lons = dashboardData.map.points.map((point) => point.lon);
+      const lats = dashboardData.map.points.map((point) => point.lat);
+      const minLon = Math.min(...lons) - 0.35;
+      const maxLon = Math.max(...lons) + 0.35;
+      const minLat = Math.min(...lats) - 0.28;
+      const maxLat = Math.max(...lats) + 0.28;
+      const usableWidth = width - pad * 2;
+      const usableHeight = height - pad * 2;
+
+      function project(point) {
+        const x = pad + ((point.lon - minLon) / (maxLon - minLon)) * usableWidth;
+        const y = height - pad - ((point.lat - minLat) / (maxLat - minLat)) * usableHeight;
+        return { x, y };
+      }
+
+      const grid = [];
+      for (let i = 1; i < 4; i += 1) {
+        const gx = pad + (usableWidth * i) / 4;
+        const gy = pad + (usableHeight * i) / 4;
+        grid.push(`<line x1="${gx}" y1="${pad}" x2="${gx}" y2="${height - pad}" class="map-grid-line"></line>`);
+        grid.push(`<line x1="${pad}" y1="${gy}" x2="${width - pad}" y2="${gy}" class="map-grid-line"></line>`);
+      }
+
+      const labels = [
+        { text: "Jutland", lon: 9.3, lat: 56.0 },
+        { text: "Funen", lon: 10.2, lat: 55.4 },
+        { text: "Zealand / CPH", lon: 12.0, lat: 55.7 }
+      ].map((label) => {
+        const point = project(label);
+        return `<text x="${point.x}" y="${point.y}" class="map-label" opacity="0.55">${label.text}</text>`;
+      }).join("");
+
+      const dots = points.map((point) => {
+        const projected = project(point);
+        const radiusBase = point.layer === "vulnerable" ? 8 : 7;
+        const score = Math.max(1, Number(point.primary_metric_value));
+        const radius = Math.min(18, radiusBase + Math.log10(score + 1) * 2.5);
+        return `<circle class="map-dot map-dot--${point.layer} ${point.id === selected.id ? "is-selected" : ""}"
+                  data-point-id="${point.id}" cx="${projected.x}" cy="${projected.y}" r="${radius}"></circle>`;
+      }).join("");
+
+      geoMapEl.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Spatial concentration of vulnerable nodes and top hubs">
+          <rect x="${pad}" y="${pad}" width="${usableWidth}" height="${usableHeight}" rx="24" fill="rgba(255,255,255,0.72)" stroke="rgba(16,34,44,0.10)"></rect>
+          ${grid.join("")}
+          ${labels}
+          ${dots}
+          <text x="${pad}" y="${pad - 12}" class="map-axis-label">lat</text>
+          <text x="${width - pad}" y="${height - 10}" text-anchor="end" class="map-axis-label">lon</text>
+        </svg>
+      `;
+
+      mapDetailEl.innerHTML = `
+        <h4>${selected.label}</h4>
+        <p><strong>${selected.primary_metric_label}:</strong> ${selected.primary_metric_value}</p>
+        <p><strong>${selected.secondary_metric_label}:</strong> ${selected.secondary_metric_value}</p>
+        <p><strong>Layer:</strong> ${selected.layer === "vulnerable" ? "Critical bridge" : "Top connectivity hub"}</p>
+        <p>${selected.narrative}</p>
+      `;
+    }
+
+    function renderAll() {
+      renderPortfolio();
+      renderMap();
+    }
+
+    lineSearchEl.addEventListener("input", (event) => {
+      lineState.query = event.target.value;
+      renderPortfolio();
+    });
+    bandFilterEl.addEventListener("change", (event) => {
+      lineState.band = event.target.value;
+      renderPortfolio();
+    });
+    sortFilterEl.addEventListener("change", (event) => {
+      lineState.sort = event.target.value;
+      renderPortfolio();
+    });
+
+    document.addEventListener("click", (event) => {
+      const lineButton = event.target.closest("[data-line-select]");
+      if (lineButton) {
+        lineState.selectedLine = lineButton.getAttribute("data-line-select");
+        renderPortfolio();
+      }
+
+      const mapPoint = event.target.closest("[data-point-id]");
+      if (mapPoint) {
+        mapState.selectedPointId = mapPoint.getAttribute("data-point-id");
+        renderMap();
+      }
+    });
+
+    mapLayerVulnerableEl.addEventListener("change", (event) => {
+      mapState.layers.vulnerable = event.target.checked;
+      renderMap();
+    });
+    mapLayerHubEl.addEventListener("change", (event) => {
+      mapState.layers.hub = event.target.checked;
+      renderMap();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

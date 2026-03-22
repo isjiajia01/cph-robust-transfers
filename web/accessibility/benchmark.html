@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copenhagen Mobility Resilience Benchmark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4ede2;
+      --paper: rgba(252, 248, 240, 0.94);
+      --paper-strong: rgba(255, 252, 247, 0.98);
+      --line: rgba(16, 36, 51, 0.11);
+      --ink: #102433;
+      --muted: #5c6b73;
+      --accent: #0f4c5c;
+      --accent-soft: rgba(15, 76, 92, 0.1);
+      --accent-warm: #bf6d3a;
+      --shadow: 0 24px 60px rgba(16, 36, 51, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(191, 109, 58, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(15, 76, 92, 0.14), transparent 28%),
+        linear-gradient(180deg, #fbf5ea 0%, #eef1eb 100%);
+    }
+    .shell {
+      width: min(1240px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+    }
+    .hero,
+    .section {
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      padding: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(191, 109, 58, 0.12), transparent 26%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(247, 240, 228, 0.9));
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1, h2 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }
+    h1 {
+      max-width: 12ch;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 0.92;
+    }
+    .lede {
+      max-width: 70ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .nav-links a,
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 76, 92, 0.12);
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .nav-links a.active {
+      background: rgba(15, 76, 92, 0.08);
+      border-color: rgba(15, 76, 92, 0.3);
+      color: var(--accent);
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .section {
+      margin-top: 24px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 250, 244, 0.84));
+    }
+    .section-head p,
+    .takeaway,
+    .empty-state p,
+    .artifact-list li {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .section-head {
+      margin-bottom: 18px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .metric-card,
+    .empty-state,
+    .artifact-card {
+      border-radius: 20px;
+      border: 1px solid rgba(15, 76, 92, 0.1);
+      background: var(--paper-strong);
+      padding: 16px;
+    }
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .metric-value {
+      margin-top: 8px;
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+    .metric-detail {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .takeaway {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(15, 76, 92, 0.12);
+      background: rgba(15, 76, 92, 0.06);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(16, 36, 51, 0.08);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    code {
+      background: rgba(15, 76, 92, 0.08);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .artifact-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+    @media (max-width: 980px) {
+      .metric-grid,
+      .artifact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100vw - 20px, 100%);
+        padding-top: 12px;
+      }
+      .hero,
+      .section {
+        padding: 18px;
+        border-radius: 20px;
+      }
+      .metric-grid,
+      .artifact-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        max-width: none;
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Benchmark dashboard</p>
+      <h1>Reliability-aware benchmark for routing assumptions.</h1>
+      <p class="lede">This page compares schedule-only, realtime-snapshot, and robust assumptions on a deterministic candidate slice. It is meant to sit beside the atlas and research review as the operational comparison layer of the public site.</p>
+      <div class="nav-links">
+        <a href="./index.html">Overview</a>
+        <a href="./atlas.html">Atlas</a>
+        <a class="active" href="./benchmark.html">Benchmark</a>
+        <a href="./results.html">Research Review</a>
+      </div>
+      
+      <div class="hero-tags">
+        <span class="hero-tag">Deterministic candidate slice</span>
+        <span class="hero-tag">Schedule vs snapshot vs robust</span>
+        <span class="hero-tag">Decision-facing metrics</span>
+      </div>
+      <div class="metric-grid">
+        <article class="metric-card">
+          <div class="metric-label">Rows evaluated</div>
+          <div class="metric-value">20</div>
+          <div class="metric-detail">Current deterministic benchmark slice</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">Scheduled access</div>
+          <div class="metric-value">20</div>
+          <div class="metric-detail">Reachable within threshold on schedule</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">Robust access</div>
+          <div class="metric-value">20</div>
+          <div class="metric-detail">Reachable after reliability penalty is applied</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">Access loss</div>
+          <div class="metric-value">0</div>
+          <div class="metric-detail">Cases pushed outside the threshold by uncertainty</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">Snapshot miss rate</div>
+          <div class="metric-value">0.0417</div>
+          <div class="metric-detail">Average missed-transfer exposure under snapshot assumptions</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">Robust miss rate</div>
+          <div class="metric-value">0.0833</div>
+          <div class="metric-detail">Average missed-transfer exposure under robust assumptions</div>
+        </article>
+      </div>
+      <section class="section">
+        <div class="section-head">
+          <h2>Trade-off summary</h2>
+          <p>This slice is still scaffold-scale, but it already shows how a single candidate set can support multiple decision assumptions in one page.</p>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Snapshot regret</div>
+            <div class="metric-value">1.00 min</div>
+            <div class="metric-detail">Average increase over schedule under realtime snapshot</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Robust regret</div>
+            <div class="metric-value">1.00 min</div>
+            <div class="metric-detail">Average increase over schedule under robust routing assumptions</div>
+          </article>
+        </div>
+        <div class="takeaway"><strong>Current takeaway:</strong> the benchmark is already useful as a communication layer. The next step is scale: a larger held-out evaluation window, more routes, and sharper schedule-versus-robust accessibility-loss evidence.</div>
+        <table>
+          <thead>
+            <tr>
+              <th>OD</th>
+              <th>Line</th>
+              <th>Mode</th>
+              <th>Scheduled</th>
+              <th>Snapshot</th>
+              <th>Robust</th>
+              <th>Snapshot miss</th>
+              <th>Robust miss</th>
+              <th>Loss flag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>C_20260302T10_direct</td><td>C</td><td>ST</td><td>21.0</td><td>22.0</td><td>22.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>C_20260302T10_transfer</td><td>C</td><td>ST</td><td>25.0</td><td>26.0</td><td>26.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>C_20260302T11_direct</td><td>C</td><td>ST</td><td>24.0</td><td>25.0</td><td>25.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>C_20260302T11_transfer</td><td>C</td><td>ST</td><td>28.0</td><td>29.0</td><td>29.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>C_20260302T12_direct</td><td>C</td><td>ST</td><td>27.0</td><td>28.0</td><td>28.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>C_20260302T12_transfer</td><td>C</td><td>ST</td><td>31.0</td><td>32.0</td><td>32.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>C_20260302T13_direct</td><td>C</td><td>ST</td><td>18.0</td><td>19.0</td><td>19.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>C_20260302T13_transfer</td><td>C</td><td>ST</td><td>22.0</td><td>23.0</td><td>23.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>F_20260302T11_direct</td><td>F</td><td>ST</td><td>21.0</td><td>22.0</td><td>22.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>F_20260302T11_transfer</td><td>F</td><td>ST</td><td>25.0</td><td>26.0</td><td>26.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>F_20260302T12_direct</td><td>F</td><td>ST</td><td>24.0</td><td>25.0</td><td>25.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr><tr><td>F_20260302T12_transfer</td><td>F</td><td>ST</td><td>28.0</td><td>29.0</td><td>29.0</td><td>0.041667</td><td>0.083333</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <p class="takeaway">Artifacts: <code>results/benchmark/latest/candidates.csv</code>, <code>results/benchmark/latest/comparison.csv</code>, <code>results/benchmark/latest/summary.md</code>.</p>
+      </section>
+    
+    </section>
+  </div>
+</body>
+</html>

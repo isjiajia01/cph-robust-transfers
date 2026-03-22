@@ -1,0 +1,55 @@
+timezone = "Europe/Copenhagen"
+static_dir = "web/accessibility"
+
+[cache]
+root_dir = "data/cache/accessibility"
+reachability_bucket_minutes = 5
+
+[api]
+base_url = "https://www.rejseplanen.dk/api"
+request_timeout_sec = 20
+access_id_env = "REJSEPLANEN_API_KEY"
+access_id_query_param = "accessId"
+format_param = "format"
+format_value = "json"
+location_search_path = "location.name"
+location_search_query_param = "input"
+location_search_limit_param = "maxNo"
+location_search_limit = 8
+max_minutes_default = 60
+max_changes_default = 2
+reachability_path = "reachability"
+reachability_origin_id_param = "originId"
+reachability_origin_lat_param = "originCoordLat"
+reachability_origin_lon_param = "originCoordLong"
+reachability_date_param = "date"
+reachability_time_param = "time"
+reachability_duration_param = "duration"
+reachability_max_changes_param = "maxChange"
+reachability_forward_param = "forward"
+reachability_forward_default = 1
+reachability_filter_end_walks_param = "filterEndWalks"
+reachability_filter_end_walks_default = 1
+reachability_modes_param = "products"
+mode_separator = ","
+
+[atlas]
+source_mode = "api"
+title = "Copenhagen Mobility Resilience Atlas"
+subtitle = "A fixed-scenario public-transit atlas for seeing which neighborhoods keep access to campuses, hospitals, and job hubs when time budgets and transfer caps get real"
+operational_boundary_label = "Greater Copenhagen operational boundary, Denmark side only"
+origins_path = "configs/atlas.origins.expanded.csv"
+pois_path = "configs/atlas.pois.sample.csv"
+scenarios_path = "configs/atlas.scenarios.live.csv"
+output_dir = "web/accessibility/data"
+durations = [30, 45, 60]
+max_changes_options = [1, 2]
+default_duration = 45
+default_category = "job_hub"
+default_scenario_id = "weekday_am"
+default_max_changes = 2
+map_center_lat = 55.6761
+map_center_lon = 12.5683
+map_zoom = 10
+polygon_half_size_m = 500
+modes = ["train", "metro", "bus"]

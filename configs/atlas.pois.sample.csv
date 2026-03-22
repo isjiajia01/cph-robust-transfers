@@ -1,0 +1,13 @@
+poi_id,name,category,lat,lon,weight,nearest_stop_id,candidate_stop_ids
+ku_north,University of Copenhagen North Campus,campus,55.6977,12.5587,1.9,8600646,8600646|8600650
+cbs_solbjerg,CBS Solbjerg Plads,campus,55.6817,12.5353,1.7,8600736,8600736|8600624
+dtu_lyngby,DTU Lyngby Campus,campus,55.7858,12.5184,2.4,8600675,8600675|8600677
+ruc_roskilde,Roskilde University,campus,55.6620,12.1380,1.6,8600617,8600617
+rigshospitalet,Rigshospitalet,hospital,55.6953,12.5666,2.6,8600650,8600650|8600646
+hvidovre_hospital,Hvidovre Hospital,hospital,55.6488,12.4730,2.2,8600600,8600600|8600624
+herlev_hospital,Herlev Hospital,hospital,55.7214,12.4436,2.3,8600708,8600708|8600736
+roskilde_hospital,Roskilde Hospital,hospital,55.6463,12.0797,1.9,8600617,8600617
+cph_cbd,Copenhagen CBD,job_hub,55.6761,12.5683,2.7,8600646,8600646|8600626|8600650
+orestad_hub,Orestad Business District,job_hub,55.6280,12.5795,2.1,8600856,8600856|8603327
+lyngby_hub,Lyngby Knowledge Hub,job_hub,55.7692,12.5035,1.8,8600675,8600675|8600677
+ballerup_hub,Ballerup Business Park,job_hub,55.7308,12.3587,1.7,8600708,8600708

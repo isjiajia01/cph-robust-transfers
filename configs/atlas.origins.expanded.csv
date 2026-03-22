@@ -1,0 +1,181 @@
+origin_id,name,lat,lon,origin_stop_id,origin_stop_name,origin_stop_lat,origin_stop_lon,municipality,neighborhood,population_weight,cell_size_m,is_active
+kobenhavn_h_core,København H core catchment,55.673063,12.565562,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,1.00,360,true
+kobenhavn_h_north,København H north catchment,55.676836,12.565562,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.95,360,true
+kobenhavn_h_northeast,København H northeast catchment,55.675938,12.570660,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.91,360,true
+kobenhavn_h_east,København H east catchment,55.673063,12.572253,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.93,360,true
+kobenhavn_h_southeast,København H southeast catchment,55.670188,12.570660,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.89,360,true
+kobenhavn_h_south,København H south catchment,55.669290,12.565562,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.94,360,true
+kobenhavn_h_southwest,København H southwest catchment,55.670188,12.560464,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.88,360,true
+kobenhavn_h_west,København H west catchment,55.673063,12.558871,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.93,360,true
+kobenhavn_h_northwest,København H northwest catchment,55.675938,12.560464,8600626,København H,55.673063,12.565562,Copenhagen,Inner City,0.90,360,true
+norreport_st_core,Nørreport St. core catchment,55.683455,12.571801,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,1.00,360,true
+norreport_st_north,Nørreport St. north catchment,55.687228,12.571801,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.95,360,true
+norreport_st_northeast,Nørreport St. northeast catchment,55.686330,12.576900,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.91,360,true
+norreport_st_east,Nørreport St. east catchment,55.683455,12.578493,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.93,360,true
+norreport_st_southeast,Nørreport St. southeast catchment,55.680580,12.576900,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.89,360,true
+norreport_st_south,Nørreport St. south catchment,55.679682,12.571801,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.94,360,true
+norreport_st_southwest,Nørreport St. southwest catchment,55.680580,12.566702,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.88,360,true
+norreport_st_west,Nørreport St. west catchment,55.683455,12.565109,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.93,360,true
+norreport_st_northwest,Nørreport St. northwest catchment,55.686330,12.566702,8600646,Nørreport St.,55.683455,12.571801,Copenhagen,Norrebro,0.90,360,true
+osterport_st_core,Østerport St. core catchment,55.692498,12.587784,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,1.00,360,true
+osterport_st_north,Østerport St. north catchment,55.696271,12.587784,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.95,360,true
+osterport_st_northeast,Østerport St. northeast catchment,55.695373,12.592884,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.91,360,true
+osterport_st_east,Østerport St. east catchment,55.692498,12.594478,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.93,360,true
+osterport_st_southeast,Østerport St. southeast catchment,55.689623,12.592884,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.89,360,true
+osterport_st_south,Østerport St. south catchment,55.688725,12.587784,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.94,360,true
+osterport_st_southwest,Østerport St. southwest catchment,55.689623,12.582684,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.88,360,true
+osterport_st_west,Østerport St. west catchment,55.692498,12.581090,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.93,360,true
+osterport_st_northwest,Østerport St. northwest catchment,55.695373,12.582684,8600650,Østerport St.,55.692498,12.587784,Copenhagen,Osterbro,0.90,360,true
+valby_st_core,Valby St. core catchment,55.663993,12.514450,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,1.00,360,true
+valby_st_north,Valby St. north catchment,55.667766,12.514450,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.95,360,true
+valby_st_northeast,Valby St. northeast catchment,55.666868,12.519546,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.91,360,true
+valby_st_east,Valby St. east catchment,55.663993,12.521139,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.93,360,true
+valby_st_southeast,Valby St. southeast catchment,55.661118,12.519546,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.89,360,true
+valby_st_south,Valby St. south catchment,55.660220,12.514450,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.94,360,true
+valby_st_southwest,Valby St. southwest catchment,55.661118,12.509354,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.88,360,true
+valby_st_west,Valby St. west catchment,55.663993,12.507761,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.93,360,true
+valby_st_northwest,Valby St. northwest catchment,55.666868,12.509354,8600624,Valby St.,55.663993,12.514450,Copenhagen,Valby,0.90,360,true
+flintholm_st_core,Flintholm St. core catchment,55.685432,12.498656,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,1.00,360,true
+flintholm_st_north,Flintholm St. north catchment,55.689205,12.498656,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.95,360,true
+flintholm_st_northeast,Flintholm St. northeast catchment,55.688307,12.503755,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.91,360,true
+flintholm_st_east,Flintholm St. east catchment,55.685432,12.505349,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.93,360,true
+flintholm_st_southeast,Flintholm St. southeast catchment,55.682557,12.503755,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.89,360,true
+flintholm_st_south,Flintholm St. south catchment,55.681659,12.498656,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.94,360,true
+flintholm_st_southwest,Flintholm St. southwest catchment,55.682557,12.493557,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.88,360,true
+flintholm_st_west,Flintholm St. west catchment,55.685432,12.491963,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.93,360,true
+flintholm_st_northwest,Flintholm St. northwest catchment,55.688307,12.493557,8600736,Flintholm St.,55.685432,12.498656,Frederiksberg,Frederiksberg-West,0.90,360,true
+hellerup_st_core,Hellerup St. core catchment,55.731026,12.567657,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,1.00,360,true
+hellerup_st_north,Hellerup St. north catchment,55.734799,12.567657,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.95,360,true
+hellerup_st_northeast,Hellerup St. northeast catchment,55.733901,12.572762,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.91,360,true
+hellerup_st_east,Hellerup St. east catchment,55.731026,12.574357,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.93,360,true
+hellerup_st_southeast,Hellerup St. southeast catchment,55.728151,12.572762,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.89,360,true
+hellerup_st_south,Hellerup St. south catchment,55.727253,12.567657,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.94,360,true
+hellerup_st_southwest,Hellerup St. southwest catchment,55.728151,12.562552,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.88,360,true
+hellerup_st_west,Hellerup St. west catchment,55.731026,12.560957,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.93,360,true
+hellerup_st_northwest,Hellerup St. northwest catchment,55.733901,12.562552,8600655,Hellerup St.,55.731026,12.567657,Gentofte,Hellerup,0.90,360,true
+lyngby_st_core,Lyngby St. core catchment,55.768088,12.503105,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,1.00,360,true
+lyngby_st_north,Lyngby St. north catchment,55.771861,12.503105,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.95,360,true
+lyngby_st_northeast,Lyngby St. northeast catchment,55.770963,12.508215,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.91,360,true
+lyngby_st_east,Lyngby St. east catchment,55.768088,12.509812,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.93,360,true
+lyngby_st_southeast,Lyngby St. southeast catchment,55.765213,12.508215,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.89,360,true
+lyngby_st_south,Lyngby St. south catchment,55.764315,12.503105,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.94,360,true
+lyngby_st_southwest,Lyngby St. southwest catchment,55.765213,12.497995,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.88,360,true
+lyngby_st_west,Lyngby St. west catchment,55.768088,12.496398,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.93,360,true
+lyngby_st_northwest,Lyngby St. northwest catchment,55.770963,12.497995,8600675,Lyngby St.,55.768088,12.503105,Lyngby-Taarbaek,Lyngby,0.90,360,true
+hvidovre_st_core,Hvidovre St. core catchment,55.664506,12.474349,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,1.00,360,true
+hvidovre_st_north,Hvidovre St. north catchment,55.668279,12.474349,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.95,360,true
+hvidovre_st_northeast,Hvidovre St. northeast catchment,55.667381,12.479445,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.91,360,true
+hvidovre_st_east,Hvidovre St. east catchment,55.664506,12.481038,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.93,360,true
+hvidovre_st_southeast,Hvidovre St. southeast catchment,55.661631,12.479445,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.89,360,true
+hvidovre_st_south,Hvidovre St. south catchment,55.660733,12.474349,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.94,360,true
+hvidovre_st_southwest,Hvidovre St. southwest catchment,55.661631,12.469253,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.88,360,true
+hvidovre_st_west,Hvidovre St. west catchment,55.664506,12.467660,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.93,360,true
+hvidovre_st_northwest,Hvidovre St. northwest catchment,55.667381,12.469253,8600600,Hvidovre St.,55.664506,12.474349,Hvidovre,Hvidovre,0.90,360,true
+ballerup_st_core,Ballerup St. core catchment,55.729875,12.358343,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,1.00,360,true
+ballerup_st_north,Ballerup St. north catchment,55.733648,12.358343,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.95,360,true
+ballerup_st_northeast,Ballerup St. northeast catchment,55.732750,12.363448,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.91,360,true
+ballerup_st_east,Ballerup St. east catchment,55.729875,12.365043,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.93,360,true
+ballerup_st_southeast,Ballerup St. southeast catchment,55.727000,12.363448,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.89,360,true
+ballerup_st_south,Ballerup St. south catchment,55.726102,12.358343,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.94,360,true
+ballerup_st_southwest,Ballerup St. southwest catchment,55.727000,12.353238,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.88,360,true
+ballerup_st_west,Ballerup St. west catchment,55.729875,12.351643,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.93,360,true
+ballerup_st_northwest,Ballerup St. northwest catchment,55.732750,12.353238,8600708,Ballerup St.,55.729875,12.358343,Ballerup,Ballerup,0.90,360,true
+roskilde_st_core,Roskilde St. core catchment,55.639093,12.088550,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,1.00,360,true
+roskilde_st_north,Roskilde St. north catchment,55.642866,12.088550,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.95,360,true
+roskilde_st_northeast,Roskilde St. northeast catchment,55.641968,12.093643,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.91,360,true
+roskilde_st_east,Roskilde St. east catchment,55.639093,12.095235,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.93,360,true
+roskilde_st_southeast,Roskilde St. southeast catchment,55.636218,12.093643,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.89,360,true
+roskilde_st_south,Roskilde St. south catchment,55.635320,12.088550,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.94,360,true
+roskilde_st_southwest,Roskilde St. southwest catchment,55.636218,12.083457,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.88,360,true
+roskilde_st_west,Roskilde St. west catchment,55.639093,12.081865,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.93,360,true
+roskilde_st_northwest,Roskilde St. northwest catchment,55.641968,12.083457,8600617,Roskilde St.,55.639093,12.088550,Roskilde,Roskilde,0.90,360,true
+kastrup_st_metro_core,Kastrup St. (Metro) core catchment,55.635749,12.646735,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,1.00,360,true
+kastrup_st_metro_north,Kastrup St. (Metro) north catchment,55.639522,12.646735,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.95,360,true
+kastrup_st_metro_northeast,Kastrup St. (Metro) northeast catchment,55.638624,12.651828,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.91,360,true
+kastrup_st_metro_east,Kastrup St. (Metro) east catchment,55.635749,12.653419,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.93,360,true
+kastrup_st_metro_southeast,Kastrup St. (Metro) southeast catchment,55.632874,12.651828,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.89,360,true
+kastrup_st_metro_south,Kastrup St. (Metro) south catchment,55.631976,12.646735,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.94,360,true
+kastrup_st_metro_southwest,Kastrup St. (Metro) southwest catchment,55.632874,12.641642,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.88,360,true
+kastrup_st_metro_west,Kastrup St. (Metro) west catchment,55.635749,12.640051,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.93,360,true
+kastrup_st_metro_northwest,Kastrup St. (Metro) northwest catchment,55.638624,12.641642,8603327,Kastrup St. (Metro),55.635749,12.646735,Tarnby,Airport,0.90,360,true
+orestad_st_core,Ørestad St. core catchment,55.628432,12.578776,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,1.00,360,true
+orestad_st_north,Ørestad St. north catchment,55.632205,12.578776,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.95,360,true
+orestad_st_northeast,Ørestad St. northeast catchment,55.631307,12.583868,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.91,360,true
+orestad_st_east,Ørestad St. east catchment,55.628432,12.585459,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.93,360,true
+orestad_st_southeast,Ørestad St. southeast catchment,55.625557,12.583868,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.89,360,true
+orestad_st_south,Ørestad St. south catchment,55.624659,12.578776,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.94,360,true
+orestad_st_southwest,Ørestad St. southwest catchment,55.625557,12.573684,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.88,360,true
+orestad_st_west,Ørestad St. west catchment,55.628432,12.572093,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.93,360,true
+orestad_st_northwest,Ørestad St. northwest catchment,55.631307,12.573684,8600856,Ørestad St.,55.628432,12.578776,Copenhagen,Orestad,0.90,360,true
+kobenhavn_syd_st_core,København Syd St. core catchment,55.652622,12.516850,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,1.00,360,true
+kobenhavn_syd_st_north,København Syd St. north catchment,55.656395,12.516850,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.95,360,true
+kobenhavn_syd_st_northeast,København Syd St. northeast catchment,55.655497,12.521945,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.91,360,true
+kobenhavn_syd_st_east,København Syd St. east catchment,55.652622,12.523537,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.93,360,true
+kobenhavn_syd_st_southeast,København Syd St. southeast catchment,55.649747,12.521945,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.89,360,true
+kobenhavn_syd_st_south,København Syd St. south catchment,55.648849,12.516850,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.94,360,true
+kobenhavn_syd_st_southwest,København Syd St. southwest catchment,55.649747,12.511755,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.88,360,true
+kobenhavn_syd_st_west,København Syd St. west catchment,55.652622,12.510163,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.93,360,true
+kobenhavn_syd_st_northwest,København Syd St. northwest catchment,55.655497,12.511755,8600783,København Syd St.,55.652622,12.516850,Copenhagen,Kobenhavn Syd,0.90,360,true
+gentofte_st_core,Gentofte St. core catchment,55.753508,12.541624,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,1.00,360,true
+gentofte_st_north,Gentofte St. north catchment,55.757281,12.541624,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.95,360,true
+gentofte_st_northeast,Gentofte St. northeast catchment,55.756383,12.546732,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.91,360,true
+gentofte_st_east,Gentofte St. east catchment,55.753508,12.548328,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.93,360,true
+gentofte_st_southeast,Gentofte St. southeast catchment,55.750633,12.546732,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.89,360,true
+gentofte_st_south,Gentofte St. south catchment,55.749735,12.541624,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.94,360,true
+gentofte_st_southwest,Gentofte St. southwest catchment,55.750633,12.536516,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.88,360,true
+gentofte_st_west,Gentofte St. west catchment,55.753508,12.534920,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.93,360,true
+gentofte_st_northwest,Gentofte St. northwest catchment,55.756383,12.536516,8600673,Gentofte St.,55.753508,12.541624,Gentofte,Gentofte,0.90,360,true
+svanemollen_st_core,Svanemøllen St. core catchment,55.715546,12.578048,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,1.00,360,true
+svanemollen_st_north,Svanemøllen St. north catchment,55.719319,12.578048,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.95,360,true
+svanemollen_st_northeast,Svanemøllen St. northeast catchment,55.718421,12.583151,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.91,360,true
+svanemollen_st_east,Svanemøllen St. east catchment,55.715546,12.584746,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.93,360,true
+svanemollen_st_southeast,Svanemøllen St. southeast catchment,55.712671,12.583151,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.89,360,true
+svanemollen_st_south,Svanemøllen St. south catchment,55.711773,12.578048,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.94,360,true
+svanemollen_st_southwest,Svanemøllen St. southwest catchment,55.712671,12.572945,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.88,360,true
+svanemollen_st_west,Svanemøllen St. west catchment,55.715546,12.571350,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.93,360,true
+svanemollen_st_northwest,Svanemøllen St. northwest catchment,55.718421,12.572945,8600654,Svanemøllen St.,55.715546,12.578048,Copenhagen,Svanemollen,0.90,360,true
+nordhavn_st_core,Nordhavn St. core catchment,55.705613,12.590615,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,1.00,360,true
+nordhavn_st_north,Nordhavn St. north catchment,55.709386,12.590615,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.95,360,true
+nordhavn_st_northeast,Nordhavn St. northeast catchment,55.708488,12.595717,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.91,360,true
+nordhavn_st_east,Nordhavn St. east catchment,55.705613,12.597311,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.93,360,true
+nordhavn_st_southeast,Nordhavn St. southeast catchment,55.702738,12.595717,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.89,360,true
+nordhavn_st_south,Nordhavn St. south catchment,55.701840,12.590615,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.94,360,true
+nordhavn_st_southwest,Nordhavn St. southwest catchment,55.702738,12.585513,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.88,360,true
+nordhavn_st_west,Nordhavn St. west catchment,55.705613,12.583919,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.93,360,true
+nordhavn_st_northwest,Nordhavn St. northwest catchment,55.708488,12.585513,8600653,Nordhavn St.,55.705613,12.590615,Copenhagen,Nordhavn,0.90,360,true
+holte_st_core,Holte St. core catchment,55.807677,12.468820,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,1.00,360,true
+holte_st_north,Holte St. north catchment,55.811450,12.468820,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.95,360,true
+holte_st_northeast,Holte St. northeast catchment,55.810552,12.473935,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.91,360,true
+holte_st_east,Holte St. east catchment,55.807677,12.475534,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.93,360,true
+holte_st_southeast,Holte St. southeast catchment,55.804802,12.473935,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.89,360,true
+holte_st_south,Holte St. south catchment,55.803904,12.468820,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.94,360,true
+holte_st_southwest,Holte St. southwest catchment,55.804802,12.463705,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.88,360,true
+holte_st_west,Holte St. west catchment,55.807677,12.462106,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.93,360,true
+holte_st_northwest,Holte St. northwest catchment,55.810552,12.463705,8600677,Holte St.,55.807677,12.468820,Rudersdal,Holte,0.90,360,true
+hillerod_st_core,Hillerød St. core catchment,55.926919,12.310925,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,1.00,360,true
+hillerod_st_north,Hillerød St. north catchment,55.930692,12.310925,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.95,360,true
+hillerod_st_northeast,Hillerød St. northeast catchment,55.929794,12.316056,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.91,360,true
+hillerod_st_east,Hillerød St. east catchment,55.926919,12.317659,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.93,360,true
+hillerod_st_southeast,Hillerød St. southeast catchment,55.924044,12.316056,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.89,360,true
+hillerod_st_south,Hillerød St. south catchment,55.923146,12.310925,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.94,360,true
+hillerod_st_southwest,Hillerød St. southwest catchment,55.924044,12.305794,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.88,360,true
+hillerod_st_west,Hillerød St. west catchment,55.926919,12.304191,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.93,360,true
+hillerod_st_northwest,Hillerød St. northwest catchment,55.929794,12.305794,8600683,Hillerød St.,55.926919,12.310925,Hillerod,Hillerod,0.90,360,true
+taastrup_st_core,Taastrup St. core catchment,55.652550,12.302133,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,1.00,360,true
+taastrup_st_north,Taastrup St. north catchment,55.656323,12.302133,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.95,360,true
+taastrup_st_northeast,Taastrup St. northeast catchment,55.655425,12.307228,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.91,360,true
+taastrup_st_east,Taastrup St. east catchment,55.652550,12.308820,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.93,360,true
+taastrup_st_southeast,Taastrup St. southeast catchment,55.649675,12.307228,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.89,360,true
+taastrup_st_south,Taastrup St. south catchment,55.648777,12.302133,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.94,360,true
+taastrup_st_southwest,Taastrup St. southwest catchment,55.649675,12.297038,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.88,360,true
+taastrup_st_west,Taastrup St. west catchment,55.652550,12.295446,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.93,360,true
+taastrup_st_northwest,Taastrup St. northwest catchment,55.655425,12.297038,8600620,Taastrup St.,55.652550,12.302133,Hoje-Taastrup,Taastrup,0.90,360,true
+glostrup_st_core,Glostrup St. core catchment,55.663148,12.397824,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,1.00,360,true
+glostrup_st_north,Glostrup St. north catchment,55.666921,12.397824,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.95,360,true
+glostrup_st_northeast,Glostrup St. northeast catchment,55.666023,12.402920,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.91,360,true
+glostrup_st_east,Glostrup St. east catchment,55.663148,12.404513,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.93,360,true
+glostrup_st_southeast,Glostrup St. southeast catchment,55.660273,12.402920,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.89,360,true
+glostrup_st_south,Glostrup St. south catchment,55.659375,12.397824,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.94,360,true
+glostrup_st_southwest,Glostrup St. southwest catchment,55.660273,12.392728,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.88,360,true
+glostrup_st_west,Glostrup St. west catchment,55.663148,12.391135,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.93,360,true
+glostrup_st_northwest,Glostrup St. northwest catchment,55.666023,12.392728,8600622,Glostrup St.,55.663148,12.397824,Glostrup,Glostrup,0.90,360,true

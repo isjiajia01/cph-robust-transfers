@@ -1,0 +1,1610 @@
+{
+  "generated_at_utc": "2026-03-21T18:29:28.924093Z",
+  "origin": {
+    "origin_id": "gentofte_st_north",
+    "name": "Gentofte St. north catchment",
+    "lat": 55.757281,
+    "lon": 12.541624,
+    "origin_stop_id": "8600673",
+    "origin_stop_name": "Gentofte St.",
+    "origin_stop_lat": 55.753508,
+    "origin_stop_lon": 12.541624,
+    "municipality": "Gentofte",
+    "neighborhood": "Gentofte",
+    "population_weight": 0.95
+  },
+  "combinations": [
+    {
+      "scenario_id": "weekday_am",
+      "scenario_label": "Weekday AM Peak",
+      "depart_at_local": "2026-03-24T08:00",
+      "max_changes": 1,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.4,
+            "percentile": 95.0
+          },
+          "hospital": {
+            "count": 2,
+            "weighted_score": 4.9,
+            "nearest_time_min": 20,
+            "delta_vs_median": -2.2,
+            "percentile": 47.8
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 57.8
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 68.9
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 40.0
+          },
+          "job_hub": {
+            "count": 3,
+            "weighted_score": 6.6,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 58.3
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": -1.6,
+            "percentile": 25.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 25.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 38,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 55,
+          "changes": 1,
+          "source": "api"
+        }
+      ]
+    },
+    {
+      "scenario_id": "weekday_am",
+      "scenario_label": "Weekday AM Peak",
+      "depart_at_local": "2026-03-24T08:00",
+      "max_changes": 2,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.4,
+            "percentile": 95.0
+          },
+          "hospital": {
+            "count": 2,
+            "weighted_score": 4.9,
+            "nearest_time_min": 20,
+            "delta_vs_median": 0.0,
+            "percentile": 52.2
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 58.3
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 68.9
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 40.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 1.7,
+            "percentile": 100.0
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": -1.6,
+            "percentile": 25.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 25.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 38,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 45,
+          "changes": 2,
+          "source": "api"
+        }
+      ]
+    },
+    {
+      "scenario_id": "weekday_midday",
+      "scenario_label": "Weekday Midday",
+      "depart_at_local": "2026-03-24T11:00",
+      "max_changes": 1,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.4,
+            "percentile": 95.0
+          },
+          "hospital": {
+            "count": 2,
+            "weighted_score": 4.9,
+            "nearest_time_min": 20,
+            "delta_vs_median": -2.2,
+            "percentile": 47.8
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 68.3
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 68.9
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 45.0
+          },
+          "job_hub": {
+            "count": 3,
+            "weighted_score": 6.6,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 58.3
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": -1.6,
+            "percentile": 25.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 20.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 38,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 55,
+          "changes": 1,
+          "source": "api"
+        }
+      ]
+    },
+    {
+      "scenario_id": "weekday_midday",
+      "scenario_label": "Weekday Midday",
+      "depart_at_local": "2026-03-24T11:00",
+      "max_changes": 2,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.4,
+            "percentile": 95.0
+          },
+          "hospital": {
+            "count": 2,
+            "weighted_score": 4.9,
+            "nearest_time_min": 20,
+            "delta_vs_median": -2.2,
+            "percentile": 47.8
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 68.3
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 68.9
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 45.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.85,
+            "percentile": 100.0
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": -1.6,
+            "percentile": 25.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 20.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 38,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 45,
+          "changes": 2,
+          "source": "api"
+        }
+      ]
+    },
+    {
+      "scenario_id": "weekday_pm",
+      "scenario_label": "Weekday PM Peak",
+      "depart_at_local": "2026-03-24T17:00",
+      "max_changes": 1,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.4,
+            "percentile": 95.0
+          },
+          "hospital": {
+            "count": 2,
+            "weighted_score": 4.9,
+            "nearest_time_min": 20,
+            "delta_vs_median": -2.2,
+            "percentile": 47.2
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 62.2
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 64.4
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 45.0
+          },
+          "job_hub": {
+            "count": 3,
+            "weighted_score": 6.6,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 55.0
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": -1.6,
+            "percentile": 20.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 20.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 38,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 55,
+          "changes": 1,
+          "source": "api"
+        }
+      ]
+    },
+    {
+      "scenario_id": "weekday_pm",
+      "scenario_label": "Weekday PM Peak",
+      "depart_at_local": "2026-03-24T17:00",
+      "max_changes": 2,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.4,
+            "percentile": 95.0
+          },
+          "hospital": {
+            "count": 2,
+            "weighted_score": 4.9,
+            "nearest_time_min": 20,
+            "delta_vs_median": -2.2,
+            "percentile": 47.2
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 62.8
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 64.4
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 45.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 11,
+            "delta_vs_median": -1.6,
+            "percentile": 20.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 20,
+            "delta_vs_median": -1.9,
+            "percentile": 20.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 11,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 29,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 38,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 11,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 20,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 45,
+          "changes": 2,
+          "source": "api"
+        }
+      ]
+    },
+    {
+      "scenario_id": "saturday_noon",
+      "scenario_label": "Saturday Noon",
+      "depart_at_local": "2026-03-28T12:00",
+      "max_changes": 1,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 2,
+            "weighted_score": 4.3,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.7,
+            "percentile": 64.4
+          },
+          "hospital": {
+            "count": 1,
+            "weighted_score": 2.6,
+            "nearest_time_min": 22,
+            "delta_vs_median": -4.15,
+            "percentile": 31.1
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 62.8
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 68.9
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 22,
+            "delta_vs_median": -1.9,
+            "percentile": 47.2
+          },
+          "job_hub": {
+            "count": 3,
+            "weighted_score": 6.6,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 58.9
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 19,
+            "delta_vs_median": -1.6,
+            "percentile": 25.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 22,
+            "delta_vs_median": -1.9,
+            "percentile": 20.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 19,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 22,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 37,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 22,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 37,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 40,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 19,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 22,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 60,
+          "changes": 1,
+          "source": "api"
+        }
+      ]
+    },
+    {
+      "scenario_id": "saturday_noon",
+      "scenario_label": "Saturday Noon",
+      "depart_at_local": "2026-03-28T12:00",
+      "max_changes": 2,
+      "metrics_by_duration": {
+        "30": {
+          "campus": {
+            "count": 2,
+            "weighted_score": 4.3,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.7,
+            "percentile": 64.4
+          },
+          "hospital": {
+            "count": 1,
+            "weighted_score": 2.6,
+            "nearest_time_min": 22,
+            "delta_vs_median": -4.15,
+            "percentile": 31.1
+          },
+          "job_hub": {
+            "count": 2,
+            "weighted_score": 4.5,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 62.8
+          }
+        },
+        "45": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 68.9
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 22,
+            "delta_vs_median": -1.9,
+            "percentile": 47.2
+          },
+          "job_hub": {
+            "count": 3,
+            "weighted_score": 6.6,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 58.9
+          }
+        },
+        "60": {
+          "campus": {
+            "count": 3,
+            "weighted_score": 6.0,
+            "nearest_time_min": 19,
+            "delta_vs_median": -1.6,
+            "percentile": 25.0
+          },
+          "hospital": {
+            "count": 3,
+            "weighted_score": 7.1,
+            "nearest_time_min": 22,
+            "delta_vs_median": -1.9,
+            "percentile": 20.0
+          },
+          "job_hub": {
+            "count": 4,
+            "weighted_score": 8.3,
+            "nearest_time_min": 19,
+            "delta_vs_median": 0.0,
+            "percentile": 100.0
+          }
+        }
+      },
+      "poi_opportunities": [
+        {
+          "poi_id": "dtu_lyngby",
+          "name": "DTU Lyngby Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 2.4,
+          "lat": 55.7858,
+          "lon": 12.5184,
+          "travel_time_min": 19,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "ku_north",
+          "name": "University of Copenhagen North Campus",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.9,
+          "lat": 55.6977,
+          "lon": 12.5587,
+          "travel_time_min": 22,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cbs_solbjerg",
+          "name": "CBS Solbjerg Plads",
+          "category": "campus",
+          "category_label": "Campuses",
+          "weight": 1.7,
+          "lat": 55.6817,
+          "lon": 12.5353,
+          "travel_time_min": 37,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "rigshospitalet",
+          "name": "Rigshospitalet",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.6,
+          "lat": 55.6953,
+          "lon": 12.5666,
+          "travel_time_min": 22,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "herlev_hospital",
+          "name": "Herlev Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.3,
+          "lat": 55.7214,
+          "lon": 12.4436,
+          "travel_time_min": 37,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "hvidovre_hospital",
+          "name": "Hvidovre Hospital",
+          "category": "hospital",
+          "category_label": "Hospitals",
+          "weight": 2.2,
+          "lat": 55.6488,
+          "lon": 12.473,
+          "travel_time_min": 40,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "lyngby_hub",
+          "name": "Lyngby Knowledge Hub",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.8,
+          "lat": 55.7692,
+          "lon": 12.5035,
+          "travel_time_min": 19,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "cph_cbd",
+          "name": "Copenhagen CBD",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.7,
+          "lat": 55.6761,
+          "lon": 12.5683,
+          "travel_time_min": 22,
+          "changes": 0,
+          "source": "api"
+        },
+        {
+          "poi_id": "orestad_hub",
+          "name": "Orestad Business District",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 2.1,
+          "lat": 55.628,
+          "lon": 12.5795,
+          "travel_time_min": 41,
+          "changes": 1,
+          "source": "api"
+        },
+        {
+          "poi_id": "ballerup_hub",
+          "name": "Ballerup Business Park",
+          "category": "job_hub",
+          "category_label": "Job Hubs",
+          "weight": 1.7,
+          "lat": 55.7308,
+          "lon": 12.3587,
+          "travel_time_min": 60,
+          "changes": 1,
+          "source": "api"
+        }
+      ]
+    }
+  ]
+}

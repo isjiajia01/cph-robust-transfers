@@ -11,19 +11,39 @@ __pycache__/
 .venv/
 venv/
 
-# Data & outputs
-*.parquet
-*.feather
-*.sqlite
-*.db
-data/
-outputs/
-artifacts/
-
-# Notebooks
-.ipynb_checkpoints/
-
 # OS / editors
 .DS_Store
 .vscode/
 .idea/
+
+# Notebook/editor checkpoints
+.ipynb_checkpoints/
+
+# Generic large outputs
+*.parquet
+*.feather
+*.sqlite
+*.db
+outputs/
+artifacts/
+
+# Runtime cache: keep the directory, ignore cached API responses
+/data/cache/accessibility/*.json
+
+# If future local experiments create extra generated data, keep the committed
+# benchmark/review inputs explicit and ignore the rest by default.
+/data/analysis/*
+!/data/analysis/.gitkeep
+!/data/analysis/reports/
+!/data/analysis/reports/week3/
+!/data/analysis/reports/week3/dt=2026-03-02/
+!/data/analysis/reports/week3/dt=2026-03-02/summary.json
+!/data/analysis/risk_model_mode_level.csv
+!/data/analysis/router_pareto_table.csv
+!/data/analysis/week3_hour_dow_quantiles.csv
+!/data/analysis/week3_line_reliability_rank.csv
+
+/data/gtfs/parsed/*
+!/data/gtfs/parsed/.gitkeep
+!/data/gtfs/parsed/20260302/
+!/data/gtfs/parsed/20260302/stops.csv

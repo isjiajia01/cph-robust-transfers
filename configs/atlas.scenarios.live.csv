@@ -1,0 +1,5 @@
+scenario_id,label,short_label,depart_at_local,description
+weekday_am,Weekday AM Peak,AM Peak,2026-03-24T08:00,Tuesday morning commuter peak using a fixed weekday departure time.
+weekday_midday,Weekday Midday,Midday,2026-03-24T11:00,Tuesday off-peak baseline for comparing service spread against rush hour.
+weekday_pm,Weekday PM Peak,PM Peak,2026-03-24T17:00,Tuesday evening commute window with stronger crowding and transfer pressure.
+saturday_noon,Saturday Noon,Saturday,2026-03-28T12:00,Weekend reference slice for non-workday accessibility comparison.

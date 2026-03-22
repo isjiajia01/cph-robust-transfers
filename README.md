@@ -1,199 +1,68 @@
-# cph-robust-transfers
+# Copenhagen Mobility Resilience Atlas
 
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/Status-Active%20Research%20%26%20Engineering-0A7B83?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers)
-[![License](https://img.shields.io/badge/License-Not%20Specified-6B7280?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers)
-[![Last Updated](https://img.shields.io/github/last-commit/isjiajia01/cph-robust-transfers?style=flat-square)](https://github.com/isjiajia01/cph-robust-transfers/commits/main)
+This repository is the closed-down public product for a Greater Copenhagen transit resilience atlas.
 
-Reliability-aware accessibility and robust routing system for Copenhagen transit networks.
+The core question is simple: under realistic transfer caps, fixed departure windows, and non-trivial destination weights, which neighborhoods still keep useful access to campuses, hospitals, and job hubs?
 
-This project combines static GTFS processing, realtime transit sampling, risk-aware routing, cloud data products, and a map-first accessibility prototype in one repository.
+## What is here
 
-## Explore the Project
+- A static-first atlas in `web/accessibility` with precomputed GeoJSON layers and origin detail bundles.
+- Builders and local serving utilities in `src/accessibility`.
+- Public dashboards in `src/app` for benchmark and research review.
+- Configuration and sample data for rebuilding the published slice in `configs`.
 
-- Benchmark page: `docs/benchmark_dashboard.html`
-- Research dashboard: `docs/research_dashboard.html`
-- Accessibility prototype: `web/accessibility/index.html`
+## Product framing
 
-## Key Results
+This is not a door-to-door trip planner and it is not a full historical research monorepo anymore.
 
-- Built an end-to-end pipeline from GTFS ingestion to graph construction, realtime collection, structured analytics, and decision-facing outputs
-- Added a robustness layer that evaluates transfer reliability through disruption simulation, routing, and empirical delay-risk modeling
-- Integrated cloud execution patterns for recurring collection and BigQuery-based reporting instead of keeping the work notebook-only
-- Produced an offline research dashboard and a lightweight accessibility-service scaffold to bridge analysis work toward reliability-adjusted accessibility products
-- Structured the repo so software workflows and optimization workflows can evolve without collapsing into one-off scripts
+It is a constrained resilience instrument:
 
-## Benchmark Snapshot
+- fixed scenarios instead of free-text search
+- capped transfers instead of optimistic path expansion
+- weighted destination access instead of raw polygon coverage
+- static bundles that can be published cheaply and inspected directly
 
-The repository now includes a minimal benchmark layer comparing:
+## Supported Commands
 
-- scheduled-only
-- realtime snapshot
-- robust / risk-aware
-
-Current preliminary snapshot from the checked-in sample benchmark:
-
-| Metric | Value |
-| --- | --- |
-| Rows evaluated | 20 |
-| Scheduled accessible within threshold | 20 |
-| Robust accessible within threshold | 20 |
-| Accessibility loss flags | 0 |
-| Avg realtime-snapshot missed-transfer rate | 0.0417 |
-| Avg robust missed-transfer rate | 0.0833 |
-| Avg realtime-snapshot regret | 1.00 min |
-| Avg robust regret | 1.00 min |
-
-Reference artifacts:
-
-- `docs/benchmark_dashboard.html`
-- `results/benchmark/latest/comparison.csv`
-- `results/benchmark/latest/summary.md`
-- `results/benchmark/latest/candidates.csv`
-
-This is still a scaffolded benchmark slice, but it now uses a larger deterministic candidate set derived from observed departures instead of the original 4-row hand-written sample. The next step is to replace this benchmark slice with a larger held-out backtest window and publish schedule vs robust accessibility-loss results.
-
-## What This Repository Does
-
-- Downloads and parses GTFS static data
-- Builds a stop-level transit graph and graph metrics
-- Samples realtime departures and journey details from Rejseplanen
-- Produces structured datasets for BigQuery-based analysis
-- Estimates delay risk and evaluates robust transfer candidates
-- Renders an offline research dashboard for executive review
-- Prototypes a map-first accessibility product with a lightweight Python server
-
-## Project Framing
-
-This is a hybrid research-and-engineering repository. The software side focuses on data collection, cloud jobs, and reporting pipelines. The analysis side focuses on reliability-aware accessibility, robustness, routing, and transfer-risk evaluation.
-
-Primary framing files:
-
-- `problem.md`
-- `experiments.md`
-- `docs/workflow/software.md`
-- `docs/workflow/optimization.md`
-- `model/formulation.md`
-- `model/solver.md`
-
-## Architecture
-
-```mermaid
-flowchart LR
-    A[GTFS Static] --> B[GTFS Parse]
-    B --> C[Stop Graph and Metrics]
-    C --> D[Robustness Simulation]
-    C --> E[Routing and Risk Model]
-    F[Realtime Sampling] --> G[Raw NDJSON]
-    G --> H[Structured Tables]
-    H --> I[BigQuery and Quantiles]
-    I --> J[Week 3 Conclusions]
-    D --> K[Robustness Reports]
-    E --> L[Pareto Transfer Outputs]
-    J --> M[Research Dashboard]
-    K --> M
-    L --> M
-    H --> N[Accessibility Cache and Service]
-    N --> O[Map-first Accessibility Prototype]
-```
-
-Core flow:
-
-1. GTFS static zip is downloaded into `data/gtfs/raw/`
-2. GTFS tables are parsed into `data/gtfs/parsed/<version>/`
-3. A stop graph and graph metrics are built under `data/graph/<version>/`
-4. Realtime collector polls `multiDepartureBoard` and `journeyDetail`
-5. Raw payloads are stored append-only in `data/realtime_raw/dt=YYYY-MM-DD/`
-6. Structured outputs are written under `data/structured/dt=YYYY-MM-DD/`
-7. Quantiles, robustness outputs, and summaries feed reports and dashboards
-
-More detail:
-
-- `docs/architecture.md`
-- `docs/runbook.md`
-- `docs/next_phase_plan.md`
-
-## Tech Stack
-
-- Python 3.11
-- Standard-library-first package layout with `setuptools`
-- BigQuery and GCS integration for structured analytics flows
-- Cloud Run Jobs and Cloud Scheduler for recurring collection
-- Static HTML dashboard output
-- Lightweight `http.server`-based accessibility service scaffold
-
-## Repository Layout
-
-- `src/gtfs_ingest/`: GTFS download and parsing
-- `src/graph/`: graph build and network metrics
-- `src/realtime/`: realtime collection, parsing, throttling, summaries, quantiles
-- `src/robustness/`: disruption simulation, routing, risk model, reporting
-- `src/accessibility/`: cache, upstream client, transforms, lightweight service layer
-- `src/app/`: unified application-facing CLI and pipeline entry points
-- `src/optimization/`: unified optimization-facing CLI and bridge API
-- `configs/`: runtime defaults, station seeds, SQL templates
-- `infra/gcp/`: bootstrap, deploy, scheduler, secret, and alert scripts
-- `infra/bigquery/`: load, quality-check, refresh, and quantile scripts
-- `docs/`: architecture, workflow, reports, conclusions, and dashboard outputs
-- `model/`: formulation and solver notes
-- `tests/`: regression and scaffold tests
-- `web/accessibility/`: frontend shell for the accessibility prototype
-
-## Main Entry Points
-
-Unified root CLI:
+Serve the public site:
 
 ```bash
-python -m src.cli --help
-python -m src.cli benchmark init
+python3 -m src.accessibility.server serve
 ```
 
-Application-side CLI:
+The default landing page is `web/accessibility/index.html`, with the atlas at `web/accessibility/atlas.html`.
+
+Build atlas data from the configured slice:
 
 ```bash
-python -m src.app.cli --help
+python3 -m src.accessibility.server build-atlas --config configs/accessibility.defaults.toml
 ```
 
-Optimization-side CLI:
+Validate static assets:
 
 ```bash
-python -m src.optimization.cli --help
+python3 -m src.accessibility.server build-static --out-dir web/accessibility
 ```
 
-Common direct commands:
+Render the benchmark dashboard:
 
 ```bash
-python3 -m unittest discover -s tests -p 'test_*.py'
-python3 -m src.app.results_dashboard --out docs/research_dashboard.html
-python3 -m unittest tests.test_accessibility_scaffold
-python3 -m src.accessibility.server serve --host 127.0.0.1 --port 8765
+python3 -m src.app.benchmark_dashboard
 ```
 
-## Current Outputs
+Render the research review dashboard:
 
-Notable generated or rendered outputs already tracked in the repo:
+```bash
+python3 -m src.app.results_dashboard
+```
 
-- `docs/benchmark_dashboard.html`
-- `docs/research_dashboard.html`
-- `docs/week1_summary.md`
-- `docs/week3_summary.md`
-- `docs/week3_conclusions.md`
-- `results/robustness/summary.md`
-- `results/benchmark/README.md`
+## Scope
 
-## Data and Secrets
+The old GTFS ingestion, realtime collection, robustness pipeline, and cloud deployment layers have been removed from the active surface of this repository.
 
-- Runtime data under `data/` is intentionally ignored by Git
-- Keep `REJSEPLANEN_API_KEY` only in environment variables or Secret Manager
-- Never commit live API keys or raw secret material
+What remains is the reproducible public site:
 
-## Why This Repo Matters
-
-This repository is not just a notebook dump. It shows an end-to-end pattern:
-
-- transport data ingestion
-- realtime reliability measurement
-- robustness-oriented analysis
-- deployable cloud jobs
-- decision-facing outputs
-- early product thinking for accessibility use cases
+- overview landing page
+- atlas
+- benchmark dashboard
+- research review dashboard

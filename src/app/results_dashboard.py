@@ -464,6 +464,202 @@ def _json_script(value: object) -> str:
     return json.dumps(value, ensure_ascii=True).replace("</", "<\\/")
 
 
+def _build_unavailable_dashboard_html(repo_root: Path, output_path: Path, error: Exception) -> str:
+    output_rel = _rel_href(output_path, repo_root)
+    expected = [
+        repo_root / "docs" / "week1_summary.md",
+        repo_root / "docs" / "week3_conclusions.md",
+        repo_root / "results" / "robustness" / "summary.md",
+        repo_root / "data" / "analysis" / "week3_line_reliability_rank.csv",
+        repo_root / "data" / "analysis" / "week3_hour_dow_quantiles.csv",
+        repo_root / "data" / "analysis" / "router_pareto_table.csv",
+        repo_root / "data" / "analysis" / "risk_model_mode_level.csv",
+    ]
+    missing_items = "".join(
+        f'<div class="source-item"><strong>{_escape(path.name)}</strong><code>{_escape(path.relative_to(repo_root))}</code></div>'
+        for path in expected
+    )
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copenhagen Mobility Resilience Research Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {{
+      --bg: #f4ede2;
+      --paper: rgba(252, 248, 240, 0.94);
+      --paper-strong: rgba(255, 252, 247, 0.98);
+      --line: rgba(16, 36, 51, 0.11);
+      --ink: #102433;
+      --muted: #5c6b73;
+      --accent: #0f4c5c;
+      --shadow: 0 24px 60px rgba(16, 36, 51, 0.10);
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(191, 109, 58, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(15, 76, 92, 0.14), transparent 28%),
+        linear-gradient(180deg, #fbf5ea 0%, #eef1eb 100%);
+    }}
+    .shell {{
+      width: min(1240px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+    }}
+    .hero,
+    .section {{
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }}
+    .hero {{
+      padding: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(191, 109, 58, 0.12), transparent 26%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(247, 240, 228, 0.9));
+    }}
+    .section {{
+      margin-top: 24px;
+      padding: 24px;
+    }}
+    .eyebrow {{
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }}
+    h1, h2 {{
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }}
+    h1 {{
+      max-width: 12ch;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 0.92;
+    }}
+    p, li {{
+      color: var(--muted);
+      line-height: 1.7;
+    }}
+    .nav-links {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }}
+    .nav-links a {{
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 76, 92, 0.12);
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }}
+    .nav-links a.active {{
+      background: rgba(15, 76, 92, 0.08);
+      border-color: rgba(15, 76, 92, 0.3);
+      color: var(--accent);
+    }}
+    .hero-tags {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }}
+    .hero-tag {{
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 76, 92, 0.12);
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }}
+    .empty-state,
+    .source-item {{
+      border-radius: 20px;
+      border: 1px solid rgba(15, 76, 92, 0.1);
+      background: var(--paper-strong);
+      padding: 16px;
+    }}
+    .source-grid {{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }}
+    .source-item strong {{
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }}
+    code {{
+      background: rgba(15, 76, 92, 0.08);
+      padding: 2px 6px;
+      border-radius: 8px;
+      word-break: break-word;
+    }}
+    @media (max-width: 720px) {{
+      .shell {{ width: min(100vw - 20px, 100%); padding-top: 12px; }}
+      .hero, .section {{ padding: 18px; border-radius: 20px; }}
+      .source-grid {{ grid-template-columns: 1fr; }}
+      h1 {{ max-width: none; font-size: 2.2rem; }}
+    }}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Research review</p>
+      <h1>Research dashboard shell is ready for regenerated artifacts.</h1>
+      <p>This page shares the same public-facing language as the overview, atlas, and benchmark layers. The current worktree is missing one or more committed result files, so the generator emitted an auditable placeholder instead of failing silently.</p>
+      <div class="nav-links">
+        <a href="./index.html">Overview</a>
+        <a href="./atlas.html">Atlas</a>
+        <a href="./benchmark.html">Benchmark</a>
+        <a class="active" href="./results.html">Research Review</a>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">Fallback rendered</span>
+        <span class="hero-tag">Awaiting regenerated results</span>
+      </div>
+    </section>
+    <section class="section">
+      <h2>Render status</h2>
+      <div class="empty-state">
+        <p><strong>{_escape(type(error).__name__)}</strong>: {_escape(error)}</p>
+        <p>Target output: <code>{_escape(output_rel)}</code></p>
+      </div>
+      <div class="source-grid">{missing_items}</div>
+    </section>
+  </main>
+</body>
+</html>"""
+
+
 def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
     docs_dir = repo_root / "docs"
     out_dir = output_path.parent
@@ -698,35 +894,38 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CPH Transit Reliability Executive Dashboard</title>
+  <title>Copenhagen Mobility Resilience Research Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f3efe8;
-      --ink: #10222c;
-      --muted: #64737d;
-      --panel: rgba(255, 252, 246, 0.84);
-      --panel-strong: rgba(255, 255, 255, 0.92);
-      --line: rgba(16, 34, 44, 0.10);
-      --teal: #0f766e;
-      --blue: #164e63;
-      --amber: #b45309;
+      --bg: #f4ede2;
+      --ink: #102433;
+      --muted: #5c6b73;
+      --panel: rgba(252, 248, 240, 0.94);
+      --panel-strong: rgba(255, 252, 247, 0.98);
+      --line: rgba(16, 36, 51, 0.11);
+      --teal: #0f4c5c;
+      --blue: #2d7b8a;
+      --amber: #bf6d3a;
       --red: #b91c1c;
-      --cream: #fbf7ef;
-      --shadow: 0 28px 70px rgba(16, 34, 44, 0.10);
+      --cream: #fbf5ea;
+      --shadow: 0 24px 60px rgba(16, 36, 51, 0.10);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       color: var(--ink);
-      font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+      font-family: "Manrope", "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 0% 0%, rgba(15, 118, 110, 0.14), transparent 24%),
-        radial-gradient(circle at 100% 0%, rgba(22, 78, 99, 0.16), transparent 18%),
-        linear-gradient(180deg, #faf7f0 0%, var(--bg) 100%);
+        radial-gradient(circle at top left, rgba(191, 109, 58, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(15, 76, 92, 0.14), transparent 28%),
+        linear-gradient(180deg, #fbf5ea 0%, #eef1eb 100%);
     }
     h1, h2 {
-      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      letter-spacing: -0.035em;
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
     }
     a { color: inherit; }
     .shell {
@@ -747,7 +946,7 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
     .hero {
       padding: 34px;
       background:
-        radial-gradient(circle at top right, rgba(180, 83, 9, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(191, 109, 58, 0.12), transparent 28%),
         linear-gradient(135deg, rgba(255,255,255,0.96), rgba(250,244,235,0.86));
     }
     .hero-grid {
@@ -759,9 +958,9 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
     .eyebrow {
       margin: 0 0 12px;
       color: var(--teal);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
     h1 {
@@ -774,14 +973,45 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
       max-width: 68ch;
       margin: 18px 0 0;
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.75;
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+    .nav-links,
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .nav-links {
+      margin-top: 18px;
+    }
+    .hero-tags {
+      margin-top: 16px;
+    }
+    .nav-links a,
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 76, 92, 0.12);
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .nav-links a.active {
+      background: rgba(15, 76, 92, 0.08);
+      border-color: rgba(15, 76, 92, 0.3);
+      color: var(--teal);
     }
     .hero-panel {
       padding: 22px;
       border-radius: 22px;
       border: 1px solid rgba(16, 34, 44, 0.08);
-      background: rgba(16, 34, 44, 0.05);
+      background: rgba(15, 76, 92, 0.05);
     }
     .hero-panel h3 {
       margin: 0 0 10px;
@@ -802,7 +1032,7 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
       padding: 18px;
       border-radius: 22px;
       border: 1px solid rgba(16, 34, 44, 0.08);
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.88);
     }
     .signal-card h3 {
       margin: 0 0 8px;
@@ -852,8 +1082,8 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
       transform: translateY(-2px);
       border-color: rgba(15, 118, 110, 0.20);
     }
-    .metric-card--positive { background: linear-gradient(180deg, rgba(236, 253, 245, 0.92), rgba(255,255,255,0.92)); }
-    .metric-card--warning { background: linear-gradient(180deg, rgba(255, 247, 237, 0.92), rgba(255,255,255,0.92)); }
+    .metric-card--positive { background: linear-gradient(180deg, rgba(232, 243, 243, 0.92), rgba(255,255,255,0.92)); }
+    .metric-card--warning { background: linear-gradient(180deg, rgba(251, 237, 231, 0.92), rgba(255,255,255,0.92)); }
     .metric-card--critical { background: linear-gradient(180deg, rgba(254, 242, 242, 0.92), rgba(255,255,255,0.92)); }
     .metric-label {
       color: var(--muted);
@@ -1265,21 +1495,31 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Company-Facing Reliability Review</p>
-          <h1>Copenhagen transit reliability, turned into an executive dashboard.</h1>
+          <p class="eyebrow">Research review</p>
+          <h1>Copenhagen mobility resilience, turned into a decision-facing review.</h1>
           <p class="hero-copy">
-            This offline page packages the repository's committed Week1-Week3 outputs into one narrative:
-            network structure, failure sensitivity, line-level reliability, and early transfer-risk decisions.
-            It is designed for internal review, partner demos, and management conversations where the audience
-            needs a business-ready view rather than raw notebooks.
+            This page packages the repository's committed structure, robustness, and reliability outputs into one narrative:
+            network shape, failure sensitivity, line-level delay exposure, and early transfer-risk decisions.
+            It is meant to sit beside the atlas and benchmark as the evidence layer for people who need both presentation quality and methodological traceability.
           </p>
+          <div class="nav-links">
+            <a href="./index.html">Overview</a>
+            <a href="./atlas.html">Atlas</a>
+            <a href="./benchmark.html">Benchmark</a>
+            <a class="active" href="./results.html">Research Review</a>
+          </div>
+          <div class="hero-tags">
+            <span class="hero-tag">Static network evidence</span>
+            <span class="hero-tag">Observed reliability</span>
+            <span class="hero-tag">Risk-model context</span>
+          </div>
         </div>
         <aside class="hero-panel">
           <h3>How to read this page</h3>
           <p>
             Start with the executive cards, then use the line portfolio explorer to isolate reliability outliers.
             The geographic panel highlights where structural exposure concentrates in the static network. The final
-            section keeps the routing and risk outputs visible for operational decision support.
+            section keeps routing and risk outputs visible so the polished narrative remains audit-friendly.
           </p>
         </aside>
       </div>
@@ -1831,7 +2071,11 @@ def build_dashboard_html(repo_root: Path, output_path: Path) -> str:
 
 def render_dashboard(repo_root: Path, output_path: Path) -> Path:
     ensure_parent(output_path)
-    output_path.write_text(build_dashboard_html(repo_root, output_path), encoding="utf-8")
+    try:
+      html_doc = build_dashboard_html(repo_root, output_path)
+    except Exception as exc:  # pragma: no cover
+      html_doc = _build_unavailable_dashboard_html(repo_root, output_path, exc)
+    output_path.write_text(html_doc, encoding="utf-8")
     return output_path
 
 
@@ -1841,7 +2085,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--out",
         default=None,
-        help="Output HTML path; defaults to docs/research_dashboard.html under the repo root",
+        help="Output HTML path; defaults to web/accessibility/results.html under the repo root",
     )
     return parser
 
@@ -1850,7 +2094,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     repo_root = Path(args.repo_root).resolve() if args.repo_root else _repo_root()
-    output_path = Path(args.out).resolve() if args.out else repo_root / "docs" / "research_dashboard.html"
+    output_path = Path(args.out).resolve() if args.out else repo_root / "web" / "accessibility" / "results.html"
     render_dashboard(repo_root, output_path)
     print(f"wrote dashboard: {output_path}")
     return 0

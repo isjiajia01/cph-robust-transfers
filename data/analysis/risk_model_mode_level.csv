@@ -1,0 +1,4 @@
+line,mode,p50_delay_sec,p90_delay_sec,p95_delay_sec,p95_ci_low,p95_ci_high,sample_size_effective,confidence_tag,evidence_level,source_level,ci95_width_sec,risk_model_version
+C,ST,60,60,120,0,0,100,medium,low,global,0,recovered_from_dashboard_v1
+F,ST,60,60,120,0,0,100,medium,low,global,0,recovered_from_dashboard_v1
+H,ST,60,60,120,0,0,100,medium,low,global,0,recovered_from_dashboard_v1

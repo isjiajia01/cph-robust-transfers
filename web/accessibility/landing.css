@@ -1,0 +1,241 @@
+:root {
+  --bg: #f4ede2;
+  --paper: rgba(252, 248, 240, 0.94);
+  --paper-strong: rgba(255, 252, 247, 0.98);
+  --line: rgba(16, 36, 51, 0.11);
+  --ink: #102433;
+  --muted: #5c6b73;
+  --accent: #0f4c5c;
+  --accent-warm: #bf6d3a;
+  --shadow: 0 24px 60px rgba(16, 36, 51, 0.10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(191, 109, 58, 0.12), transparent 24%),
+    radial-gradient(circle at top right, rgba(15, 76, 92, 0.14), transparent 28%),
+    linear-gradient(180deg, #fbf5ea 0%, #eef1eb 100%);
+}
+
+body {
+  position: relative;
+}
+
+.site-backdrop {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(15, 76, 92, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 76, 92, 0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  width: min(1240px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 72px;
+  display: grid;
+  gap: 24px;
+}
+
+.hero,
+.entry-card,
+.principle {
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: 20px;
+  padding: 30px;
+  background:
+    radial-gradient(circle at top right, rgba(191, 109, 58, 0.12), transparent 26%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(247, 240, 228, 0.9));
+}
+
+.eyebrow,
+.card-eyebrow,
+.panel-label {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(2.7rem, 6vw, 5.1rem);
+  line-height: 0.92;
+  max-width: 12ch;
+}
+
+.lede,
+.hero-list,
+.entry-card p,
+.principle p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.lede {
+  margin: 18px 0 0;
+  max-width: 66ch;
+  font-size: 1.02rem;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.hero-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(15, 76, 92, 0.12);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.hero-panel {
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(15, 76, 92, 0.1);
+}
+
+.hero-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.hero-list li + li {
+  margin-top: 12px;
+}
+
+.card-grid,
+.principles {
+  display: grid;
+  gap: 18px;
+}
+
+.card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.entry-card {
+  display: block;
+  padding: 22px;
+  text-decoration: none;
+  color: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 241, 230, 0.96));
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.entry-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(15, 76, 92, 0.22);
+}
+
+.entry-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  margin-top: 16px;
+  border-radius: 999px;
+  background: rgba(15, 76, 92, 0.08);
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.entry-card-atlas {
+  background:
+    radial-gradient(circle at top right, rgba(45, 123, 138, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(232, 243, 243, 0.9));
+}
+
+.entry-card-benchmark {
+  background:
+    radial-gradient(circle at top right, rgba(191, 109, 58, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(251, 237, 231, 0.9));
+}
+
+.entry-card-results {
+  background:
+    radial-gradient(circle at top right, rgba(15, 76, 92, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(241, 233, 220, 0.92));
+}
+
+.principles {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.principle {
+  padding: 20px;
+  background: rgba(255, 252, 247, 0.88);
+}
+
+@media (max-width: 1040px) {
+  .hero,
+  .card-grid,
+  .principles {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .content {
+    width: min(100vw - 20px, 100%);
+    padding-top: 12px;
+  }
+
+  .hero,
+  .entry-card,
+  .principle {
+    border-radius: 20px;
+  }
+
+  .hero {
+    padding: 20px;
+  }
+
+  h1 {
+    max-width: none;
+    font-size: 2.2rem;
+  }
+}
